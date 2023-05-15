@@ -1,0 +1,692 @@
+import React, { useState, useRef } from "react";
+export const SvgComponent = ({ title, handlePlate, ...props }) => {
+
+    const [isDragging, setIsDragging] = useState(false);
+    const [startPos, setStartPos] = useState({ x: 0, y: 0 });
+    const [currentPos, setCurrentPos] = useState({ x: 0, y: 0 });
+
+    const groupRef = useRef();
+
+    const handleMouseDown = (event) => {
+        event.preventDefault();
+        if (isDragging) return; // Evitar actualización de startPos mientras se arrastra
+        setIsDragging(true);
+        setStartPos({ x: event.clientX, y: event.clientY });
+    };
+
+    const handleMouseUp = () => {
+        setIsDragging(false);
+    };
+
+    const handleMouseMove = (event) => {
+        if (!isDragging) return;
+
+        requestAnimationFrame(() => {
+            const dx = event.clientX - startPos.x;
+            const dy = event.clientY - startPos.y;
+
+            setCurrentPos((prevPos) => ({
+                x: prevPos.x + dx,
+                y: prevPos.y + dy
+            }));
+
+            setStartPos({ x: event.clientX, y: event.clientY });
+        });
+    };
+
+    return (
+        <div className="svgContainer">
+            <h2>{title}</h2>
+            <svg
+            onMouseDown={handleMouseDown}
+        onMouseUp={handleMouseUp}
+        onMouseMove={handleMouseMove}
+                id="Capa_1"
+                data-name="Capa 1"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 587.82 943.91"
+                {...props}
+            >
+                <defs>
+                    <style>
+                        {
+                            `.cls-1, .cls-2 {fill: none;}
+                            .cls-3, .cls-4, .cls-5, .cls-6 {fill: #fff;}
+                            .cls-7 {  fill: #5b5b5f;  font-family: MyriadPro-Regular, 'Myriad Pro';  font-size: 21px;}
+                            .cls-7, .cls-8 {  isolation: isolate;}
+                            .cls-4 {  stroke: #020102;}
+                            .cls-4, .cls-5, .cls-6, .cls-2 {  stroke-miterlimit: 10;}
+                            .cls-5, .cls-2 {  stroke: #000;}.cls-6 {  stroke: #201814;}`
+                        }
+                    </style>
+                </defs>
+                <g id="Capa_1-2" data-name="Capa 1">
+                    <ellipse
+                        className="cls-5"
+                        cx={295.55}
+                        cy={890.08}
+                        rx={199.33}
+                        ry={53.33}
+                    />
+                    <rect
+                        className="cls-5"
+                        x={145.8}
+                        y={152.84}
+                        width={296.43}
+                        height={732.32}
+                    />
+                    <path
+                        className="cls-5"
+                        d="m145.8,885.15c0,12.61,66.36,22.83,148.21,22.83s148.22-10.22,148.22-22.83-66.36-22.83-148.21-22.83-148.22,10.22-148.22,22.83"
+                    />
+                    <ellipse
+                        className="cls-5"
+                        cx={294.02}
+                        cy={152.46}
+                        rx={148.21}
+                        ry={16.38}
+                    />
+                </g>
+                <g id="Capa_2" data-name="Capa 2">
+                    <path d="m442.5,313.27c2.27-8.55,6.53-16.52,12.22-23.29,5.69-6.76,12.76-12.34,20.7-16.22,4.46-2.18,9.18-3.79,14.05-4.79.63-.13.36-1.09-.27-.96-8.8,1.8-17.12,5.65-24.31,11.01-7.18,5.36-13.26,12.19-17.66,19.99-2.48,4.4-4.41,9.1-5.71,13.98-.15.64.82.9.98.28h0Z" />
+                    <line className="cls-2" x1={489.34} y1={268.5} x2={569.84} y2={268.5} />
+                    <rect
+                        className="cls-2"
+                        x={480.88}
+                        y={182.75}
+                        width={106.44}
+                        height={86.22}
+                    />
+                    <line className="cls-2" x1={480.6} y1={182.75} x2={450.23} y2={104.98} />
+                    <line className="cls-2" x1={586.58} y1={182.75} x2={541.61} y2={104.82} />
+                    <line className="cls-2" x1={450.23} y1={104.98} x2={541.61} y2={104.82} />
+                    <line className="cls-2" x1={480.45} y1={264.37} x2={452.89} y2={168.47} />
+                    <line className="cls-2" x1={450.23} y1={104.98} x2={452.89} y2={168.47} />
+                    <line className="cls-2" x1={489.34} y1={268.5} x2={442.23} y2={269.64} />
+                    <line className="cls-2" x1={442.26} y1={260.29} x2={480.88} y2={260.91} />
+                    <path d="m146.28,320.44c-2.3-8.67-6.62-16.72-12.36-23.59-5.75-6.88-12.96-12.57-21.02-16.51-4.54-2.22-9.34-3.88-14.29-4.89-.63-.13-.9.84-.27.96,8.66,1.77,16.83,5.54,23.92,10.8,7.1,5.27,13.1,12.04,17.44,19.74,2.44,4.33,4.33,8.94,5.6,13.74.18.64,1.15.38.98-.25h0Z" />
+                    <line className="cls-2" x1={98.48} y1={275.94} x2={17.98} y2={275.94} />
+                    <rect
+                        className="cls-2"
+                        x={0.5}
+                        y={190.19}
+                        width={106.44}
+                        height={86.22}
+                    />
+                    <line className="cls-2" x1={107.22} y1={190.19} x2={137.59} y2={112.42} />
+                    <line className="cls-2" x1={1.24} y1={190.19} x2={46.21} y2={112.26} />
+                    <line className="cls-2" x1={137.59} y1={112.42} x2={46.21} y2={112.26} />
+                    <line className="cls-2" x1={107.38} y1={271.81} x2={134.93} y2={175.9} />
+                    <line className="cls-2" x1={137.59} y1={112.42} x2={134.93} y2={175.9} />
+                    <line className="cls-2" x1={98.48} y1={275.94} x2={145.59} y2={277.08} />
+                    <line className="cls-2" x1={145.56} y1={267.73} x2={106.94} y2={268.35} />
+                </g>
+                <g id="Capa_3" data-name="Capa 3">
+                    <line className="cls-2" x1={205.98} y1={288.47} x2={207.8} y2={851.67} />
+                    <path d="m205.95,287.54c-6.14.9-12.61.95-18.66-.58-4.7-1.19-9.36-3.32-12.75-6.87-1.87-1.96-3.22-4.32-3.9-6.94-.16-.62-1.13-.36-.96.27,2.69,10.36,14.39,14.89,24.07,15.59,4.16.3,8.34.12,12.47-.49.63-.11.36-1.07-.27-.98h0Z" />
+                    <line className="cls-2" x1={170.16} y1={273.28} x2={170.16} y2={842.31} />
+                    <path d="m205.96,851.07c-5.94,1.24-12.08,1.13-18.06.22-4.72-.72-9.8-1.67-13.83-4.39-1.99-1.35-3.59-3.2-4.27-5.54-.18-.62-1.14-.35-.96.27,1.29,4.48,5.46,7.05,9.62,8.52,2.51.89,5.14,1.43,7.76,1.88,3.12.54,6.27.89,9.43.95,3.55.08,7.1-.21,10.58-.94.62-.13.36-1.1-.27-.97h0Z" />
+                </g>
+                <g id="Capa_5" data-name="Capa 5">
+                    <circle className="cls-2" cx={188.22} cy={317.74} r={8.76} />
+                    <circle className="cls-2" cx={188.22} cy={345.22} r={8.76} />
+                    <circle className="cls-2" cx={188.22} cy={372.7} r={8.76} />
+                    <circle className="cls-2" cx={188.27} cy={400.18} r={8.76} />
+                    <circle className="cls-2" cx={188.27} cy={427.66} r={8.76} />
+                    <circle className="cls-2" cx={188.27} cy={455.14} r={8.76} />
+                    <circle className="cls-2" cx={188.27} cy={482.62} r={8.76} />
+                    <circle className="cls-2" cx={188.27} cy={510.11} r={8.76} />
+                    <circle className="cls-2" cx={188.22} cy={537.59} r={8.76} />
+                    <circle className="cls-2" cx={188.27} cy={565.07} r={8.76} />
+                    <circle className="cls-2" cx={188.27} cy={592.55} r={8.76} />
+                    <circle className="cls-2" cx={188.27} cy={620.03} r={8.76} />
+                    <circle className="cls-2" cx={188.27} cy={647.51} r={8.76} />
+                    <circle className="cls-2" cx={188.27} cy={674.99} r={8.76} />
+                    <circle className="cls-2" cx={188.27} cy={702.47} r={8.76} />
+                    <circle className="cls-2" cx={188.27} cy={729.95} r={8.76} />
+                    <circle className="cls-2" cx={187.86} cy={757.43} r={8.76} />
+                    <circle className="cls-2" cx={188.27} cy={784.91} r={8.76} />
+                    <circle className="cls-2" cx={187.86} cy={812.39} r={8.76} />
+                </g>
+                <g id="Capa_7" data-name="Capa 7">
+                    <rect
+                        className="cls-1"
+                        x={112.7}
+                        y={305.48}
+                        width={44.46}
+                        height={574.12}
+                    />
+                    <g
+                        id="_1_2_3_4_5_6_7_8_9_10_11_12_13_14_15_16_17_18_19_20_"
+                        data-name="12345 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20"
+                        className="cls-8"
+                    >
+                        <text className="cls-7" transform="translate(112.7 320.39)">
+                            <tspan x={0} y={0}>
+                                {"46"}
+                            </tspan>
+                        </text>
+                        <text className="cls-7" transform="translate(112.7 348.39)">
+                            <tspan x={0} y={0}>
+                                {"48"}
+                            </tspan>
+                        </text>
+                        <text className="cls-7" transform="translate(112.7 376.39)">
+                            <tspan x={0} y={0}>
+                                {"50"}
+                            </tspan>
+                        </text>
+                        <text className="cls-7" transform="translate(112.7 404.39)">
+                            <tspan x={0} y={0}>
+                                {"52"}
+                            </tspan>
+                        </text>
+                        <text className="cls-7" transform="translate(112.7 432.39)">
+                            <tspan x={0} y={0}>
+                                {"54"}
+                            </tspan>
+                        </text>
+                        <text className="cls-7" transform="translate(112.7 460.39)">
+                            <tspan x={0} y={0}>
+                                {"56"}
+                            </tspan>
+                        </text>
+                        <text className="cls-7" transform="translate(112.7 488.39)">
+                            <tspan x={0} y={0}>
+                                {"58"}
+                            </tspan>
+                        </text>
+                        <text className="cls-7" transform="translate(112.7 516.39)">
+                            <tspan x={0} y={0}>
+                                {"60"}
+                            </tspan>
+                        </text>
+                        <text className="cls-7" transform="translate(112.7 544.39)">
+                            <tspan x={0} y={0}>
+                                {"62"}
+                            </tspan>
+                        </text>
+                        <text className="cls-7" transform="translate(112.7 572.39)">
+                            <tspan x={0} y={0}>
+                                {"64"}
+                            </tspan>
+                        </text>
+                        <text className="cls-7" transform="translate(112.7 600.39)">
+                            <tspan x={0} y={0}>
+                                {"66"}
+                            </tspan>
+                        </text>
+                        <text className="cls-7" transform="translate(112.7 628.39)">
+                            <tspan x={0} y={0}>
+                                {"68"}
+                            </tspan>
+                        </text>
+                        <text className="cls-7" transform="translate(112.7 656.39)">
+                            <tspan x={0} y={0}>
+                                {"70"}
+                            </tspan>
+                        </text>
+                        <text className="cls-7" transform="translate(112.7 684.39)">
+                            <tspan x={0} y={0}>
+                                {"72"}
+                            </tspan>
+                        </text>
+                        <text className="cls-7" transform="translate(112.7 712.39)">
+                            <tspan x={0} y={0}>
+                                {"74"}
+                            </tspan>
+                        </text>
+                        <text className="cls-7" transform="translate(112.7 740.39)">
+                            <tspan x={0} y={0}>
+                                {"76"}
+                            </tspan>
+                        </text>
+                        <text className="cls-7" transform="translate(112.7 768.39)">
+                            <tspan x={0} y={0}>
+                                {"78"}
+                            </tspan>
+                        </text>
+                        <text className="cls-7" transform="translate(112.7 796.39)">
+                            <tspan x={0} y={0}>
+                                {"80"}
+                            </tspan>
+                        </text>
+                        <text className="cls-7" transform="translate(112.7 824.39)">
+                            <tspan x={0} y={0}>
+                                {"82"}
+                            </tspan>
+                        </text>
+                    </g>
+                    <rect className="cls-1" x={60.73} y={553.1} width={5} height={84} />
+                    <rect
+                        className="cls-1"
+                        x={103.58}
+                        y={290.56}
+                        width={206.67}
+                        height={574.12}
+                    />
+                </g>
+                <g ref={groupRef} transform={`translate(0,${currentPos.y})`} id="Capa_8" data-name="Capa 8">
+                    <g>
+                        <ellipse
+                            className="cls-4"
+                            cx={236.16}
+                            cy={215.75}
+                            rx={5.36}
+                            ry={10.63}
+                        />
+                        <ellipse
+                            className="cls-4"
+                            cx={236.16}
+                            cy={237.02}
+                            rx={5.36}
+                            ry={10.63}
+                        />
+                        <ellipse
+                            className="cls-4"
+                            cx={236.16}
+                            cy={203.42}
+                            rx={5.36}
+                            ry={10.63}
+                        />
+                        <ellipse
+                            className="cls-4"
+                            cx={236.16}
+                            cy={247.13}
+                            rx={5.36}
+                            ry={10.63}
+                        />
+                        <ellipse
+                            className="cls-4"
+                            cx={236.16}
+                            cy={226.39}
+                            rx={5.36}
+                            ry={10.63}
+                        />
+                        <ellipse
+                            className="cls-4"
+                            cx={236.16}
+                            cy={274.46}
+                            rx={5.36}
+                            ry={10.63}
+                        />
+                        <ellipse
+                            className="cls-4"
+                            cx={236.16}
+                            cy={295.73}
+                            rx={5.36}
+                            ry={10.63}
+                        />
+                        <ellipse
+                            className="cls-4"
+                            cx={236.16}
+                            cy={262.12}
+                            rx={5.36}
+                            ry={10.63}
+                        />
+                        <ellipse
+                            className="cls-4"
+                            cx={236.16}
+                            cy={305.83}
+                            rx={5.36}
+                            ry={10.63}
+                        />
+                        <ellipse
+                            className="cls-4"
+                            cx={236.16}
+                            cy={285.09}
+                            rx={5.36}
+                            ry={10.63}
+                        />
+                        <ellipse
+                            className="cls-4"
+                            cx={236.16}
+                            cy={330.67}
+                            rx={5.36}
+                            ry={10.63}
+                        />
+                        <ellipse
+                            className="cls-4"
+                            cx={236.16}
+                            cy={351.94}
+                            rx={5.36}
+                            ry={10.63}
+                        />
+                        <ellipse
+                            className="cls-4"
+                            cx={236.16}
+                            cy={318.33}
+                            rx={5.36}
+                            ry={10.63}
+                        />
+                        <ellipse
+                            className="cls-4"
+                            cx={236.16}
+                            cy={362.04}
+                            rx={5.36}
+                            ry={10.63}
+                        />
+                        <ellipse
+                            className="cls-4"
+                            cx={236.16}
+                            cy={340.19}
+                            rx={5.36}
+                            ry={10.63}
+                        />
+                        <ellipse
+                            className="cls-4"
+                            cx={236.16}
+                            cy={374.38}
+                            rx={5.36}
+                            ry={10.63}
+                        />
+                        <ellipse
+                            className="cls-4"
+                            cx={236.16}
+                            cy={395.65}
+                            rx={5.36}
+                            ry={10.63}
+                        />
+                        <ellipse
+                            className="cls-4"
+                            cx={236.16}
+                            cy={362.04}
+                            rx={5.36}
+                            ry={10.63}
+                        />
+                        <ellipse
+                            className="cls-4"
+                            cx={236.16}
+                            cy={405.75}
+                            rx={5.36}
+                            ry={10.63}
+                        />
+                        <ellipse
+                            className="cls-4"
+                            cx={236.16}
+                            cy={385.01}
+                            rx={5.36}
+                            ry={10.63}
+                        />
+                        <ellipse
+                            className="cls-4"
+                            cx={236.16}
+                            cy={418.09}
+                            rx={5.36}
+                            ry={10.63}
+                        />
+                        <ellipse
+                            className="cls-4"
+                            cx={236.16}
+                            cy={439.36}
+                            rx={5.36}
+                            ry={10.63}
+                        />
+                        <ellipse
+                            className="cls-4"
+                            cx={236.16}
+                            cy={405.75}
+                            rx={5.36}
+                            ry={10.63}
+                        />
+                        <ellipse
+                            className="cls-4"
+                            cx={236.16}
+                            cy={449.46}
+                            rx={5.36}
+                            ry={10.63}
+                        />
+                        <ellipse
+                            className="cls-4"
+                            cx={236.16}
+                            cy={428.72}
+                            rx={5.36}
+                            ry={10.63}
+                        />
+                        <ellipse
+                            className="cls-4"
+                            cx={236.16}
+                            cy={461.5}
+                            rx={5.36}
+                            ry={10.63}
+                        />
+                        <ellipse
+                            className="cls-4"
+                            cx={236.16}
+                            cy={482.76}
+                            rx={5.36}
+                            ry={10.63}
+                        />
+                        <ellipse
+                            className="cls-4"
+                            cx={236.16}
+                            cy={449.16}
+                            rx={5.36}
+                            ry={10.63}
+                        />
+                        <ellipse
+                            className="cls-4"
+                            cx={236.16}
+                            cy={492.87}
+                            rx={5.36}
+                            ry={10.63}
+                        />
+                        <ellipse
+                            className="cls-4"
+                            cx={236.16}
+                            cy={472.13}
+                            rx={5.36}
+                            ry={10.63}
+                        />
+                        <ellipse
+                            className="cls-4"
+                            cx={236.16}
+                            cy={507.13}
+                            rx={5.36}
+                            ry={10.63}
+                        />
+                        <ellipse
+                            className="cls-4"
+                            cx={236.16}
+                            cy={528.4}
+                            rx={5.36}
+                            ry={10.63}
+                        />
+                        <ellipse
+                            className="cls-4"
+                            cx={236.16}
+                            cy={493.4}
+                            rx={5.36}
+                            ry={10.63}
+                        />
+                        <ellipse
+                            className="cls-4"
+                            cx={236.16}
+                            cy={538.51}
+                            rx={5.36}
+                            ry={10.63}
+                        />
+                        <ellipse
+                            className="cls-4"
+                            cx={236.16}
+                            cy={517.77}
+                            rx={5.36}
+                            ry={10.63}
+                        />
+                        <circle
+                            className="cls-6"
+                            cx={236.16}
+                            cy={560.92}
+                            r={13.48}
+                            transform="translate(-196.68 133.07) rotate(-22.5)"
+                        />
+                        <ellipse
+                            className="cls-4"
+                            cx={236.16}
+                            cy={136.88}
+                            rx={5.36}
+                            ry={10.63}
+                        />
+                        <ellipse
+                            className="cls-4"
+                            cx={236.16}
+                            cy={158.15}
+                            rx={5.36}
+                            ry={10.63}
+                        />
+                        <ellipse
+                            className="cls-4"
+                            cx={236.16}
+                            cy={124.55}
+                            rx={5.36}
+                            ry={10.63}
+                        />
+                        <ellipse
+                            className="cls-4"
+                            cx={236.16}
+                            cy={168.26}
+                            rx={5.36}
+                            ry={10.63}
+                        />
+                        <ellipse
+                            className="cls-4"
+                            cx={236.16}
+                            cy={147.52}
+                            rx={5.36}
+                            ry={10.63}
+                        />
+                        <ellipse
+                            className="cls-4"
+                            cx={236.16}
+                            cy={195.59}
+                            rx={5.36}
+                            ry={10.63}
+                        />
+                        <ellipse
+                            className="cls-4"
+                            cx={236.16}
+                            cy={216.86}
+                            rx={5.36}
+                            ry={10.63}
+                        />
+                        <ellipse
+                            className="cls-4"
+                            cx={236.16}
+                            cy={183.25}
+                            rx={5.36}
+                            ry={10.63}
+                        />
+                        <ellipse
+                            className="cls-4"
+                            cx={236.16}
+                            cy={226.96}
+                            rx={5.36}
+                            ry={10.63}
+                        />
+                        <ellipse
+                            className="cls-4"
+                            cx={236.16}
+                            cy={56.91}
+                            rx={5.36}
+                            ry={10.63}
+                        />
+                        <ellipse
+                            className="cls-4"
+                            cx={236.16}
+                            cy={78.18}
+                            rx={5.36}
+                            ry={10.63}
+                        />
+                        <ellipse
+                            className="cls-4"
+                            cx={236.16}
+                            cy={44.57}
+                            rx={5.36}
+                            ry={10.63}
+                        />
+                        <ellipse
+                            className="cls-4"
+                            cx={236.16}
+                            cy={88.28}
+                            rx={5.36}
+                            ry={10.63}
+                        />
+                        <ellipse
+                            className="cls-4"
+                            cx={236.16}
+                            cy={67.55}
+                            rx={5.36}
+                            ry={10.63}
+                        />
+                        <ellipse
+                            className="cls-4"
+                            cx={236.16}
+                            cy={115.61}
+                            rx={5.36}
+                            ry={10.63}
+                        />
+                        <ellipse
+                            className="cls-4"
+                            cx={236.16}
+                            cy={136.88}
+                            rx={5.36}
+                            ry={10.63}
+                        />
+                        <ellipse
+                            className="cls-4"
+                            cx={236.16}
+                            cy={103.28}
+                            rx={5.36}
+                            ry={10.63}
+                        />
+                        <ellipse
+                            className="cls-4"
+                            cx={236.16}
+                            cy={146.99}
+                            rx={5.36}
+                            ry={10.63}
+                        />
+                        <ellipse
+                            className="cls-4"
+                            cx={236.16}
+                            cy={13.34}
+                            rx={5.36}
+                            ry={10.63}
+                        />
+                        <ellipse
+                            className="cls-4"
+                            cx={236.16}
+                            cy={34.61}
+                            rx={5.36}
+                            ry={10.63}
+                        />
+                        <ellipse
+                            className="cls-4"
+                            cx={236.16}
+                            cy={44.72}
+                            rx={5.36}
+                            ry={10.63}
+                        />
+                    </g>
+                </g>
+                <g id="Capa_9" data-name="Capa 9">
+                    <rect
+                        className="cls-3"
+                        x={221.23}
+                        y={168.84}
+                        width={36.41}
+                        height={121.72}
+                    />
+                    <ellipse
+                        className="cls-5"
+                        cx={294.55}
+                        cy={152.84}
+                        rx={148.21}
+                        ry={16.38}
+                    />
+                    <rect className="cls-3" x={225.15} width={46.33} height={136.09} />
+                </g>
+            </svg>
+        </div>
+    )
+}

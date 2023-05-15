@@ -1,0 +1,121 @@
+// Svg general format
+svg{
+    *{
+        user-select: none;
+        transition: fill 250ms ease;
+    }
+    tspan{
+        fill: black;
+        font-weight: 400;
+        stroke-width: 0px;
+    }
+    
+}
+
+.svgContainer{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    h2{
+        margin-block: 80px;
+    }
+}
+.compassSvg{
+    width: 400px;
+    max-width: 700px;
+}
+
+// Interactive styles
+.ath, .foreAfter{
+    circle{
+        cursor: pointer;
+        fill: white;
+    }
+}
+
+#SauraHeelingsChain circle{
+    fill: white;
+    cursor: grab;
+    &:active{
+        cursor: grabbing;
+    }
+}
+
+.boxes rect{
+    cursor: pointer;
+    fill: white;
+}
+
+.flinders {
+    rect{
+        fill: white;
+    }
+    ellipse{
+        fill: white;
+    }
+}
+
+.OsakaNunotani, .SauraKeiki{
+    .flinders {
+        ellipse{
+            cursor: pointer;
+        }
+    }
+}
+
+// Svg format corrections
+
+#Capa_9 {
+    rect{
+        stroke: none;
+    }
+    
+    *{
+        fill: white;
+        
+    }
+}
+
+#Capa_1 .cls-2{
+    fill: white;
+}
+
+#Capa_1-2 path{
+    fill: white;
+}
+
+#AthMagnetsGroup *{
+    fill: white;
+    cursor: pointer;
+}
+
+// Osaka Nunotani
+// Flinders & FA rectangles correction
+.OsakaNunotani #Capa_7 rect{
+    fill: none;
+    stroke: none;
+}
+
+.Box path{
+    fill: white;
+    cursor: grab;
+    &:active{
+        cursor: grabbing;
+    }
+}
+.OsakaNunotani .heelings circle{
+    cursor: pointer;
+}
+
+//Saracom
+.Saracom #Chain{
+    *{
+        fill: white;
+    }
+    #Circle{
+        cursor: grab;
+        &:active{
+            cursor: grabbing
+        }
+    }
+}

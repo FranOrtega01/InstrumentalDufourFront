@@ -1,0 +1,806 @@
+import React, { useState, useRef } from "react";
+import '../svg.scss'
+export const SvgComponent = ({ title, handleChain, ...props }) => {
+
+    const [isDragging, setIsDragging] = useState(false);
+    const [startPos, setStartPos] = useState({ x: 0, y: 0 });
+    const [currentPos, setCurrentPos] = useState({ x: 0, y: 0 });
+
+    const groupRef = useRef();
+
+    const handleMouseDown = (event) => {
+        event.preventDefault();
+        if (isDragging) return; // Evitar actualización de startPos mientras se arrastra
+        setIsDragging(true);
+        setStartPos({ x: event.clientX, y: event.clientY });
+    };
+
+    const handleMouseUp = () => {
+        setIsDragging(false);
+    };
+
+    const handleMouseMove = (event) => {
+        if (!isDragging) return;
+
+        requestAnimationFrame(() => {
+            const dx = event.clientX - startPos.x;
+            const dy = event.clientY - startPos.y;
+
+            setCurrentPos((prevPos) => ({
+                x: prevPos.x + dx,
+                y: prevPos.y + dy
+            }));
+
+            setStartPos({ x: event.clientX, y: event.clientY });
+        });
+    };
+
+    return (
+        <div className="svgContainer">
+            <h2>{title}</h2>
+            <svg
+            onMouseDown={handleMouseDown}
+            onMouseUp={handleMouseUp}
+            onMouseMove={handleMouseMove}
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 883.37 1010.68"
+                {...props}
+            >
+                <defs>
+                    <style>
+                        {
+
+                            `
+                            .cls-1, .cls-2, .cls-3, .cls-4 {  fill: #fff;}.cls-2 {  stroke: #1b1514;}.cls-2, .cls-3, .cls-4, .cls-5 {  stroke-miterlimit: 10;}.cls-3 {  stroke: #2c211f;}.cls-4 {  stroke: #fff;}.cls-5 {  fill: none;  stroke: #1d1d1b;}.cls-6 {  fill: #fff;  font-family: MyriadPro-Regular, 'Myriad Pro';  font-size: 21.94px;}`
+                        }
+                    </style>
+                </defs>
+                <g id="Capa_1" data-name="Capa 1">
+                    <path
+                        className="cls-5"
+                        d="m106.09,930.8c217.39,38.68,439.96,39.44,657.85,2.14"
+                    />
+                    <line className="cls-5" x1={106.09} y1={99.4} x2={106.09} y2={930.8} />
+                    <line className="cls-5" x1={763.56} y1={101.58} x2={763.56} y2={932.98} />
+                    <line className="cls-5" x1={0.5} y1={1010.68} x2={0.5} y2={5.39} />
+                    <line className="cls-5" x1={882.87} y1={1010.68} x2={882.87} y2={10.68} />
+                    <circle className="cls-5" cx={441.53} cy={53.15} r={7.89} />
+                    <line className="cls-5" x1={367.85} y1={945.18} x2={367.82} y2={90.5} />
+                    <line className="cls-5" x1={513.9} y1={945.18} x2={513.87} y2={90.5} />
+                    <g>
+                        <rect
+                            className="cls-5"
+                            x={368.25}
+                            y={774.02}
+                            width={145.65}
+                            height={31.7}
+                        />
+                        <rect
+                            className="cls-5"
+                            x={473.87}
+                            y={774.02}
+                            width={40.03}
+                            height={31.7}
+                        />
+                        <text
+                            className="cls-6"
+                            transform="translate(499.92 797.19) rotate(-90)"
+                        >
+                            <tspan x={0} y={0}>
+                                {"3"}
+                            </tspan>
+                        </text>
+                    </g>
+                    <g>
+                        <rect
+                            className="cls-5"
+                            x={367.94}
+                            y={709.78}
+                            width={145.65}
+                            height={31.7}
+                        />
+                        <rect
+                            className="cls-5"
+                            x={472.95}
+                            y={709.78}
+                            width={40.03}
+                            height={31.7}
+                        />
+                        <text
+                            className="cls-6"
+                            transform="translate(499.01 732.77) rotate(-90)"
+                        >
+                            <tspan x={0} y={0}>
+                                {"4"}
+                            </tspan>
+                        </text>
+                    </g>
+                    <g>
+                        <rect
+                            className="cls-5"
+                            x={367.84}
+                            y={645.54}
+                            width={145.65}
+                            height={31.7}
+                        />
+                        <rect
+                            className="cls-5"
+                            x={473.46}
+                            y={645.54}
+                            width={40.03}
+                            height={31.7}
+                        />
+                        <text
+                            className="cls-6"
+                            transform="translate(499.51 669.56) rotate(-90)"
+                        >
+                            <tspan x={0} y={0}>
+                                {"5"}
+                            </tspan>
+                        </text>
+                    </g>
+                    <g>
+                        <rect
+                            className="cls-5"
+                            x={367.84}
+                            y={581.29}
+                            width={145.65}
+                            height={31.7}
+                        />
+                        <rect
+                            className="cls-5"
+                            x={473.15}
+                            y={581.29}
+                            width={40.03}
+                            height={31.7}
+                        />
+                        <text
+                            className="cls-6"
+                            transform="translate(497.58 604.98) rotate(-90)"
+                        >
+                            <tspan x={0} y={0}>
+                                {"6"}
+                            </tspan>
+                        </text>
+                    </g>
+                    <g>
+                        <rect
+                            className="cls-5"
+                            x={367.84}
+                            y={517.05}
+                            width={145.65}
+                            height={31.7}
+                        />
+                        <rect
+                            className="cls-5"
+                            x={472.54}
+                            y={517.05}
+                            width={40.03}
+                            height={31.7}
+                        />
+                        <text
+                            className="cls-6"
+                            transform="translate(498.84 537.82) rotate(-90)"
+                        >
+                            <tspan x={0} y={0}>
+                                {"7"}
+                            </tspan>
+                        </text>
+                    </g>
+                    <g>
+                        <rect
+                            className="cls-5"
+                            x={368.55}
+                            y={452.8}
+                            width={145.65}
+                            height={31.7}
+                        />
+                        <rect
+                            className="cls-5"
+                            x={473.87}
+                            y={452.8}
+                            width={40.03}
+                            height={31.7}
+                        />
+                        <text className="cls-6" transform="translate(500.4 473.21) rotate(-90)">
+                            <tspan x={0} y={0}>
+                                {"8"}
+                            </tspan>
+                        </text>
+                    </g>
+                    <g>
+                        <rect
+                            className="cls-5"
+                            x={367.84}
+                            y={388.56}
+                            width={145.65}
+                            height={31.7}
+                        />
+                        <rect
+                            className="cls-5"
+                            x={473}
+                            y={388.56}
+                            width={40.03}
+                            height={31.7}
+                        />
+                        <text className="cls-6" transform="translate(499.54 409.5) rotate(-90)">
+                            <tspan x={0} y={0}>
+                                {"9"}
+                            </tspan>
+                        </text>
+                    </g>
+                    <g>
+                        <rect
+                            className="cls-5"
+                            x={368.55}
+                            y={902.51}
+                            width={145.65}
+                            height={31.7}
+                        />
+                        <rect
+                            className="cls-5"
+                            x={473.7}
+                            y={902.51}
+                            width={40.03}
+                            height={31.7}
+                        />
+                        <text
+                            className="cls-6"
+                            transform="translate(499.16 924.39) rotate(-90)"
+                        >
+                            <tspan x={0} y={0}>
+                                {"1"}
+                            </tspan>
+                        </text>
+                    </g>
+                    <g>
+                        <rect
+                            className="cls-5"
+                            x={368.33}
+                            y={324.32}
+                            width={145.65}
+                            height={31.7}
+                        />
+                        <rect
+                            className="cls-5"
+                            x={474.09}
+                            y={324.32}
+                            width={40.03}
+                            height={31.7}
+                        />
+                        <text
+                            className="cls-6"
+                            transform="translate(500.27 351.71) rotate(-90)"
+                        >
+                            <tspan x={0} y={0}>
+                                {"10"}
+                            </tspan>
+                        </text>
+                    </g>
+                    <g>
+                        <rect
+                            className="cls-5"
+                            x={367.84}
+                            y={260.07}
+                            width={145.65}
+                            height={31.7}
+                        />
+                        <rect
+                            className="cls-5"
+                            x={472.69}
+                            y={260.07}
+                            width={40.03}
+                            height={31.7}
+                        />
+                        <text
+                            className="cls-6"
+                            transform="translate(499.71 288.21) rotate(-90)"
+                        >
+                            <tspan x={0} y={0}>
+                                {"11"}
+                            </tspan>
+                        </text>
+                    </g>
+                    <g>
+                        <text
+                            className="cls-6"
+                            transform="translate(498.63 860.37) rotate(-90)"
+                        >
+                            <tspan x={0} y={0}>
+                                {"2"}
+                            </tspan>
+                        </text>
+                        <rect
+                            className="cls-5"
+                            x={368.33}
+                            y={838.27}
+                            width={145.65}
+                            height={31.7}
+                        />
+                        <rect
+                            className="cls-5"
+                            x={473.95}
+                            y={838.27}
+                            width={40.03}
+                            height={31.7}
+                        />
+                    </g>
+                    <g>
+                        <rect
+                            className="cls-5"
+                            x={368.71}
+                            y={193.93}
+                            width={145.65}
+                            height={31.7}
+                        />
+                        <rect
+                            className="cls-5"
+                            x={473.87}
+                            y={193.93}
+                            width={40.03}
+                            height={31.7}
+                        />
+                        <text
+                            className="cls-6"
+                            transform="translate(500.89 222.35) rotate(-90)"
+                        >
+                            <tspan x={0} y={0}>
+                                {"12"}
+                            </tspan>
+                        </text>
+                    </g>
+                    <g>
+                        <rect
+                            className="cls-5"
+                            x={368.25}
+                            y={127.79}
+                            width={145.65}
+                            height={31.7}
+                        />
+                        <rect
+                            className="cls-5"
+                            x={473.87}
+                            y={127.79}
+                            width={40.03}
+                            height={31.7}
+                        />
+                        <text
+                            className="cls-6"
+                            transform="translate(500.89 156.48) rotate(-90)"
+                        >
+                            <tspan x={0} y={0}>
+                                {"13"}
+                            </tspan>
+                        </text>
+                    </g>
+                </g>
+                <g id="Chain" ref={groupRef} transform={`translate(0,${currentPos.y})`} data-name="Capa 6">
+                    <g>
+                        <ellipse
+                            className="cls-2"
+                            cx={335.16}
+                            cy={313.41}
+                            rx={7.63}
+                            ry={15.61}
+                        />
+                        <ellipse
+                            className="cls-2"
+                            cx={335.16}
+                            cy={344.65}
+                            rx={7.63}
+                            ry={15.61}
+                        />
+                        <ellipse
+                            className="cls-2"
+                            cx={335.16}
+                            cy={295.3}
+                            rx={7.63}
+                            ry={15.61}
+                        />
+                        <ellipse
+                            className="cls-2"
+                            cx={335.16}
+                            cy={359.5}
+                            rx={7.63}
+                            ry={15.61}
+                        />
+                        <ellipse
+                            className="cls-2"
+                            cx={335.16}
+                            cy={329.04}
+                            rx={7.63}
+                            ry={15.61}
+                        />
+                        <ellipse
+                            className="cls-2"
+                            cx={335.16}
+                            cy={399.64}
+                            rx={7.63}
+                            ry={15.61}
+                        />
+                        <ellipse
+                            className="cls-2"
+                            cx={335.16}
+                            cy={430.88}
+                            rx={7.63}
+                            ry={15.61}
+                        />
+                        <ellipse
+                            className="cls-2"
+                            cx={335.16}
+                            cy={381.52}
+                            rx={7.63}
+                            ry={15.61}
+                        />
+                        <ellipse
+                            className="cls-2"
+                            cx={335.16}
+                            cy={445.72}
+                            rx={7.63}
+                            ry={15.61}
+                        />
+                        <ellipse
+                            className="cls-2"
+                            cx={335.16}
+                            cy={415.25}
+                            rx={7.63}
+                            ry={15.61}
+                        />
+                        <ellipse
+                            className="cls-2"
+                            cx={335.16}
+                            cy={482.2}
+                            rx={7.63}
+                            ry={15.61}
+                        />
+                        <ellipse
+                            className="cls-2"
+                            cx={335.16}
+                            cy={513.44}
+                            rx={7.63}
+                            ry={15.61}
+                        />
+                        <ellipse
+                            className="cls-2"
+                            cx={335.16}
+                            cy={464.08}
+                            rx={7.63}
+                            ry={15.61}
+                        />
+                        <ellipse
+                            className="cls-2"
+                            cx={335.16}
+                            cy={528.28}
+                            rx={7.63}
+                            ry={15.61}
+                        />
+                        <ellipse
+                            className="cls-2"
+                            cx={335.16}
+                            cy={496.18}
+                            rx={7.63}
+                            ry={15.61}
+                        />
+                        <ellipse
+                            className="cls-2"
+                            cx={335.16}
+                            cy={546.4}
+                            rx={7.63}
+                            ry={15.61}
+                        />
+                        <ellipse
+                            className="cls-2"
+                            cx={335.16}
+                            cy={577.64}
+                            rx={7.63}
+                            ry={15.61}
+                        />
+                        <ellipse
+                            className="cls-2"
+                            cx={335.16}
+                            cy={528.28}
+                            rx={7.63}
+                            ry={15.61}
+                        />
+                        <ellipse
+                            className="cls-2"
+                            cx={335.16}
+                            cy={592.48}
+                            rx={7.63}
+                            ry={15.61}
+                        />
+                        <ellipse
+                            className="cls-2"
+                            cx={335.16}
+                            cy={562.01}
+                            rx={7.63}
+                            ry={15.61}
+                        />
+                        <ellipse
+                            className="cls-2"
+                            cx={335.16}
+                            cy={610.6}
+                            rx={7.63}
+                            ry={15.61}
+                        />
+                        <ellipse
+                            className="cls-2"
+                            cx={335.16}
+                            cy={641.84}
+                            rx={7.63}
+                            ry={15.61}
+                        />
+                        <ellipse
+                            className="cls-2"
+                            cx={335.16}
+                            cy={592.48}
+                            rx={7.63}
+                            ry={15.61}
+                        />
+                        <ellipse
+                            className="cls-2"
+                            cx={335.16}
+                            cy={656.68}
+                            rx={7.63}
+                            ry={15.61}
+                        />
+                        <ellipse
+                            className="cls-2"
+                            cx={335.16}
+                            cy={626.22}
+                            rx={7.63}
+                            ry={15.61}
+                        />
+                        <ellipse
+                            className="cls-2"
+                            cx={335.16}
+                            cy={674.36}
+                            rx={7.63}
+                            ry={15.61}
+                        />
+                        <ellipse
+                            className="cls-2"
+                            cx={335.16}
+                            cy={705.59}
+                            rx={7.63}
+                            ry={15.61}
+                        />
+                        <ellipse
+                            className="cls-2"
+                            cx={335.16}
+                            cy={656.24}
+                            rx={7.63}
+                            ry={15.61}
+                        />
+                        <ellipse
+                            className="cls-2"
+                            cx={335.16}
+                            cy={720.44}
+                            rx={7.63}
+                            ry={15.61}
+                        />
+                        <ellipse
+                            className="cls-2"
+                            cx={335.16}
+                            cy={689.98}
+                            rx={7.63}
+                            ry={15.61}
+                        />
+                        <ellipse
+                            className="cls-2"
+                            cx={335.16}
+                            cy={741.38}
+                            rx={7.63}
+                            ry={15.61}
+                        />
+                        <ellipse
+                            className="cls-2"
+                            cx={335.16}
+                            cy={772.62}
+                            rx={7.63}
+                            ry={15.61}
+                        />
+                        <ellipse
+                            className="cls-2"
+                            cx={335.16}
+                            cy={721.22}
+                            rx={7.63}
+                            ry={15.61}
+                        />
+                        <ellipse
+                            className="cls-2"
+                            cx={335.16}
+                            cy={787.47}
+                            rx={7.63}
+                            ry={15.61}
+                        />
+                        <ellipse
+                            className="cls-2"
+                            cx={335.16}
+                            cy={757.01}
+                            rx={7.63}
+                            ry={15.61}
+                        />
+                        <ellipse
+                            id="Circle"
+                            className="cls-3"
+                            cx={335.16}
+                            cy={820.39}
+                            rx={19.18}
+                            ry={19.8}
+                        />
+                        <ellipse
+                            className="cls-2"
+                            cx={335.16}
+                            cy={197.57}
+                            rx={7.63}
+                            ry={15.61}
+                        />
+                        <ellipse
+                            className="cls-2"
+                            cx={335.16}
+                            cy={228.81}
+                            rx={7.63}
+                            ry={15.61}
+                        />
+                        <ellipse
+                            className="cls-2"
+                            cx={335.16}
+                            cy={179.46}
+                            rx={7.63}
+                            ry={15.61}
+                        />
+                        <ellipse
+                            className="cls-2"
+                            cx={335.16}
+                            cy={243.66}
+                            rx={7.63}
+                            ry={15.61}
+                        />
+                        <ellipse
+                            className="cls-2"
+                            cx={335.16}
+                            cy={213.19}
+                            rx={7.63}
+                            ry={15.61}
+                        />
+                        <ellipse
+                            className="cls-2"
+                            cx={335.16}
+                            cy={283.8}
+                            rx={7.63}
+                            ry={15.61}
+                        />
+                        <ellipse
+                            className="cls-2"
+                            cx={335.16}
+                            cy={315.04}
+                            rx={7.63}
+                            ry={15.61}
+                        />
+                        <ellipse
+                            className="cls-2"
+                            cx={335.16}
+                            cy={265.67}
+                            rx={7.63}
+                            ry={15.61}
+                        />
+                        <ellipse
+                            className="cls-2"
+                            cx={335.16}
+                            cy={329.87}
+                            rx={7.63}
+                            ry={15.61}
+                        />
+                        <ellipse
+                            className="cls-2"
+                            cx={335.16}
+                            cy={80.11}
+                            rx={7.63}
+                            ry={15.61}
+                        />
+                        <ellipse
+                            className="cls-2"
+                            cx={335.16}
+                            cy={111.35}
+                            rx={7.63}
+                            ry={15.61}
+                        />
+                        <ellipse
+                            className="cls-2"
+                            cx={335.16}
+                            cy={61.98}
+                            rx={7.63}
+                            ry={15.61}
+                        />
+                        <ellipse
+                            className="cls-2"
+                            cx={335.16}
+                            cy={126.18}
+                            rx={7.63}
+                            ry={15.61}
+                        />
+                        <ellipse
+                            className="cls-2"
+                            cx={335.16}
+                            cy={95.74}
+                            rx={7.63}
+                            ry={15.61}
+                        />
+                        <ellipse
+                            className="cls-2"
+                            cx={335.16}
+                            cy={166.33}
+                            rx={7.63}
+                            ry={15.61}
+                        />
+                        <ellipse
+                            className="cls-2"
+                            cx={335.16}
+                            cy={197.57}
+                            rx={7.63}
+                            ry={15.61}
+                        />
+                        <ellipse
+                            className="cls-2"
+                            cx={335.16}
+                            cy={148.22}
+                            rx={7.63}
+                            ry={15.61}
+                        />
+                        <ellipse
+                            className="cls-2"
+                            cx={335.16}
+                            cy={212.42}
+                            rx={7.63}
+                            ry={15.61}
+                        />
+                        <ellipse
+                            className="cls-2"
+                            cx={335.16}
+                            cy={16.11}
+                            rx={7.63}
+                            ry={15.61}
+                        />
+                        <ellipse
+                            className="cls-2"
+                            cx={335.16}
+                            cy={47.35}
+                            rx={7.63}
+                            ry={15.61}
+                        />
+                        <ellipse className="cls-2" cx={335.16} cy={62.2} rx={7.63} ry={15.61} />
+                    </g>
+                </g>
+                    <rect
+                        className="cls-4"
+                        x={310.45}
+                        y={0}
+                        width={58.25}
+                        height={90.68}
+                    />
+                <g id="Capa_7" data-name="Capa 7">
+                    
+                    
+                    <line className="cls-5" x1={316.79} y1={90.5} x2={351.45} y2={90.5} />
+                    
+                    
+                    <path
+                        className="cls-5"
+                        d="m105.71,99.43c217.89-37.29,440.46-36.53,657.85,2.14"
+                    />
+                    <rect
+                        className="cls-5"
+                        x={300.91}
+                        y={90.5}
+                        width={279.5}
+                        height={854.68}
+                    />
+                    
+                    
+                </g>
+            </svg>
+
+        </div>
+    )
+}

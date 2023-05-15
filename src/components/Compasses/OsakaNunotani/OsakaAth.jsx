@@ -1,0 +1,210 @@
+import * as React from "react";
+export const SvgComponent = ({ title, handleCircle, ...props }) => {
+    return (
+        <div className="svgContainer">
+            <h2>{title}</h2>
+            <svg
+                id="Capa_1"
+                data-name="Capa 1"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 399.6 840.3"
+                {...props}
+            >
+                <defs>
+                    <style>
+                        {
+                            "\n      .cls-1, .cls-2 {\n        fill: none;\n      }\n\n      .cls-3 {\n        fill: #5b5b5f;\n        font-family: MyriadPro-Regular, 'Myriad Pro';\n        font-size: 21px;\n      }\n\n      .cls-3, .cls-4 {\n        isolation: isolate;\n      }\n\n      .cls-5 {\n        fill: #fff;\n      }\n\n      .cls-5, .cls-2 {\n        stroke: #000;\n        stroke-miterlimit: 10;\n      }\n    "
+                        }
+                    </style>
+                </defs>
+                <g id="Capa_1-2" data-name="Capa 1-2">
+                    <ellipse className="cls-5" cx={199.8} cy={786.5} rx={199.3} ry={53.3} />
+                    <rect className="cls-5" x={50.1} y={49.2} width={296.4} height={732.3} />
+                    <path
+                        className="cls-5"
+                        d="m50.1,781.5c0,12.6,66.4,22.8,148.2,22.8s148.2-10.1,148.2-22.8-66.4-22.8-148.2-22.8-148.2,10.2-148.2,22.8"
+                    />
+                    <ellipse className="cls-5" cx={198.3} cy={48.9} rx={148.2} ry={16.4} />
+                </g>
+                <g id="Capa_3" data-name="Capa 3">
+                    <line className="cls-2" x1={110.3} y1={184.9} x2={112.1} y2={748.1} />
+                    <path d="m110.2,183.9c-6.1.9-12.6,1-18.7-.6-4.7-1.2-9.4-3.3-12.8-6.9-1.9-2-3.2-4.3-3.9-6.9-.2-.6-1.1-.4-1,.3,2.7,10.4,14.4,14.9,24.1,15.6,4.2.3,8.3.1,12.5-.5.7-.1.5-1-.2-1h0Z" />
+                    <line className="cls-2" x1={74.4} y1={169.7} x2={74.4} y2={738.7} />
+                    <path d="m110.2,747.5c-5.9,1.2-12.1,1.1-18.1.2-4.7-.7-9.8-1.7-13.8-4.4-2-1.3-3.6-3.2-4.3-5.5-.2-.6-1.1-.3-1,.3,1.3,4.5,5.5,7,9.6,8.5,2.5.9,5.1,1.4,7.8,1.9,3.1.5,6.3.9,9.4,1,3.5.1,7.1-.2,10.6-.9.7-.3.5-1.3-.2-1.1h0Z" />
+                </g>
+                <g id="Capa_5" data-name="Capa 5">
+                    <circle onClick={e => handleCircle(e)} className="cls-2" cx={93.3} cy={219.1} r={8.8} />
+                    <circle onClick={e => handleCircle(e)} className="cls-2" cx={93.3} cy={246.6} r={8.8} />
+                    <circle onClick={e => handleCircle(e)} className="cls-2" cx={93.3} cy={274.1} r={8.8} />
+                    <circle onClick={e => handleCircle(e)} className="cls-2" cx={93.3} cy={301.6} r={8.8} />
+                    <circle onClick={e => handleCircle(e)} className="cls-2" cx={93.3} cy={329.1} r={8.8} />
+                    <circle onClick={e => handleCircle(e)} className="cls-2" cx={93.3} cy={356.5} r={8.8} />
+                    <circle onClick={e => handleCircle(e)} className="cls-2" cx={93.3} cy={384} r={8.8} />
+                    <circle onClick={e => handleCircle(e)} className="cls-2" cx={93.3} cy={411.5} r={8.8} />
+                    <circle onClick={e => handleCircle(e)} className="cls-2" cx={93.3} cy={439} r={8.8} />
+                    <circle onClick={e => handleCircle(e)} className="cls-2" cx={93.3} cy={466.5} r={8.8} />
+                    <circle onClick={e => handleCircle(e)} className="cls-2" cx={93.3} cy={494} r={8.8} />
+                    <circle onClick={e => handleCircle(e)} className="cls-2" cx={93.3} cy={521.4} r={8.8} />
+                    <circle onClick={e => handleCircle(e)} className="cls-2" cx={93.3} cy={548.9} r={8.8} />
+                    <circle onClick={e => handleCircle(e)} className="cls-2" cx={93.3} cy={576.4} r={8.8} />
+                    <circle onClick={e => handleCircle(e)} className="cls-2" cx={93.3} cy={603.9} r={8.8} />
+                    <circle onClick={e => handleCircle(e)} className="cls-2" cx={93.3} cy={631.3} r={8.8} />
+                    <circle onClick={e => handleCircle(e)} className="cls-2" cx={93.3} cy={658.8} r={8.8} />
+                    <circle onClick={e => handleCircle(e)} className="cls-2" cx={92.9} cy={686.3} r={8.8} />
+                    <circle onClick={e => handleCircle(e)} className="cls-2" cx={93.3} cy={713.8} r={8.8} />
+                </g>
+                <g id="Capa_7" data-name="Capa 7">
+                    <rect className="cls-1" x={10.8} y={179.4} width={206.7} height={574.1} />
+                    <g className="cls-4">
+                        <text className="cls-3" transform="translate(10.76 222.31)">
+                            <tspan x={0} y={0}>
+                                {"46"}
+                            </tspan>
+                        </text>
+                    </g>
+                    <g className="cls-4">
+                        <text className="cls-3" transform="translate(10.76 250.31)">
+                            <tspan x={0} y={0}>
+                                {"48"}
+                            </tspan>
+                        </text>
+                    </g>
+                    <g className="cls-4">
+                        <text className="cls-3" transform="translate(10.76 278.31)">
+                            <tspan x={0} y={0}>
+                                {"50"}
+                            </tspan>
+                        </text>
+                    </g>
+                    <g className="cls-4">
+                        <text className="cls-3" transform="translate(10.76 306.31)">
+                            <tspan x={0} y={0}>
+                                {"52"}
+                            </tspan>
+                        </text>
+                    </g>
+                    <g className="cls-4">
+                        <text className="cls-3" transform="translate(10.76 334.31)">
+                            <tspan x={0} y={0}>
+                                {"54"}
+                            </tspan>
+                        </text>
+                    </g>
+                    <g className="cls-4">
+                        <text className="cls-3" transform="translate(10.76 362.31)">
+                            <tspan x={0} y={0}>
+                                {"56"}
+                            </tspan>
+                        </text>
+                    </g>
+                    <g className="cls-4">
+                        <text className="cls-3" transform="translate(10.76 390.31)">
+                            <tspan x={0} y={0}>
+                                {"58"}
+                            </tspan>
+                        </text>
+                    </g>
+                    <g className="cls-4">
+                        <text className="cls-3" transform="translate(10.76 418.31)">
+                            <tspan x={0} y={0}>
+                                {"60"}
+                            </tspan>
+                        </text>
+                    </g>
+                    <g className="cls-4">
+                        <text className="cls-3" transform="translate(10.76 446.31)">
+                            <tspan x={0} y={0}>
+                                {"62"}
+                            </tspan>
+                        </text>
+                    </g>
+                    <g className="cls-4">
+                        <text className="cls-3" transform="translate(10.76 474.31)">
+                            <tspan x={0} y={0}>
+                                {"64"}
+                            </tspan>
+                        </text>
+                    </g>
+                    <g className="cls-4">
+                        <text className="cls-3" transform="translate(10.76 502.31)">
+                            <tspan x={0} y={0}>
+                                {"66"}
+                            </tspan>
+                        </text>
+                    </g>
+                    <g className="cls-4">
+                        <text className="cls-3" transform="translate(10.76 530.31)">
+                            <tspan x={0} y={0}>
+                                {"68"}
+                            </tspan>
+                        </text>
+                    </g>
+                    <g className="cls-4">
+                        <text className="cls-3" transform="translate(10.76 558.31)">
+                            <tspan x={0} y={0}>
+                                {"70"}
+                            </tspan>
+                        </text>
+                    </g>
+                    <g className="cls-4">
+                        <text className="cls-3" transform="translate(10.76 586.31)">
+                            <tspan x={0} y={0}>
+                                {"72"}
+                            </tspan>
+                        </text>
+                    </g>
+                    <g className="cls-4">
+                        <text className="cls-3" transform="translate(10.76 614.31)">
+                            <tspan x={0} y={0}>
+                                {"74"}
+                            </tspan>
+                        </text>
+                    </g>
+                    <g className="cls-4">
+                        <text className="cls-3" transform="translate(10.76 642.31)">
+                            <tspan x={0} y={0}>
+                                {"76"}
+                            </tspan>
+                        </text>
+                    </g>
+                    <g className="cls-4">
+                        <text className="cls-3" transform="translate(10.76 670.31)">
+                            <tspan x={0} y={0}>
+                                {"78"}
+                            </tspan>
+                        </text>
+                    </g>
+                    <g className="cls-4">
+                        <text className="cls-3" transform="translate(10.76 698.31)">
+                            <tspan x={0} y={0}>
+                                {"80"}
+                            </tspan>
+                        </text>
+                    </g>
+                    <g className="cls-4">
+                        <text className="cls-3" transform="translate(10.76 726.31)">
+                            <tspan x={0} y={0}>
+                                {"82"}
+                            </tspan>
+                        </text>
+                    </g>
+                </g>
+                <g id="Capa_8" data-name="Capa 8">
+                    <rect className="cls-5" x={109} y={87} width={198.1} height={82.7} />
+                    <line className="cls-2" x1={300.7} y1={76.9} x2={93.1} y2={73.8} />
+                    <line className="cls-2" x1={109} y1={169.7} x2={92} y2={147.1} />
+                    <line className="cls-2" x1={93.1} y1={73.8} x2={92} y2={147.1} />
+                    <line className="cls-2" x1={109} y1={87} x2={92.5} y2={73.8} />
+                    <line className="cls-2" x1={300.7} y1={76.9} x2={307.2} y2={87} />
+                    <line className="cls-2" x1={113.8} y1={19.2} x2={251.3} y2={16.9} />
+                    <line className="cls-2" x1={103.2} y1={1.8} x2={240.5} y2={0.5} />
+                    <line className="cls-2" x1={103.2} y1={1.8} x2={113.8} y2={19.2} />
+                    <line className="cls-2" x1={240.5} y1={0.5} x2={251.3} y2={16.9} />
+                    <line className="cls-2" x1={103.2} y1={3.3} x2={104.7} y2={35.5} />
+                    <line className="cls-2" x1={113.8} y1={19.2} x2={114.1} y2={34.8} />
+                    <line className="cls-2" x1={251.3} y1={16.9} x2={250.9} y2={33.9} />
+                </g>
+            </svg>
+        </div>
+    )
+}
