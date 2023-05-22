@@ -1,14 +1,39 @@
-import React, {useState, useEffect} from "react";
+import React, {useState, useEffect, useRef} from "react";
 import { SauraContainer } from '../Compasses/SauraKeiki/SauraContainer'
 import { OsakaContainer } from '../Compasses/OsakaNunotani/OsakaContainer'
 import { TokimekContainer } from "../Compasses/Tokimek/TokimekContainer";
 import { TokyoContainer } from '../Compasses/TokyoKeiki/TokyoContainer';
 import { SaracomContainer } from "../Compasses/Saracom-Sperry-Plath2060/SaracomContainer";
+import { CassensContainer } from "../Compasses/Cassens/CassensContainer";
+import { LilleyContainer } from "../Compasses/Lilley/LilleyContainer";
+
 import { CustomForm } from "../Form/FormContainer";
+import {FormButton } from '../Form/FormButton'
 
 export const PreContainer = () => {
 
-    const [selectValue, setSelectValue] = useState('')
+    const [compass, setCompass] = useState('')
+    const [name, setName] = useState('')
+    const [sailing, setSailing] = useState('')
+    const [currentVariation, setCurrentVariation] = useState('')
+    
+    const [data, setData] = useState({})
+
+    const svgRef = useRef()
+
+    
+    useEffect(() => {
+        const svgData = svgRef.current.outerHTML
+        setData({
+            name,
+            sailing,
+            currentVariation,
+            compass,
+            svgData
+        })
+        console.log(data);
+    }, [compass, name, sailing, currentVariation, svgRef])
+
 
     const renderCompass = (value) => {
         switch (value) {
@@ -21,15 +46,26 @@ export const PreContainer = () => {
             case "TOKYO KEIKI":
                 return <TokyoContainer />
             case "SARACOM":
-                return <SaracomContainer />    
+                return <SaracomContainer />
+            case "PLATH 2060":
+                return <SaracomContainer /> 
+            case "SPERRY MARINE":
+                return <SaracomContainer />
+            case "CASSENS & PLATH":
+                return <CassensContainer />
+            case "JOHN LILLEY & GUILLIE":
+                return <LilleyContainer />             
             default:
                 return <div className="svgContainer"><p>Please, select a compass.</p></div>
         }
     }
     return(
         <>
-            <CustomForm setValue={setSelectValue} />
-            {renderCompass(selectValue)} 
+            <CustomForm setCompass={setCompass} setName={setName} setSailing={setSailing} setCurrentVariation={setCurrentVariation} />
+            <div ref={svgRef}>
+                {renderCompass(compass)}
+            </div>
+            <FormButton title={'Send'} href={'http://127.0.0.1:8080/preservice/send'} fetchMethod={'POST'} data={data}/>
         </>     
     )
 }

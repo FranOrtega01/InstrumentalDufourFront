@@ -33,15 +33,13 @@ export const SvgComponent = ({ title, handlePlate, ...props }) => {
             setStartPos({ x: event.clientX, y: event.clientY });
         });
     };
-
     return (
-
         <div className="svgContainer">
             <h2>{title}</h2>
             <svg
-             onMouseDown={handleMouseDown}
-             onMouseUp={handleMouseUp}
-             onMouseMove={handleMouseMove}
+                onMouseDown={handleMouseDown}
+                onMouseUp={handleMouseUp}
+                onMouseMove={handleMouseMove}
                 id="Capa_1"
                 data-name="Capa 1"
                 xmlns="http://www.w3.org/2000/svg"
@@ -51,17 +49,17 @@ export const SvgComponent = ({ title, handlePlate, ...props }) => {
                 <defs>
                     <style>
                         {
-                            "\n      .cls-1 {\n        fill: #fff;\n      }\n\n      .cls-2 {\n        fill: #1d1d1b;\n      }\n\n      .cls-3 {\n        fill: none;\n        stroke: #1d1d1b;\n        stroke-miterlimit: 10;\n      }\n    "
+                            "\n      .cls-1 {\n        fill: #fff;\n      }\n\n      .cls-2 {\n        fill: #1d1d1b;\n      }\n\n      .cls-3 {\n        fill: none;\n        stroke: #1d1d1b;\n        stroke-miterlimit: 10;\n      }\n\n      .cls-4, .cls-5 {\n        isolation: isolate;\n      }\n\n      .cls-5 {\n        font-family: MyriadPro-Regular, 'Myriad Pro';\n        font-size: 21px;\n      }\n    "
                         }
                     </style>
                 </defs>
-                <g id="Capa_1-2" data-name="Capa 1">
+                <g id="Capa_1-2" data-name="Capa 1-2">
                     <line className="cls-3" x1={740.09} y1={992.41} x2={741.29} y2={217.04} />
                     <line className="cls-3" x1={53.71} y1={404.53} x2={564.42} y2={404.53} />
                     <line className="cls-3" x1={741} y1={403.63} x2={564.42} y2={404.53} />
                     <path
                         className="cls-2"
-                        d="m740.59,221.31h0c-.16.63.81.89.96.27.3-1.24.63-2.48.97-3.71,2.6-9.32,6.39-18.31,11.33-26.63,4.5-7.59,9.95-14.6,16.23-20.79,5.96-5.87,12.66-10.95,19.95-15.05,9.41-5.29,19.62-8.96,30.07-11.6,10.17-2.56,20.55-4.19,30.91-5.8.63-.09.36-1.06-.27-.96-1.29.2-2.58.4-3.87.6-10.48,1.65-20.83,3.41-31.19,6.31-10.36,2.9-20.43,6.95-29.6,12.62-6.99,4.33-13.4,9.62-19.06,15.58-6.16,6.49-11.46,13.78-15.77,21.61-4.78,8.66-8.33,17.97-10.68,27.57l.02-.02Z"
+                        d="m740.57,221.33l.02-.02h0c-.16.63.81.89.96.27.3-1.24.63-2.48.97-3.71,2.6-9.32,6.39-18.31,11.33-26.63,4.5-7.59,9.95-14.6,16.23-20.79,5.96-5.87,12.66-10.95,19.95-15.05,9.41-5.29,19.62-8.96,30.07-11.6,10.17-2.56,20.55-4.19,30.91-5.8.63-.09.36-1.06-.27-.96-1.29.2-2.58.4-3.87.6-10.48,1.65-20.83,3.41-31.19,6.31s-20.43,6.95-29.6,12.62c-6.99,4.33-13.4,9.62-19.06,15.58-6.16,6.49-11.46,13.78-15.77,21.61-4.78,8.66-8.33,17.97-10.68,27.57h0Z"
                     />
                     <line className="cls-3" x1={53.71} y1={404.53} x2={740.57} y2={681.01} />
                     <line className="cls-3" x1={56.67} y1={337.02} x2={741.1} y2={337.9} />
@@ -70,11 +68,11 @@ export const SvgComponent = ({ title, handlePlate, ...props }) => {
                     <line className="cls-3" x1={73.81} y1={376.32} x2={740.67} y2={377.21} />
                     <path
                         className="cls-2"
-                        d="m74.24,361.42h0c.63-.12.36-1.08-.27-.96-1.49.3-2.2,1.95-2.68,3.22-.62,1.64-.9,3.4-.9,5.15-.01,1.85.23,3.79.74,5.57.4,1.39,1.38,2.63,2.96,2.41.63-.08.36-1.05-.27-.96-1.52.21-1.84-2.1-2.04-3.12-.28-1.44-.43-2.91-.38-4.37.04-1.4.28-2.78.74-4.1.35-1,.9-2.6,2.09-2.83h.01Z"
+                        d="m74.23,361.42h.01c.63-.12.36-1.08-.27-.96-1.49.3-2.2,1.95-2.68,3.22-.62,1.64-.9,3.4-.9,5.15-.01,1.85.23,3.79.74,5.57.4,1.39,1.38,2.63,2.96,2.41.63-.08.36-1.05-.27-.96-1.52.21-1.84-2.1-2.04-3.12-.28-1.44-.43-2.91-.38-4.37.04-1.4.28-2.78.74-4.1.35-1,.9-2.6,2.09-2.83h0Z"
                     />
                     <path
                         className="cls-2"
-                        d="m57.06,337.45h0c.27-.05.41-.38.35-.62-.08-.28-.35-.39-.62-.35-.54.08-1.03.2-1.55.44s-.93.62-1.26,1.08c-.17.23-.32.47-.42.74s-.14.56-.18.85-.09.58-.13.87c-.04.24-.05.47.17.64.17.13.41.16.59.04.23-.15.32-.43.18-.68-.13-.22-.46-.33-.68-.17h-.02.5s-.02,0-.02,0l.25.43s-.02.03.01-.05v-.07c.01-.06.03-.12.03-.18.01-.12.03-.24.05-.36.04-.22.06-.45.11-.68.08-.39.28-.72.54-1.01.52-.6,1.29-.78,2.08-.9l.02-.02Z"
+                        d="m57.04,337.47l.02-.02h0c.27-.05.41-.38.35-.62-.08-.28-.35-.39-.62-.35-.54.08-1.03.2-1.55.44s-.93.62-1.26,1.08c-.17.23-.32.47-.42.74s-.14.56-.18.85-.09.58-.13.87c-.04.24-.05.47.17.64.17.13.41.16.59.04.23-.15.32-.43.18-.68-.13-.22-.46-.33-.68-.17h-.02s.5,0,.5,0h-.02s.25.43.25.43c-.02.04-.02.03.01-.05v-.07c.01-.06.03-.12.03-.18.01-.12.03-.24.05-.36.04-.22.06-.45.11-.68.08-.39.28-.72.54-1.01.52-.6,1.29-.78,2.08-.9h0Z"
                     />
                 </g>
                 <g id="Capa_2" ref={groupRef} transform={`translate(${currentPos.x},0)`} className="Box" data-name="Capa 2">
@@ -375,6 +373,266 @@ export const SvgComponent = ({ title, handlePlate, ...props }) => {
                             d="m203.06,361.62h0c.13,0,.25-.06.35-.15s.15-.23.15-.35c0-.12-.06-.26-.15-.35-.09-.1-.22-.15-.35-.15-.29,0-.59.03-.88.09-.13.03-.23.12-.3.23-.07.12-.08.26-.05.39.03.12.13.24.23.3.12.07.26.08.39.05.09-.01.17-.03.26-.04l-.13.02c.16-.03.33-.03.49-.03h-.01Z"
                         />
                     </g>
+                </g>
+                <g className="cls-4">
+                    <text className="cls-5" transform="translate(662.12 437.06)">
+                        <tspan x={0} y={0}>
+                            {"10"}
+                        </tspan>
+                    </text>
+                </g>
+                <g className="cls-4">
+                    <text className="cls-5" transform="translate(614.64 436.84)">
+                        <tspan x={0} y={0}>
+                            {"9"}
+                        </tspan>
+                    </text>
+                </g>
+                <g className="cls-4">
+                    <text className="cls-5" transform="translate(564.42 436.61)">
+                        <tspan x={0} y={0}>
+                            {"8"}
+                        </tspan>
+                    </text>
+                </g>
+                <g className="cls-4">
+                    <text className="cls-5" transform="translate(511.63 436.61)">
+                        <tspan x={0} y={0}>
+                            {"7"}
+                        </tspan>
+                    </text>
+                </g>
+                <g className="cls-4">
+                    <text className="cls-5" transform="translate(459.42 436.61)">
+                        <tspan x={0} y={0}>
+                            {"6"}
+                        </tspan>
+                    </text>
+                </g>
+                <g className="cls-4">
+                    <text className="cls-5" transform="translate(407.26 436.61)">
+                        <tspan x={0} y={0}>
+                            {"5"}
+                        </tspan>
+                    </text>
+                </g>
+                <g className="cls-4">
+                    <text className="cls-5" transform="translate(350.74 436.61)">
+                        <tspan x={0} y={0}>
+                            {"4"}
+                        </tspan>
+                    </text>
+                </g>
+                <g className="cls-4">
+                    <text className="cls-5" transform="translate(291.14 436.61)">
+                        <tspan x={0} y={0}>
+                            {"3"}
+                        </tspan>
+                    </text>
+                </g>
+                <g className="cls-4">
+                    <text className="cls-5" transform="translate(234.17 436.61)">
+                        <tspan x={0} y={0}>
+                            {"2"}
+                        </tspan>
+                    </text>
+                </g>
+                <g className="cls-4">
+                    <text className="cls-5" transform="translate(171.02 436.61)">
+                        <tspan x={0} y={0}>
+                            {"1"}
+                        </tspan>
+                    </text>
+                </g>
+                <g className="cls-4">
+                    <text
+                        className="cls-5"
+                        transform="translate(673.49 420) rotate(-180) scale(1 -1)"
+                    >
+                        <tspan x={0} y={0}>
+                            {"l"}
+                        </tspan>
+                    </text>
+                </g>
+                <g className="cls-4">
+                    <text
+                        className="cls-5"
+                        transform="translate(648.32 420) rotate(-180) scale(1 -1)"
+                    >
+                        <tspan x={0} y={0}>
+                            {"l"}
+                        </tspan>
+                    </text>
+                </g>
+                <g className="cls-4">
+                    <text
+                        className="cls-5"
+                        transform="translate(623.16 420) rotate(-180) scale(1 -1)"
+                    >
+                        <tspan x={0} y={0}>
+                            {"l"}
+                        </tspan>
+                    </text>
+                </g>
+                <g className="cls-4">
+                    <text
+                        className="cls-5"
+                        transform="translate(597.32 420) rotate(-180) scale(1 -1)"
+                    >
+                        <tspan x={0} y={0}>
+                            {"l"}
+                        </tspan>
+                    </text>
+                </g>
+                <g className="cls-4">
+                    <text
+                        className="cls-5"
+                        transform="translate(573.94 420) rotate(-180) scale(1 -1)"
+                    >
+                        <tspan x={0} y={0}>
+                            {"l"}
+                        </tspan>
+                    </text>
+                </g>
+                <g className="cls-4">
+                    <text
+                        className="cls-5"
+                        transform="translate(547.32 420) rotate(-180) scale(1 -1)"
+                    >
+                        <tspan x={0} y={0}>
+                            {"l"}
+                        </tspan>
+                    </text>
+                </g>
+                <g className="cls-4">
+                    <text
+                        className="cls-5"
+                        transform="translate(521.05 420) rotate(-180) scale(1 -1)"
+                    >
+                        <tspan x={0} y={0}>
+                            {"l"}
+                        </tspan>
+                    </text>
+                </g>
+                <g className="cls-4">
+                    <text
+                        className="cls-5"
+                        transform="translate(494.74 420) rotate(-180) scale(1 -1)"
+                    >
+                        <tspan x={0} y={0}>
+                            {"l"}
+                        </tspan>
+                    </text>
+                </g>
+                <g className="cls-4">
+                    <text
+                        className="cls-5"
+                        transform="translate(469.17 420) rotate(-180) scale(1 -1)"
+                    >
+                        <tspan x={0} y={0}>
+                            {"l"}
+                        </tspan>
+                    </text>
+                </g>
+                <g className="cls-4">
+                    <text
+                        className="cls-5"
+                        transform="translate(442.32 420) rotate(-180) scale(1 -1)"
+                    >
+                        <tspan x={0} y={0}>
+                            {"l"}
+                        </tspan>
+                    </text>
+                </g>
+                <g className="cls-4">
+                    <text
+                        className="cls-5"
+                        transform="translate(415 420) rotate(-180) scale(1 -1)"
+                    >
+                        <tspan x={0} y={0}>
+                            {"l"}
+                        </tspan>
+                    </text>
+                </g>
+                <g className="cls-4">
+                    <text
+                        className="cls-5"
+                        transform="translate(388.24 419.99) rotate(-180) scale(1 -1)"
+                    >
+                        <tspan x={0} y={0}>
+                            {"l"}
+                        </tspan>
+                    </text>
+                </g>
+                <g className="cls-4">
+                    <text
+                        className="cls-5"
+                        transform="translate(360.88 419.99) rotate(-180) scale(1 -1)"
+                    >
+                        <tspan x={0} y={0}>
+                            {"l"}
+                        </tspan>
+                    </text>
+                </g>
+                <g className="cls-4">
+                    <text
+                        className="cls-5"
+                        transform="translate(332.36 419.99) rotate(-180) scale(1 -1)"
+                    >
+                        <tspan x={0} y={0}>
+                            {"l"}
+                        </tspan>
+                    </text>
+                </g>
+                <g className="cls-4">
+                    <text
+                        className="cls-5"
+                        transform="translate(300.27 419.99) rotate(-180) scale(1 -1)"
+                    >
+                        <tspan x={0} y={0}>
+                            {"l"}
+                        </tspan>
+                    </text>
+                </g>
+                <g className="cls-4">
+                    <text
+                        className="cls-5"
+                        transform="translate(272.84 419.99) rotate(-180) scale(1 -1)"
+                    >
+                        <tspan x={0} y={0}>
+                            {"l"}
+                        </tspan>
+                    </text>
+                </g>
+                <g className="cls-4">
+                    <text
+                        className="cls-5"
+                        transform="translate(241.93 419.99) rotate(-180) scale(1 -1)"
+                    >
+                        <tspan x={0} y={0}>
+                            {"l"}
+                        </tspan>
+                    </text>
+                </g>
+                <g className="cls-4">
+                    <text
+                        className="cls-5"
+                        transform="translate(208.96 420) rotate(-180) scale(1 -1)"
+                    >
+                        <tspan x={0} y={0}>
+                            {"l"}
+                        </tspan>
+                    </text>
+                </g>
+                <g className="cls-4">
+                    <text
+                        className="cls-5"
+                        transform="translate(177.6 419.99) rotate(-180) scale(1 -1)"
+                    >
+                        <tspan x={0} y={0}>
+                            {"l"}
+                        </tspan>
+                    </text>
                 </g>
             </svg>
         </div>

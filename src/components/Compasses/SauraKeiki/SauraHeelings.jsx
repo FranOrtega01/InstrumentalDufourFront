@@ -1,6 +1,6 @@
 import React, { useState, useRef } from "react";
 import '../svg.scss'
-export const SvgComponent = ({ title, handleChain, ...props }) => {
+export const SvgComponent = ({ title, ...props }) => {
 
   const [isDragging, setIsDragging] = useState(false);
   const [startPos, setStartPos] = useState({ x: 0, y: 0 });
@@ -39,6 +39,7 @@ export const SvgComponent = ({ title, handleChain, ...props }) => {
     <div className="svgContainer">
       <h2>{title}</h2>
       <svg
+      width={700} height={700}
        onMouseDown={handleMouseDown}
        onMouseUp={handleMouseUp}
        onMouseMove={handleMouseMove}
@@ -471,7 +472,7 @@ export const SvgComponent = ({ title, handleChain, ...props }) => {
               rx={5.36}
               ry={10.63}
             />
-            <circle onClick={(e) => handleChain(e)} className="cls-3" cx={354.16} cy={560.93} r={13.48} />
+            <circle className="cls-3" cx={354.16} cy={560.93} r={13.48} />
             <ellipse
               className="cls-4"
               cx={354.16}

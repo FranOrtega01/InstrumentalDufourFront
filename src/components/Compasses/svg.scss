@@ -96,13 +96,18 @@ svg{
     stroke: none;
 }
 
-.Box path{
-    fill: white;
-    cursor: grab;
-    &:active{
-        cursor: grabbing;
+.Box {
+    circle, path{
+        fill: white;
+        cursor: grab;
+        &:active{
+            cursor: grabbing;
+        }
     }
 }
+
+
+
 .OsakaNunotani .heelings circle{
     cursor: pointer;
 }
@@ -119,3 +124,44 @@ svg{
         }
     }
 }
+
+.Saracom #Capa_2{
+    path{
+        stroke: none;
+    }
+    circle{
+        fill: white;
+        cursor: grab;
+        &:active{
+            cursor: grabbing
+        }
+    }
+}
+
+// Cassens
+// .Cassens ellipse{
+//     fill: white;
+// }
+
+.sphere path{
+    fill: white;
+    stroke: none;
+}
+.chain{
+    &:hover{
+        cursor: grab;
+    }
+    &:active{
+        cursor: grabbing;
+    }
+    ellipse, rect, circle{
+        fill: white;
+    }
+}
+
+
+.hide{
+    fill: white;
+    stroke: none;
+}
+

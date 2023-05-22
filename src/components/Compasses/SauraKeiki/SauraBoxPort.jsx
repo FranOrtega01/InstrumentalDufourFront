@@ -39,6 +39,7 @@ export const SvgComponent = ({ title, handlePlate, ...props }) => {
         <div className="svgContainer">
             <h2>{title}</h2>
             <svg
+                width={700} height={700}
                 onMouseDown={handleMouseDown}
                 onMouseUp={handleMouseUp}
                 onMouseMove={handleMouseMove}

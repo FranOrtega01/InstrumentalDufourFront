@@ -1,12 +1,12 @@
 import React from "react";
-import { SvgComponent as SauraHeeling} from "./SauraHeelings";
-import { SvgComponent as SauraFA } from "./SauraFA";
-import { SvgComponent as SauraBoxesPort } from "./SauraBoxPort";
-import { SvgComponent as SauraBoxesStbd } from "./SauraBoxStbd";
-import { SvgComponent as SauraFlinders } from "./SauraFlinders";
-import { SvgComponent as SauraAthwartship } from "./SauraAth";
+import { SvgComponent as LilleyHeeling} from "./LilleyHeelings.jsx";
+import { SvgComponent as LilleyFAPort } from "./LilleyFAPort.jsx";
+import { SvgComponent as LilleyBoxPort } from './LilleyBoxPort';
+import { SvgComponent as LilleyBoxStbd } from "./LilleyBoxStbd";
+import { SvgComponent as LilleyFlinders } from "./LilleyFlinders";
+import { SvgComponent as LilleyAth } from "./LilleyAth.jsx";
 
-export const SauraContainer = () => {
+export const LilleyContainer = () => {
 
     const changeCircleColor = (e, value) => {
 
@@ -63,18 +63,14 @@ export const SauraContainer = () => {
     }
 
     return(
-        <div className="SauraKeiki">
-            <SauraFA title="Fore and After Magnets" handleCircle={handleCircle}  className='compassSvg foreAfter'/>
-            <SauraHeeling title="Healings" className='compassSvg heelings'/>
-            <SauraFlinders title='Flinders' handlePlate={handlePlate} className='compassSvg flinders'/>
-            <SauraAthwartship title='Athwartships' handleCircle={handleCircle}  className='compassSvg ath'/>
-            <SauraBoxesPort title='Boxes Port' handlePlate={handlePlate} className='compassSvg boxes'/>
-            <SauraBoxesStbd title='Boxes Stbd' handlePlate={handlePlate} className='compassSvg boxes'/>
+        <div className="Lilley">
+            <LilleyFAPort title="Fore and After Magnets" handleCircle={handleCircle} className='compassSvg foreAfter' />
+            {/* <LilleyFAStbd title="Fore and After Magnets" handleCircle={handleCircle} className='compassSvg foreAfter' /> */}
+            <LilleyHeeling title="Heelings" className='compassSvg heelings' />
+            {/* <LilleyFlinders title='Flinders'handlePlate={handlePlate} className='compassSvg flinders' /> */}
+            {/* <LilleyAth title='Athwartships' handleCircle={handleCircle} className='compassSvg ath' /> */}
+            {/* <LilleyBoxPort title='PORTBOARD MAGNETS' handlePlate={handlePlate} className='compassSvg boxes'/> */}
+            {/* <LilleyBoxStbd title='STARBOARD MAGNETS' handlePlate={handlePlate} className='compassSvg boxes'/> */}
         </div>
     )
 }
-
-
-
-
-

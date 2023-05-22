@@ -1,12 +1,12 @@
 import React from "react";
-import { SvgComponent as SauraHeeling} from "./SauraHeelings";
-import { SvgComponent as SauraFA } from "./SauraFA";
-import { SvgComponent as SauraBoxesPort } from "./SauraBoxPort";
-import { SvgComponent as SauraBoxesStbd } from "./SauraBoxStbd";
-import { SvgComponent as SauraFlinders } from "./SauraFlinders";
-import { SvgComponent as SauraAthwartship } from "./SauraAth";
+import { SvgComponent as CassensHeeling} from "./CassensHeelings";
+import { SvgComponent as CassensFA } from "./CassensFA";
+import { SvgComponent as CassensBoxPort } from './CassensBoxPort';
+import { SvgComponent as CassensBoxStbd } from "./CassensBoxStbd";
+import { SvgComponent as CassensFlinders } from "./CassensFlinders";
+import { SvgComponent as CassensAth } from "./CassensAth";
 
-export const SauraContainer = () => {
+export const CassensContainer = () => {
 
     const changeCircleColor = (e, value) => {
 
@@ -63,18 +63,13 @@ export const SauraContainer = () => {
     }
 
     return(
-        <div className="SauraKeiki">
-            <SauraFA title="Fore and After Magnets" handleCircle={handleCircle}  className='compassSvg foreAfter'/>
-            <SauraHeeling title="Healings" className='compassSvg heelings'/>
-            <SauraFlinders title='Flinders' handlePlate={handlePlate} className='compassSvg flinders'/>
-            <SauraAthwartship title='Athwartships' handleCircle={handleCircle}  className='compassSvg ath'/>
-            <SauraBoxesPort title='Boxes Port' handlePlate={handlePlate} className='compassSvg boxes'/>
-            <SauraBoxesStbd title='Boxes Stbd' handlePlate={handlePlate} className='compassSvg boxes'/>
+        <div className="Cassens">
+            <CassensFA title="Fore and After Magnets" handleCircle={handleCircle} className='compassSvg foreAfter' />
+            <CassensHeeling title="Heelings" className='compassSvg heelings' />
+            <CassensFlinders title='Flinders'handlePlate={handlePlate} className='compassSvg flinders' />
+            <CassensAth title='Athwartships' handleCircle={handleCircle} className='compassSvg ath' />
+            <CassensBoxPort title='PORTBOARD MAGNETS' handlePlate={handlePlate} className='compassSvg boxes'/>
+            <CassensBoxStbd title='STARBOARD MAGNETS' handlePlate={handlePlate} className='compassSvg boxes'/>
         </div>
     )
 }
-
-
-
-
-

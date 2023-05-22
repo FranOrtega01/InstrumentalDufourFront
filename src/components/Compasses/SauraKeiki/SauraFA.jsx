@@ -1,20 +1,13 @@
 import * as React from "react"
-export const SvgComponent = ({ title,handleCircle, ...props }) => {
-
-
+export const SvgComponent = ({ title, handleCircle, ...props }) => {
 
   return (
     <div className="svgContainer">
       <h2>{title}</h2>
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 587.83 839.6" {...props}>
+      <svg xmlns="http://www.w3.org/2000/svg" width={700} height={700} viewBox="0 0 587.83 839.6" {...props}>
         <defs>
           <style>
-            {
-              `.cls-1 {fill: #1f140f;}.cls-2 {fill: #fff;}
-              .cls-2, .cls-3 { stroke: #1f140f;  stroke-miterlimit: 10;}
-              .cls-3 {  fill: none;}
-              .cls-4 {  fill: #5c5b5f;  font-family: MyriadPro-Regular, 'Myriad Pro';  font-size: 21px;}`
-            }
+            {".cls-1 {fill: #1f140f;} .cls-2 {fill: #fff;} .cls-2, .cls-3 {stroke: #1f140f;  stroke-miterlimit: 10;} .cls-3 {fill: none;} .cls-4 {fill: #5c5b5f;  font-family: MyriadPro-Regular, 'Myriad Pro';  font-size: 21px;}"}
           </style>
         </defs>
         <g id="Capa_1" data-name="Capa 1">
@@ -110,48 +103,48 @@ export const SvgComponent = ({ title,handleCircle, ...props }) => {
           />
         </g>
         <g id="Capa_5" data-name="Capa 5">
-          <circle onClick={(e)=> handleCircle(e)} className="cls-3" cx={188.07} cy={207.26} r={8.76} />
-          <circle onClick={(e)=> handleCircle(e)} className="cls-3" cx={188.07} cy={234.74} r={8.76} />
-          <circle onClick={(e)=> handleCircle(e)} className="cls-3" cx={188.07} cy={262.22} r={8.76} />
-          <circle onClick={(e)=> handleCircle(e)} className="cls-3" cx={188.07} cy={289.7} r={8.76} />
-          <circle onClick={(e)=> handleCircle(e)} className="cls-3" cx={188.12} cy={317.18} r={8.76} />
-          <circle onClick={(e)=> handleCircle(e)} className="cls-3" cx={188.12} cy={344.66} r={8.76} />
-          <circle onClick={(e)=> handleCircle(e)} className="cls-3" cx={188.12} cy={372.14} r={8.76} />
-          <circle onClick={(e)=> handleCircle(e)} className="cls-3" cx={188.12} cy={399.62} r={8.76} />
-          <circle onClick={(e)=> handleCircle(e)} className="cls-3" cx={188.12} cy={427.1} r={8.76} />
-          <circle onClick={(e)=> handleCircle(e)} className="cls-3" cx={188.07} cy={454.58} r={8.76} />
-          <circle onClick={(e)=> handleCircle(e)} className="cls-3" cx={188.12} cy={482.06} r={8.76} />
-          <circle onClick={(e)=> handleCircle(e)} className="cls-3" cx={188.12} cy={509.54} r={8.76} />
-          <circle onClick={(e)=> handleCircle(e)} className="cls-3" cx={188.12} cy={537.03} r={8.76} />
-          <circle onClick={(e)=> handleCircle(e)} className="cls-3" cx={188.12} cy={564.51} r={8.76} />
-          <circle onClick={(e)=> handleCircle(e)} className="cls-3" cx={188.12} cy={591.99} r={8.76} />
-          <circle onClick={(e)=> handleCircle(e)} className="cls-3" cx={188.12} cy={619.47} r={8.76} />
-          <circle onClick={(e)=> handleCircle(e)} className="cls-3" cx={188.12} cy={646.95} r={8.76} />
-          <circle onClick={(e)=> handleCircle(e)} className="cls-3" cx={187.71} cy={674.43} r={8.76} />
-          <circle onClick={(e)=> handleCircle(e)} className="cls-3" cx={188.12} cy={701.91} r={8.76} />
-          <circle onClick={(e)=> handleCircle(e)} className="cls-3" cx={187.71} cy={729.39} r={8.76} />
+          <circle onClick={(e) => handleCircle(e)} className="cls-3" cx={188.07} cy={207.26} r={8.76} />
+          <circle onClick={(e) => handleCircle(e)} className="cls-3" cx={188.07} cy={234.74} r={8.76} />
+          <circle onClick={(e) => handleCircle(e)} className="cls-3" cx={188.07} cy={262.22} r={8.76} />
+          <circle onClick={(e) => handleCircle(e)} className="cls-3" cx={188.07} cy={289.7} r={8.76} />
+          <circle onClick={(e) => handleCircle(e)} className="cls-3" cx={188.12} cy={317.18} r={8.76} />
+          <circle onClick={(e) => handleCircle(e)} className="cls-3" cx={188.12} cy={344.66} r={8.76} />
+          <circle onClick={(e) => handleCircle(e)} className="cls-3" cx={188.12} cy={372.14} r={8.76} />
+          <circle onClick={(e) => handleCircle(e)} className="cls-3" cx={188.12} cy={399.62} r={8.76} />
+          <circle onClick={(e) => handleCircle(e)} className="cls-3" cx={188.12} cy={427.1} r={8.76} />
+          <circle onClick={(e) => handleCircle(e)} className="cls-3" cx={188.07} cy={454.58} r={8.76} />
+          <circle onClick={(e) => handleCircle(e)} className="cls-3" cx={188.12} cy={482.06} r={8.76} />
+          <circle onClick={(e) => handleCircle(e)} className="cls-3" cx={188.12} cy={509.54} r={8.76} />
+          <circle onClick={(e) => handleCircle(e)} className="cls-3" cx={188.12} cy={537.03} r={8.76} />
+          <circle onClick={(e) => handleCircle(e)} className="cls-3" cx={188.12} cy={564.51} r={8.76} />
+          <circle onClick={(e) => handleCircle(e)} className="cls-3" cx={188.12} cy={591.99} r={8.76} />
+          <circle onClick={(e) => handleCircle(e)} className="cls-3" cx={188.12} cy={619.47} r={8.76} />
+          <circle onClick={(e) => handleCircle(e)} className="cls-3" cx={188.12} cy={646.95} r={8.76} />
+          <circle onClick={(e) => handleCircle(e)} className="cls-3" cx={187.71} cy={674.43} r={8.76} />
+          <circle onClick={(e) => handleCircle(e)} className="cls-3" cx={188.12} cy={701.91} r={8.76} />
+          <circle onClick={(e) => handleCircle(e)} className="cls-3" cx={187.71} cy={729.39} r={8.76} />
         </g>
         <g id="Capa_6" data-name="Capa 6">
-          <circle onClick={(e)=> handleCircle(e)} className="cls-3" cx={399.6} cy={207.26} r={8.76} />
-          <circle onClick={(e)=> handleCircle(e)} className="cls-3" cx={399.6} cy={234.74} r={8.76} />
-          <circle onClick={(e)=> handleCircle(e)} className="cls-3" cx={399.6} cy={262.22} r={8.76} />
-          <circle onClick={(e)=> handleCircle(e)} className="cls-3" cx={399.6} cy={289.7} r={8.76} />
-          <circle onClick={(e)=> handleCircle(e)} className="cls-3" cx={399.65} cy={317.18} r={8.76} />
-          <circle onClick={(e)=> handleCircle(e)} className="cls-3" cx={399.65} cy={344.66} r={8.76} />
-          <circle onClick={(e)=> handleCircle(e)} className="cls-3" cx={399.65} cy={372.14} r={8.76} />
-          <circle onClick={(e)=> handleCircle(e)} className="cls-3" cx={399.65} cy={399.62} r={8.76} />
-          <circle onClick={(e)=> handleCircle(e)} className="cls-3" cx={399.65} cy={427.1} r={8.76} />
-          <circle onClick={(e)=> handleCircle(e)} className="cls-3" cx={399.6} cy={454.58} r={8.76} />
-          <circle onClick={(e)=> handleCircle(e)} className="cls-3" cx={399.65} cy={482.06} r={8.76} />
-          <circle onClick={(e)=> handleCircle(e)} className="cls-3" cx={399.65} cy={509.54} r={8.76} />
-          <circle onClick={(e)=> handleCircle(e)} className="cls-3" cx={399.65} cy={537.03} r={8.76} />
-          <circle onClick={(e)=> handleCircle(e)} className="cls-3" cx={399.65} cy={564.51} r={8.76} />
-          <circle onClick={(e)=> handleCircle(e)} className="cls-3" cx={399.65} cy={591.99} r={8.76} />
-          <circle onClick={(e)=> handleCircle(e)} className="cls-3" cx={399.65} cy={619.47} r={8.76} />
-          <circle onClick={(e)=> handleCircle(e)} className="cls-3" cx={399.65} cy={646.95} r={8.76} />
-          <circle onClick={(e)=> handleCircle(e)} className="cls-3" cx={399.23} cy={674.43} r={8.76} />
-          <circle onClick={(e)=> handleCircle(e)} className="cls-3" cx={399.65} cy={701.91} r={8.76} />
-          <circle onClick={(e)=> handleCircle(e)} className="cls-3" cx={399.23} cy={729.39} r={8.76} />
+          <circle onClick={(e) => handleCircle(e)} className="cls-3" cx={399.6} cy={207.26} r={8.76} />
+          <circle onClick={(e) => handleCircle(e)} className="cls-3" cx={399.6} cy={234.74} r={8.76} />
+          <circle onClick={(e) => handleCircle(e)} className="cls-3" cx={399.6} cy={262.22} r={8.76} />
+          <circle onClick={(e) => handleCircle(e)} className="cls-3" cx={399.6} cy={289.7} r={8.76} />
+          <circle onClick={(e) => handleCircle(e)} className="cls-3" cx={399.65} cy={317.18} r={8.76} />
+          <circle onClick={(e) => handleCircle(e)} className="cls-3" cx={399.65} cy={344.66} r={8.76} />
+          <circle onClick={(e) => handleCircle(e)} className="cls-3" cx={399.65} cy={372.14} r={8.76} />
+          <circle onClick={(e) => handleCircle(e)} className="cls-3" cx={399.65} cy={399.62} r={8.76} />
+          <circle onClick={(e) => handleCircle(e)} className="cls-3" cx={399.65} cy={427.1} r={8.76} />
+          <circle onClick={(e) => handleCircle(e)} className="cls-3" cx={399.6} cy={454.58} r={8.76} />
+          <circle onClick={(e) => handleCircle(e)} className="cls-3" cx={399.65} cy={482.06} r={8.76} />
+          <circle onClick={(e) => handleCircle(e)} className="cls-3" cx={399.65} cy={509.54} r={8.76} />
+          <circle onClick={(e) => handleCircle(e)} className="cls-3" cx={399.65} cy={537.03} r={8.76} />
+          <circle onClick={(e) => handleCircle(e)} className="cls-3" cx={399.65} cy={564.51} r={8.76} />
+          <circle onClick={(e) => handleCircle(e)} className="cls-3" cx={399.65} cy={591.99} r={8.76} />
+          <circle onClick={(e) => handleCircle(e)} className="cls-3" cx={399.65} cy={619.47} r={8.76} />
+          <circle onClick={(e) => handleCircle(e)} className="cls-3" cx={399.65} cy={646.95} r={8.76} />
+          <circle onClick={(e) => handleCircle(e)} className="cls-3" cx={399.23} cy={674.43} r={8.76} />
+          <circle onClick={(e) => handleCircle(e)} className="cls-3" cx={399.65} cy={701.91} r={8.76} />
+          <circle onClick={(e) => handleCircle(e)} className="cls-3" cx={399.23} cy={729.39} r={8.76} />
         </g>
         <g id="Capa_7" data-name="Capa 7">
           <text
