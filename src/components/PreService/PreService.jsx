@@ -15,6 +15,9 @@ export const PreContainer = () => {
     const [compass, setCompass] = useState('')
     const [name, setName] = useState('')
     const [sailing, setSailing] = useState('')
+    const [mark, setMark] = useState('')
+    const [model, setModel] = useState('')
+    const [serial, setSerial] = useState('')
     const [currentVariation, setCurrentVariation] = useState('')
     
     const [data, setData] = useState({})
@@ -54,16 +57,18 @@ export const PreContainer = () => {
             case "CASSENS & PLATH":
                 return <CassensContainer />
             case "JOHN LILLEY & GUILLIE":
-                return <LilleyContainer />             
+                return <LilleyContainer />   
+            case "OTHER":
+                return <div className="svgContainer"><p>Drop Files...</p></div>            
             default:
                 return <div className="svgContainer"><p>Please, select a compass.</p></div>
         }
     }
     return(
         <>
-            <CustomForm setCompass={setCompass} setName={setName} setSailing={setSailing} setCurrentVariation={setCurrentVariation} />
+            <CustomForm setSerial={setSerial} setModel={setModel} setMark={setMark} setCompass={setCompass} setName={setName} setSailing={setSailing} setCurrentVariation={setCurrentVariation} />
             <div ref={svgRef}>
-                {renderCompass(compass)}
+                {renderCompass(mark)}
             </div>
             <FormButton title={'Send'} href={'http://127.0.0.1:8080/preservice/send'} fetchMethod={'POST'} data={data}/>
         </>     

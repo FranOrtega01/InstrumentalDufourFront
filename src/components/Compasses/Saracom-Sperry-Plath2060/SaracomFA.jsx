@@ -275,14 +275,6 @@ export const SvgComponent = ({ title, handleCircle, ...props }) => {
                         </text>
                     </g>
                     <g>
-                        <text
-                            className="cls-3"
-                            transform="translate(498.63 854.98) rotate(-90)"
-                        >
-                            <tspan x={0} y={0}>
-                                {"2"}
-                            </tspan>
-                        </text>
                         <rect
                             className="cls-2"
                             x={368.33}
@@ -297,6 +289,14 @@ export const SvgComponent = ({ title, handleCircle, ...props }) => {
                             width={40.03}
                             height={31.7}
                         />
+                        <text
+                            className="cls-3"
+                            transform="translate(498.63 854.98) rotate(-90)"
+                        >
+                            <tspan x={0} y={0}>
+                                {"2"}
+                            </tspan>
+                        </text>
                     </g>
                     <g>
                         <rect
