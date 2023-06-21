@@ -7,8 +7,7 @@ export const SvgComponent = ({ title, handleCircle, ...props }) => {
         <div className="svgContainer">
             <h2>{title}</h2>
             <svg
-                id="Capa_1"
-                data-name="Capa 1"
+                width={700} height={700}
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 587.82 839.59"
                 {...props}
@@ -16,7 +15,7 @@ export const SvgComponent = ({ title, handleCircle, ...props }) => {
                 <defs>
                     <style>
                         {
-                            "\n      .cls-1, .cls-2 {\n        fill: none;\n      }\n\n      .cls-3 {\n        fill: #5b5b5f;\n        font-family: MyriadPro-Regular, 'Myriad Pro';\n        font-size: 21px;\n      }\n\n      .cls-3, .cls-4 {\n        isolation: isolate;\n      }\n\n      .cls-5 {\n        fill: #fff;\n      }\n\n      .cls-5, .cls-2 {\n        stroke: #000;\n        stroke-miterlimit: 10;\n      }\n    "
+                            ".cls-1, .cls-2 {fill: none;}.cls-3 {fill: #5b5b5f;  font-family: MyriadPro-Regular, 'Myriad Pro';  font-size: 21px;}.cls-3, .cls-4 {isolation: isolate;}.cls-5 {fill: #fff;}.cls-5, .cls-2 {stroke: #000;  stroke-miterlimit: 10;}"
                         }
                     </style>
                 </defs>

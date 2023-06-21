@@ -21,8 +21,14 @@ svg{
     }
 }
 .compassSvg{
-    width: 400px;
-    max-width: 700px;
+    width: 500px;
+    max-height: 700px;
+}
+.medium{
+    width: 700px;
+}
+.big{
+    width: 1000px
 }
 
 // Interactive styles
@@ -112,6 +118,10 @@ svg{
     cursor: pointer;
 }
 
+.pointer{
+    cursor: pointer;
+}
+
 //Saracom
 .Saracom #Chain{
     *{
@@ -138,14 +148,13 @@ svg{
     }
 }
 
-// Cassens
-// .Cassens ellipse{
-//     fill: white;
-// }
 
 .sphere path{
     fill: white;
     stroke: none;
+}
+.sphere circle{
+    fill: white;
 }
 .chain{
     &:hover{
@@ -165,3 +174,7 @@ svg{
     stroke: none;
 }
 
+.grab{
+    cursor: grab;
+    :is(:hover){cursor: grabbing;}
+}

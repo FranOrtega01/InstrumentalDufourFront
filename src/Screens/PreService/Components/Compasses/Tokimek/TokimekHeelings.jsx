@@ -44,6 +44,7 @@ export const SvgComponent = ({ title, handleChain, ...props }) => {
       onMouseMove={handleMouseMove}
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 587.83 943.92"
+        width={700} height={600}
         {...props}
       >
         <defs>

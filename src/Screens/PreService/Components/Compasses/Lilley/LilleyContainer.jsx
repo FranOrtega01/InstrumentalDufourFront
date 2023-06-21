@@ -1,12 +1,34 @@
-import React from "react";
-import { SvgComponent as LilleyHeeling} from "./LilleyHeelings.jsx";
+import React, { useState } from "react";
 import { SvgComponent as LilleyFAPort } from "./LilleyFAPort.jsx";
+import { SvgComponent as LilleyHeeling} from "./LilleyHeelings.jsx";
+import { SvgComponent as LilleyFlinders } from "./LilleyFlinders";
 import { SvgComponent as LilleyBoxPort } from './LilleyBoxPort';
 import { SvgComponent as LilleyBoxStbd } from "./LilleyBoxStbd";
-import { SvgComponent as LilleyFlinders } from "./LilleyFlinders";
-import { SvgComponent as LilleyAth } from "./LilleyAth.jsx";
+import { SvgComponent as LilleySoftPort } from "./LilleySoftPort.jsx";
+import { SvgComponent as LilleySoftStbd } from "./LilleySoftStbd.jsx";
 
 export const LilleyContainer = () => {
+
+    const [value, setValue] = useState('')
+
+    const renderBoxSoft = value => {
+        switch (value) {
+            case 'Boxes': 
+                return<>
+                    <LilleyBoxPort title='PORTBOARD MAGNETS' handlePlate={handlePlate} className='compassSvg boxes'/>
+                    <LilleyBoxStbd title='STARBOARD MAGNETS' handlePlate={handlePlate} className='compassSvg boxes'/>
+                </>
+                break;
+            case 'Soft': 
+            return <>
+                <LilleySoftPort title='PORTBOARD MAGNETS' handlePlate={handlePlate} className='compassSvg boxes'/>
+                <LilleySoftStbd title='STARBOARD MAGNETS' handlePlate={handlePlate} className='compassSvg boxes'/>
+            </>
+            break;
+            default:
+                break;
+        }
+    }
 
     const changeCircleColor = (e, value) => {
 
@@ -64,13 +86,16 @@ export const LilleyContainer = () => {
 
     return(
         <div className="Lilley">
-            <LilleyFAPort title="Fore and After Magnets" handleCircle={handleCircle} className='compassSvg foreAfter' />
-            {/* <LilleyFAStbd title="Fore and After Magnets" handleCircle={handleCircle} className='compassSvg foreAfter' /> */}
+            <LilleyFAPort title="Fore and After Magnets" handleCircle={handleCircle} className='compassSvg big foreAfter' />
             <LilleyHeeling title="Heelings" className='compassSvg heelings' />
-            {/* <LilleyFlinders title='Flinders'handlePlate={handlePlate} className='compassSvg flinders' /> */}
-            {/* <LilleyAth title='Athwartships' handleCircle={handleCircle} className='compassSvg ath' /> */}
-            {/* <LilleyBoxPort title='PORTBOARD MAGNETS' handlePlate={handlePlate} className='compassSvg boxes'/> */}
-            {/* <LilleyBoxStbd title='STARBOARD MAGNETS' handlePlate={handlePlate} className='compassSvg boxes'/> */}
+            <LilleyFlinders title='Flinders'className='compassSvg flinders' />
+            <select style={{width:'300px'}} className="form-select" onChange={e => setValue(e.target.value)}>
+                <option value="" disabled selected>Select a quadrantal corrector</option>
+                <option value="Boxes">Boxes</option>
+                <option value="Soft">Soft</option>
+            </select>
+            {renderBoxSoft(value)}
+            
         </div>
     )
 }

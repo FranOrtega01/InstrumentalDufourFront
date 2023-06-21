@@ -586,102 +586,130 @@ export const SvgComponent = ({ title, handleCircle, ...props }) => {
                     </g>
                     <g id="Capa_2" data-name="Capa 2">
                         <ellipse
-                            className="cls-7"
+                            className="cls-7 pointer"
                             cx={194.39}
                             cy={746.72}
                             rx={15.05}
                             ry={15.37}
+                            onClick={e => handleCircle(e)}
+
                         />
                         <ellipse
-                            className="cls-7"
+                            className="cls-7 pointer"
                             cx={194.39}
                             cy={711.48}
                             rx={15.05}
                             ry={15.37}
+                            onClick={e => handleCircle(e)}
+
                         />
                         <ellipse
-                            className="cls-7"
+                            className="cls-7 pointer"
                             cx={194.39}
                             cy={676.25}
                             rx={15.05}
                             ry={15.37}
+                            onClick={e => handleCircle(e)}
+
                         />
                         <ellipse
-                            className="cls-7"
+                            className="cls-7 pointer"
                             cx={194.39}
                             cy={641.02}
                             rx={15.05}
                             ry={15.37}
+                            onClick={e => handleCircle(e)}
+
                         />
                         <ellipse
-                            className="cls-7"
+                            className="cls-7 pointer"
                             cx={194.39}
                             cy={605.77}
                             rx={15.05}
                             ry={15.37}
+                            onClick={e => handleCircle(e)}
+
                         />
                         <ellipse
-                            className="cls-7"
+                            className="cls-7 pointer"
                             cx={194.39}
                             cy={570.54}
                             rx={15.05}
                             ry={15.37}
+                            onClick={e => handleCircle(e)}
+
                         />
                         <ellipse
-                            className="cls-7"
+                            className="cls-7 pointer"
                             cx={194.39}
                             cy={535.31}
                             rx={15.05}
                             ry={15.37}
+                            onClick={e => handleCircle(e)}
+
                         />
                         <ellipse
-                            className="cls-7"
+                            className="cls-7 pointer"
                             cx={194.39}
                             cy={500.07}
                             rx={15.05}
                             ry={15.37}
+                            onClick={e => handleCircle(e)}
+
                         />
                         <ellipse
-                            className="cls-7"
+                            className="cls-7 pointer"
                             cx={194.39}
                             cy={464.83}
                             rx={15.05}
                             ry={15.37}
+                            onClick={e => handleCircle(e)}
+
                         />
                         <ellipse
-                            className="cls-7"
+                            className="cls-7 pointer"
                             cx={194.39}
                             cy={429.6}
                             rx={15.05}
                             ry={15.37}
+                            onClick={e => handleCircle(e)}
+
                         />
                         <ellipse
-                            className="cls-7"
+                            className="cls-7 pointer"
                             cx={194.39}
                             cy={394.36}
                             rx={15.05}
                             ry={15.37}
+                            onClick={e => handleCircle(e)}
+
                         />
                         <ellipse
-                            className="cls-7"
+                            className="cls-7 pointer"
                             cx={194.39}
                             cy={359.13}
                             rx={15.05}
                             ry={15.37}
+                            onClick={e => handleCircle(e)}
+
                         />
                         <ellipse
-                            className="cls-7"
+                            className="cls-7 pointer"
                             cx={194.39}
                             cy={323.9}
                             rx={15.05}
                             ry={15.37}
+                            onClick={e => handleCircle(e)}
+
                         />
                         <ellipse
-                            className="cls-7"
+                            className="cls-7 pointer"
                             cx={194.39}
                             cy={288.65}
                             rx={15.05}
                             ry={15.37}
+                            onClick={e => handleCircle(e)}
+
                         />
                         <ellipse
                             className="cls-3"
@@ -1533,102 +1561,116 @@ export const SvgComponent = ({ title, handleCircle, ...props }) => {
                     </g>
                     <g id="Capa_2-3" data-name="Capa 2">
                         <ellipse
-                            className="cls-7"
+                            className="cls-7 pointer"
                             cx={1221.71}
                             cy={750.84}
                             rx={15.05}
                             ry={15.37}
+                            onClick={e => handleCircle(e)}
                         />
                         <ellipse
-                            className="cls-7"
+                            className="cls-7 pointer"
                             cx={1221.71}
                             cy={715.59}
                             rx={15.05}
                             ry={15.37}
+                            onClick={e => handleCircle(e)}
                         />
                         <ellipse
-                            className="cls-7"
+                            className="cls-7 pointer"
                             cx={1221.71}
                             cy={680.35}
                             rx={15.05}
                             ry={15.37}
+                            onClick={e => handleCircle(e)}
                         />
                         <ellipse
-                            className="cls-7"
+                            className="cls-7 pointer"
                             cx={1221.71}
                             cy={645.13}
                             rx={15.05}
                             ry={15.37}
+                            onClick={e => handleCircle(e)}
                         />
                         <ellipse
-                            className="cls-7"
+                            className="cls-7 pointer"
                             cx={1221.71}
                             cy={609.89}
                             rx={15.05}
                             ry={15.37}
+                            onClick={e => handleCircle(e)}
                         />
                         <ellipse
-                            className="cls-7"
+                            className="cls-7 pointer"
                             cx={1221.71}
                             cy={574.66}
                             rx={15.05}
                             ry={15.37}
+                            onClick={e => handleCircle(e)}
                         />
                         <ellipse
-                            className="cls-7"
+                            className="cls-7 pointer"
                             cx={1221.71}
                             cy={539.41}
                             rx={15.05}
                             ry={15.37}
+                            onClick={e => handleCircle(e)}
                         />
                         <ellipse
-                            className="cls-7"
+                            className="cls-7 pointer"
                             cx={1221.71}
                             cy={504.18}
                             rx={15.05}
                             ry={15.37}
+                            onClick={e => handleCircle(e)}
                         />
                         <ellipse
-                            className="cls-7"
+                            className="cls-7 pointer"
                             cx={1221.71}
                             cy={468.95}
                             rx={15.05}
                             ry={15.37}
+                            onClick={e => handleCircle(e)}
                         />
                         <ellipse
-                            className="cls-7"
+                            className="cls-7 pointer"
                             cx={1221.71}
                             cy={433.72}
                             rx={15.05}
                             ry={15.37}
+                            onClick={e => handleCircle(e)}
                         />
                         <ellipse
-                            className="cls-7"
+                            className="cls-7 pointer"
                             cx={1221.71}
                             cy={398.47}
                             rx={15.05}
                             ry={15.37}
+                            onClick={e => handleCircle(e)}
                         />
                         <ellipse
-                            className="cls-7"
+                            className="cls-7 pointer"
                             cx={1221.71}
                             cy={363.24}
                             rx={15.05}
                             ry={15.37}
+                            onClick={e => handleCircle(e)}
                         />
                         <ellipse
-                            className="cls-7"
+                            className="cls-7 pointer"
                             cx={1221.71}
                             cy={328.01}
                             rx={15.05}
                             ry={15.37}
+                            onClick={e => handleCircle(e)}
                         />
                         <ellipse
-                            className="cls-7"
+                            className="cls-7 pointer"
                             cx={1221.71}
                             cy={292.77}
                             rx={15.05}
                             ry={15.37}
+                            onClick={e => handleCircle(e)}
                         />
                         <ellipse
                             className="cls-7"

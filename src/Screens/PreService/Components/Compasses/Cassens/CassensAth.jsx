@@ -11,6 +11,7 @@ export const SvgComponent = ({ title, handleCircle, ...props }) => {
                 data-name="Capa 1"
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 399.6 912.9"
+                width={700} height={700}
                 {...props}
             >
                 <defs>

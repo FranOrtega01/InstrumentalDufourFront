@@ -38,25 +38,18 @@ export const SvgComponent = ({ title, handlePlate, ...props }) => {
         <div className="svgContainer">
             <h2>{title}</h2>
             <svg
-            onMouseDown={handleMouseDown}
-        onMouseUp={handleMouseUp}
-        onMouseMove={handleMouseMove}
-                id="Capa_1"
-                data-name="Capa 1"
+                onMouseDown={handleMouseDown}
+                onMouseUp={handleMouseUp}
+                onMouseMove={handleMouseMove}
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 587.82 943.91"
+                width={700} height={700}
                 {...props}
             >
                 <defs>
                     <style>
                         {
-                            `.cls-1, .cls-2 {fill: none;}
-                            .cls-3, .cls-4, .cls-5, .cls-6 {fill: #fff;}
-                            .cls-7 {  fill: #5b5b5f;  font-family: MyriadPro-Regular, 'Myriad Pro';  font-size: 21px;}
-                            .cls-7, .cls-8 {  isolation: isolate;}
-                            .cls-4 {  stroke: #020102;}
-                            .cls-4, .cls-5, .cls-6, .cls-2 {  stroke-miterlimit: 10;}
-                            .cls-5, .cls-2 {  stroke: #000;}.cls-6 {  stroke: #201814;}`
+                            ".cls-1, .cls-2 {fill: none;}.cls-3, .cls-4, .cls-5, .cls-6 {fill: #fff;} .cls-7 {fill: #5b5b5f;  font-family: MyriadPro-Regular, 'Myriad Pro';  font-size: 21px;}.cls-7, .cls-8 {isolation: isolate;}.cls-4 {stroke: #020102;} .cls-4, .cls-5, .cls-6, .cls-2 {stroke-miterlimit: 10;}.cls-5, .cls-2 {stroke: #000;}.cls-6 {stroke: #201814;}"
                         }
                     </style>
                 </defs>

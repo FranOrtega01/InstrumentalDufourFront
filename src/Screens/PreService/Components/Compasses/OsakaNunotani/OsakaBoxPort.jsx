@@ -42,7 +42,7 @@ export const SvgComponent = ({ title, handlePlate, ...props }) => {
                 onMouseDown={handleMouseDown}
                 onMouseUp={handleMouseUp}
                 onMouseMove={handleMouseMove}
-                id="Capa_1"
+                width={700} height={700}
                 data-name="Capa 1"
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 798.16 860.92"
@@ -50,12 +50,7 @@ export const SvgComponent = ({ title, handlePlate, ...props }) => {
             >
                 <defs>
                     <style>
-                        {
-                            `.cls-1 {fill: #fff;}
-                    .cls-1, .cls-2 {stroke: #000;  stroke-miterlimit: 10;}
-                    .cls-2 {  fill: none;}
-                    .cls-3 {  font-family: MyriadPro-Regular, 'Myriad Pro';  font-size: 20px;  isolation: isolate;}`
-                        }
+                        {".cls-1 {fill: #fff;}.cls-1, .cls-2 {stroke: #000;  stroke-miterlimit: 10;}.cls-2 {  fill: none;}.cls-3 {  font-family: MyriadPro-Regular, 'Myriad Pro';  font-size: 20px;  isolation: isolate;}`"}
                     </style>
                 </defs>
                 <g >

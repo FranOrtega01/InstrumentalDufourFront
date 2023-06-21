@@ -193,7 +193,7 @@ export const SvgComponent = ({ title, handlePlate, ...props }) => {
                     </g>
                 </g>
                 <g id="Capa_3" data-name="Capa 3">
-                    <rect className="cls-1" width={382} height={217.9} />
+                    <rect className="cls-1" style={{stroke:"none"}}  width={382} height={217.9} />
                 </g>
                 <g id="Capa_1-2" data-name="Capa 1">
                     <g>
@@ -271,6 +271,7 @@ export const SvgComponent = ({ title, handlePlate, ...props }) => {
                     <line className="cls-2" x1={148.72} y1={227.57} x2={148.72} y2={757.28} />
                     <line className="cls-2" x1={233.87} y1={227.57} x2={233.87} y2={757.28} />
                     <rect
+                        style={{stroke:'none'}}
                         className="cls-1"
                         x={180.32}
                         y={926.85}

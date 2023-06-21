@@ -65,7 +65,7 @@ export const SauraContainer = () => {
     return(
         <div className="SauraKeiki">
             <SauraFA title="Fore and After Magnets" handleCircle={handleCircle}  className='compassSvg foreAfter'/>
-            <SauraHeeling title="Healings" className='compassSvg heelings'/>
+            <SauraHeeling title="Heelings" className='compassSvg heelings'/>
             <SauraFlinders title='Flinders' handlePlate={handlePlate} className='compassSvg flinders'/>
             <SauraAthwartship title='Athwartships' handleCircle={handleCircle}  className='compassSvg ath'/>
             <SauraBoxesPort title='Boxes Port' handlePlate={handlePlate} className='compassSvg boxes'/>

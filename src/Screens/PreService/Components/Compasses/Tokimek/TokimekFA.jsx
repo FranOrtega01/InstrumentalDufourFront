@@ -6,7 +6,7 @@ export const SvgComponent = ({ title, handleCircle, ...props }) => {
   return (
     <div className="svgContainer">
       <h2>{title}</h2>
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 587.83 839.6" {...props}>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 587.83 839.6" width={700} height={700} {...props}>
         <defs>
           <style>
             {

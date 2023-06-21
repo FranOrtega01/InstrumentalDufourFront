@@ -1,17 +1,32 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 
-export const FormButton = ({ href, fetchMethod, data, title, ...props }) => {
+export const FormButton = ({ href, fetchMethod, allValues, svgRef, title, particulars, compassPhotos, lastDevCurve, ...props}) => {
 
     const handleButton = e => {
-        console.log(data);
-        console.log(fetchMethod);
+
         try {
+            console.log(particulars);
+
+            if(!particulars?.length || !compassPhotos?.length || !lastDevCurve?.length){
+                return console.log('Faltan archivos')
+            }
+
+            const formData = new FormData()
+
+            for (const [key, value] of Object.entries(allValues)) {
+                formData.append(key, value)
+            }
+            formData.append('svg', svgRef.current.outerHTML);
+
+            particulars.map(file => formData.append('particulars[]',file))
+            compassPhotos.map(file => formData.append('compassPhotos[]',file))
+            lastDevCurve.map(file => formData.append('lastDevCurve[]',file))
+
+            
+
             fetch(href, {
                 method: fetchMethod,
-                headers: {
-                    "Content-Type": 'application/json',
-                },
-                body: JSON.stringify(data)
+                body:formData
             })
 
         } catch (error) {
@@ -21,8 +36,9 @@ export const FormButton = ({ href, fetchMethod, data, title, ...props }) => {
 
     return (
         <button
-            {...props}
-            onClick={handleButton}>
+            {...props}  
+            onClick={e => handleButton(e)}          
+            >
             {title}
         </button>
     )
