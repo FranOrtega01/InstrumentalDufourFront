@@ -1,6 +1,6 @@
 import React, {useEffect} from 'react'
 
-export const FormButton = ({ href, fetchMethod, allValues, svgRef, title, particulars, compassPhotos, lastDevCurve, ...props}) => {
+export const FormButton = ({ href, fetchMethod, allValues, svgRef, recordRef, title, particulars, compassPhotos, lastDevCurve, ...props}) => {
 
     const handleButton = e => {
 
@@ -17,6 +17,7 @@ export const FormButton = ({ href, fetchMethod, allValues, svgRef, title, partic
                 formData.append(key, value)
             }
             formData.append('svg', svgRef.current.outerHTML);
+            formData.append('record', recordRef.current.outerHTML);
 
             particulars.map(file => formData.append('particulars[]',file))
             compassPhotos.map(file => formData.append('compassPhotos[]',file))

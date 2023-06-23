@@ -1,0 +1,22 @@
+.record{
+    margin: 50px 0;
+}
+.record table{
+    width: 100%;
+    td,th{
+        text-align: center;
+    }
+}
+
+.record input{
+    outline: none;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    text-align: center;
+}
+
+#invisibleTable{
+    visibility: hidden ;
+    height: 0;
+}

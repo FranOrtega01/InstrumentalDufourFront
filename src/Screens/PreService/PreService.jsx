@@ -1,6 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
 import './preService.scss'
-import JSZip from "jszip";
 
 import { SauraContainer } from './Components/Compasses/SauraKeiki/SauraContainer'
 import { OsakaContainer } from './Components/Compasses/OsakaNunotani/OsakaContainer'
@@ -11,13 +10,12 @@ import { CassensContainer } from "./Components/Compasses/Cassens/CassensContaine
 import { LilleyContainer } from "./Components/Compasses/Lilley/LilleyContainer";
 import { OtherContainer } from './Components/Compasses/Other/OtherContainer.jsx';
 
-import { Dropzone } from '../../Components/Dropzone/Dropzone'
 import { CustomForm } from "./Components/Form/FormContainer";
+import { Dropzone } from '../../Components/Dropzone/Dropzone'
 import { FormButton } from './Components/Form/FormButton'
 
 
 export const PreContainer = () => {
-
 
     const changeHandler = e => {
         setAllValues(prevValues => {
@@ -28,6 +26,7 @@ export const PreContainer = () => {
         }
         )
     }
+    
 
     const renderCompass = (value) => {
         switch (value) {
@@ -73,6 +72,7 @@ export const PreContainer = () => {
     })
 
     const svgRef = useRef()
+    const recordRef = useRef()
 
     useEffect(() => {
         console.log(particulars);
@@ -84,10 +84,12 @@ export const PreContainer = () => {
             <h2>Pre Service Form</h2>
             <CustomForm
                 changeHandler={changeHandler}
+                recordRef={recordRef}
             />
             <div className="mb-5" ref={svgRef}>
                 {renderCompass(allValues.mark)}
             </div>
+
             <Dropzone files={particulars} setFiles={setParticulars} id={'particulars'} title={'Ship Particulars'} />
             <Dropzone files={compassPhotos} setFiles={setCompassPhotos} id={'compassPhotos'} title={'Compass Photos'} />
             <Dropzone files={lastDevCurve} setFiles={setLastDevCurve} id={'lastDevCurve'} title={'Last Deviation Curve'} />
@@ -97,6 +99,7 @@ export const PreContainer = () => {
                 href={'http://127.0.0.1:8080/preservice/test'}
                 fetchMethod={'POST'}
                 svgRef={svgRef}
+                recordRef={recordRef}
                 allValues={allValues}
                 particulars={particulars}
                 compassPhotos={compassPhotos}

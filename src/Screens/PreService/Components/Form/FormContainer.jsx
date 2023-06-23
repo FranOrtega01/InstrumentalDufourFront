@@ -1,8 +1,10 @@
 import React from "react";
 import './form.scss'
 import { FormTextInput } from "./FormTextInput";
+import { Record } from '../Record/Record'
 
-export const CustomForm = ({ changeHandler }) => {
+
+export const CustomForm = ({ changeHandler, recordRef }) => {
 
     const compasses = ['SAURA KEIKI', 'TOKIMEK INC', 'TOKYO KEIKI', 'OSAKA NUNOTANI SEIKI', 'SPERRY MARINE', 'SARACOM', 'CASSENS & PLATH', 'PLATH 2060', 'JOHN LILLEY & GUILLIE', 'OTHER']
     return (
@@ -44,6 +46,8 @@ export const CustomForm = ({ changeHandler }) => {
 
                 {/* Current Variation */}
                 <FormTextInput label={"Current Variaton"} name={'currentVariation'} changeHandler={changeHandler} />
+
+                <Record recordRef={recordRef}/>
 
                 {/* Compass */}
 

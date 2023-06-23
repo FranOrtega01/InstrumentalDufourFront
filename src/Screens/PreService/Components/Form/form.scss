@@ -50,9 +50,9 @@ input {
 	// padding: .25rem 0;
 	&:focus,&:valid {
 		outline: 0;
-		border-bottom-color: red;
+		border-bottom-color: rgb(14, 48, 149);
 		&+.input-label {
-			color: red;
+			color: rgb(14, 48, 149);
 			transform: translateY(-2rem);
 		}
 	}

@@ -19,13 +19,12 @@ export const Dropzone = ({ title, id, files, setFiles }) => {
     const { getRootProps, getInputProps, isFocused, isDragAccept, isDragReject, isDragActive } = useDropzone({
         onDrop,
         accept: {
-            'image/jpeg': '.jpeg',
-            'image/png': '.png',
+            'image/jpeg': ['.jpg', '.jpeg'],
+            'image/png': ['.png'],
             'application/msword': ['.doc'],
             'application/vnd.openxmlformats-officedocument.wordprocessingml.document': ['.docx'],
             'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet': ['.xlsx'],
-            'application/pdf': ['.pdf'],
-            'image/jpeg': ['.jpg']
+            'application/pdf': ['.pdf']
         },
         maxSize: 1024 * 5000,
     })
