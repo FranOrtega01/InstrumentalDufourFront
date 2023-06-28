@@ -1,17 +1,18 @@
 import './App.scss';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { PreContainer } from './Screens/PreService/PreService';
+import { Home } from './Screens/Home/Home';
 import { Header } from './Components/Header/Header';
 
 function App() {
   return(
     <>
-      <Header/>
+      {/* <Header/> */}
       <Router>
         <Routes>
+          <Route path='/preservice/:token' element={<PreContainer />} />
           <Route path='/' element={<Home />} />
           <Route path='/admin' element={<Home />} />
-          <Route path='/preservice/:token' element={<PreContainer />} />
         </Routes>
       </Router>
     </>

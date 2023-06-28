@@ -41,7 +41,7 @@ export const Record = ({ recordRef }) => {
 
 
     return (
-        <section class='record'>
+        <section className='record'>
             <h3>Record</h3>
             <table>
                 <thead>

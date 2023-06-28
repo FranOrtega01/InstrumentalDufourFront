@@ -1,10 +1,11 @@
 import React from 'react'
 
-export const FormTextInput = ({label, name, changeHandler}) => {
+export const FormTextInput = ({label, name, errors, register, ...props}) => {
     return (
-    <div className="input">
-        <input onChange={e => changeHandler(e)} type="text" className="input-field text-secondary" name={name} id={name}  required/>
+    <div className={`input ${props.className}`}>
+        <input {...register(name)} type="text" className="input-field text-secondary" name={name} id={name}/>
         <label className="input-label">{label}</label>
+        <p className='error'>{errors[name]?.message}</p>
     </div>
     )
 }

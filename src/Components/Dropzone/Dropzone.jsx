@@ -47,7 +47,7 @@ export const Dropzone = ({ title, id, files, setFiles }) => {
     return (
         <>
             <h3>{title}</h3>
-            <form id={id} className='col-10 mt-5  m-auto'>
+            <article id={id} className='col-10 mt-5  m-auto'>
 
                 <div {...getRootProps({
                     style
@@ -57,8 +57,8 @@ export const Dropzone = ({ title, id, files, setFiles }) => {
                     {
                         !isDragActive ? (
                             <>
-                                <p>Drag & drop some files here, or click to select files</p>
-                                <p>Only images are acepted</p>
+                                <p>Drag & drop some files here, or click to select files.</p>
+                                <p>Only images, pdf, .doc and .xlxs are acepted.</p>
                             </>
                         ) :
 
@@ -92,7 +92,7 @@ export const Dropzone = ({ title, id, files, setFiles }) => {
                         </li>
                     ))}
                 </ul>
-            </form>
+            </article>
         </>
 
     )
@@ -114,7 +114,10 @@ const baseStyle = {
     color: '#bdbdbd',
     outline: 'none',
     transition: 'border .24s ease-in-out',
-    height: 400
+    height: 400,
+    cursor:'pointer',
+    userSelect: 'none'
+    
 
 };
 
