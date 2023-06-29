@@ -72,25 +72,49 @@ export const PreContainer = () => {
     const markValue = watch('mark');
 
     const onSubmit = async (data) => {
-
         setLoading(true)
-        console.log(data);
-        // const response = await fetch('http://127.0.0.1:8080/preservice/test', {
-        //     method: 'POST',
-        //     headers: {
-        //         'Content-Type': 'application/json'
-        //     },
-        //     body: JSON.stringify(data)
-        // })
 
-        // const json = await response.json();
+        try {
 
-        // Reiniciar el formulario después de enviarlo
-        // reset();
-        setLoading(false)
+            const formData = new FormData();
+
+            data.svg = svgRef.current.outerHTML;
+            data.record = recordRef.current.outerHTML
+
+            console.log('FILES');
+            console.log(particulars);
+            console.log(compassPhotos);
+            console.log(lastDevCurve);
+
+            // Data key-value
+            for (const [key, value] of Object.entries(data)) {
+                formData.append(key, value)
+            }
+
+            // Files
+            
+            particulars.map(file => formData.append('particulars[]',file))
+            compassPhotos.map(file => formData.append('compassPhotos[]',file))
+            lastDevCurve.map(file => formData.append('lastDevCurve[]',file))
+
+
+            const response = await fetch('http://127.0.0.1:8080/preservice/test', {
+                method: 'POST',
+                body: formData
+            })
+            const json = await response.json()
+            console.log(json);
+
+            // redirect to Home
+            // window.location.replace("/");
+        } catch (error){
+            console.log(error);
+        }
+        finally{
+            setLoading(false)
+        }
+
     }
-
-
     return (
         <section className="col-10 container justify-content-center preServiceSection">
             <h2>Pre Service Form</h2>
@@ -108,24 +132,12 @@ export const PreContainer = () => {
                 <Dropzone files={compassPhotos} setFiles={setCompassPhotos} id={'compassPhotos'} title={'Compass Photos'} />
                 <Dropzone files={lastDevCurve} setFiles={setLastDevCurve} id={'lastDevCurve'} title={'Last Deviation Curve'} />
 
-                {/* <FormButton
-                    title={'Send'}
-                    href={'http://127.0.0.1:8080/preservice/test'}
-                    fetchMethod={'POST'}
-                    svgRef={svgRef}
-                    recordRef={recordRef}
-                    allValues={allValues}
-                    particulars={particulars}
-                    compassPhotos={compassPhotos}
-                    lastDevCurve={lastDevCurve}
-                    className={'btn btn-primary'}
-                /> */}
                 <div className="action col-12" id="preService-submit">
-                    <input 
-                    type="submit" 
-                    value="Send" 
-                    className="action-button"
-                    disabled={loading} 
+                    <input
+                        type="submit"
+                        value={loading ? "Sending... Please wait." : "Send"}
+                        className="action-button"
+                        disabled={loading}
                     />
                 </div>
             </form>

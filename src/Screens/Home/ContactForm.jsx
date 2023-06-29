@@ -133,7 +133,9 @@ export const ContactForm = () => {
                     </div>
 
                     <div className="action col-12" id="submit">
-                        <input type="submit" value="Submit" className="action-button" disabled={loading} />
+                        <input type="submit" className="action-button" disabled={loading}
+                        value={loading ? "Sending... Please wait." : "Send"}
+                        />
                     </div>
                 </form>
                 <ToastContainer />

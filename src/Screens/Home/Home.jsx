@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 import './scss/-scss.scss'
 import logo from '../../assets/img/logo2.png'
 import wpp from '../../assets/img/wpp.png'
@@ -8,8 +8,11 @@ import simple from '../../assets/img/keppSimple.jpeg'
 import paperless from '../../assets/img/goPaperless.jpeg'
 
 import ControlledCarousel from './Carousel'
-import {Footer} from './Footer.jsx'
-import {ContactForm} from './ContactForm.jsx'
+import { Footer } from './Footer.jsx'
+import { ContactForm } from './ContactForm.jsx'
+
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 
 export const Home = () => {
 
@@ -36,6 +39,10 @@ export const Home = () => {
             alerta.classList.remove("hide");
         }, 1200);
     }
+
+    useEffect(() => {
+        AOS.init();
+    }, [])
 
     return (
         <>
@@ -266,7 +273,7 @@ export const Home = () => {
 
                 {/* <!-- Footer --> */}
                 <Footer />
-                
+
             </main>
         </>
     )
