@@ -11,10 +11,10 @@ export const Record = ({ recordRef }) => {
         
         deviation = deviation >= 360 ? deviation - 360 : deviation
         
-        if (variation == '') deviation = 0
+        if (variation === '') deviation = 0
 
-        if(deviation > 180 && gyro == 0 ) deviation -= 360
-        if(deviation < -180 && gyro == 0) deviation += 360
+        if(deviation > 180 && gyro === 0 ) deviation -= 360
+        if(deviation < -180 && gyro === 0) deviation += 360
 
         return deviation;
     };

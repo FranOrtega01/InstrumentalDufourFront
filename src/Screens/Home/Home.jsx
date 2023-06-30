@@ -19,13 +19,13 @@ export const Home = () => {
     const alertEffect = () => {
         let alerta = document.getElementById("alert");
         alerta.classList.remove("hidden");
-        alerta.classList.add("show");
+        alerta.classList.add("showAlert");
         setTimeout(() => {
-            alerta.classList.add("hide");
+            alerta.classList.add("hideAlert");
             setTimeout(() => {
                 alerta.classList.add("hidden");
-                alerta.classList.remove("show");
-                alerta.classList.remove("hide");
+                alerta.classList.remove("showAlert");
+                alerta.classList.remove("hideAlert");
             }, 1200);
         }, 3000);
     }
@@ -35,8 +35,8 @@ export const Home = () => {
         alerta.classList.add("hide");
         setTimeout(() => {
             alerta.classList.add("hidden");
-            alerta.classList.remove("show");
-            alerta.classList.remove("hide");
+            alerta.classList.remove("showAlert");
+            alerta.classList.remove("hideAlert");
         }, 1200);
     }
 

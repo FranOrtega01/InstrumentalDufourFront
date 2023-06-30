@@ -48,7 +48,7 @@ export const TokimekContainer = () => {
 
         if (!value) e.target.setAttribute('data-value', 0)
 
-        value == 1 ? value = 0 : value++
+        value === 1 ? value = 0 : value++
 
         e.target.setAttribute('data-value', value)
 
@@ -60,7 +60,7 @@ export const TokimekContainer = () => {
 
         if (!value) e.target.setAttribute('data-value', 0)
 
-        value == 2 ? value = 0 : value++
+        value === 2 ? value = 0 : value++
 
         e.target.setAttribute('data-value', value)
 

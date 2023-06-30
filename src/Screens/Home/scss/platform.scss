@@ -14,7 +14,7 @@
     // border-left: 6px solid $main-blue;
 }
 
-.show{ //Show Alert
+.showAlert{ //Show Alert
     animation: show_slide 1s ease forwards;
 }
 
@@ -35,7 +35,7 @@
 .hidden{
     display: none;
 }
-.hide{
+.hideAlert{
     animation: hide_slide 1.5s ease forwards; 
 }
 
