@@ -12,14 +12,42 @@ import { OtherContainer } from './Components/Compasses/Other/OtherContainer.jsx'
 
 import { CustomForm } from "./Components/Form/FormContainer";
 import { Dropzone } from '../../Components/Dropzone/Dropzone'
-import { FormButton } from './Components/Form/FormButton'
-
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup'
 import { preServiceSchema } from "../../Validations/preService.validation";
 
+import { useParams } from 'react-router-dom';
+
+import { Redirect } from "../../Components/Redirect/Redirect";
+
 export const PreContainer = () => {
 
+    const { token } = useParams();
+
+    const [unauthorized, setUnauthorized] = useState(false)
+
+    useEffect(() => {
+        const validateToken = async () => {
+            try {
+                // Realiza una solicitud al backend para validar el token
+                const response = await fetch('http://127.0.0.1:8080/preservice/authorizate-token', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        Authorization: `Bearer ${token}`,
+                    },
+                });
+                console.log(response.ok);
+                if (!response.ok) {
+                    setUnauthorized(true)
+                }
+            } catch (error) {
+                console.error('Error validating token:', error);
+            }
+        };
+
+        validateToken();
+    }, []);
 
     // Compass Magnets (svg) Rendering
     const renderCompass = (value) => {
@@ -59,10 +87,6 @@ export const PreContainer = () => {
     const svgRef = useRef()
     const recordRef = useRef()
 
-    useEffect(() => {
-        console.log(particulars);
-    }, [particulars])
-
 
     // Form Hook
     const { register, watch, handleSubmit, reset, formState: { errors } } = useForm({
@@ -92,10 +116,10 @@ export const PreContainer = () => {
             }
 
             // Files
-            
-            particulars.map(file => formData.append('particulars[]',file))
-            compassPhotos.map(file => formData.append('compassPhotos[]',file))
-            lastDevCurve.map(file => formData.append('lastDevCurve[]',file))
+
+            particulars.map(file => formData.append('particulars[]', file))
+            compassPhotos.map(file => formData.append('compassPhotos[]', file))
+            lastDevCurve.map(file => formData.append('lastDevCurve[]', file))
 
 
             const response = await fetch('http://127.0.0.1:8080/preservice/test', {
@@ -105,42 +129,44 @@ export const PreContainer = () => {
             const json = await response.json()
             console.log(json);
 
-            // redirect to Home
-            // window.location.replace("/");
-        } catch (error){
+        } catch (error) {
             console.log(error);
         }
-        finally{
+        finally {
             setLoading(false)
         }
 
     }
     return (
-        <section className="col-10 container justify-content-center preServiceSection">
-            <h2>Pre Service Form</h2>
-            <form onSubmit={handleSubmit(onSubmit)}>
-                <CustomForm
-                    errors={errors}
-                    register={register}
-                    recordRef={recordRef}
-                />
-                <div className="mb-5" ref={svgRef}>
-                    {renderCompass(markValue)}
-                </div>
+        unauthorized ? <Redirect to='/' message={'Unauthorized, redirecting to home.'} /> : (
+            <>
+                <section className="col-10 container justify-content-center preServiceSection">
+                    <h2>Pre Service Form</h2>
+                    <form onSubmit={handleSubmit(onSubmit)}>
+                        <CustomForm
+                            errors={errors}
+                            register={register}
+                            recordRef={recordRef}
+                        />
+                        <div className="mb-5" ref={svgRef}>
+                            {renderCompass(markValue)}
+                        </div>
 
-                <Dropzone files={particulars} setFiles={setParticulars} id={'particulars'} title={'Ship Particulars'} />
-                <Dropzone files={compassPhotos} setFiles={setCompassPhotos} id={'compassPhotos'} title={'Compass Photos'} />
-                <Dropzone files={lastDevCurve} setFiles={setLastDevCurve} id={'lastDevCurve'} title={'Last Deviation Curve'} />
+                        <Dropzone files={particulars} setFiles={setParticulars} id={'particulars'} title={'Ship Particulars'} />
+                        <Dropzone files={compassPhotos} setFiles={setCompassPhotos} id={'compassPhotos'} title={'Compass Photos'} />
+                        <Dropzone files={lastDevCurve} setFiles={setLastDevCurve} id={'lastDevCurve'} title={'Last Deviation Curve'} />
 
-                <div className="action col-12" id="preService-submit">
-                    <input
-                        type="submit"
-                        value={loading ? "Sending... Please wait." : "Send"}
-                        className="action-button"
-                        disabled={loading}
-                    />
-                </div>
-            </form>
-        </section>
+                        <div className="action col-12" id="preService-submit">
+                            <input
+                                type="submit"
+                                value={loading ? "Sending... Please wait." : "Send"}
+                                className="action-button"
+                                disabled={loading}
+                            />
+                        </div>
+                    </form>
+                </section>
+            </>
+        )
     )
 }
