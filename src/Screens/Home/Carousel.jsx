@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import Carousel from 'react-bootstrap/Carousel';
-import slide1 from '../../assets/img/Buque.mp4'
-import slide2 from '../../assets/img/video2.mp4'
+import slide1 from '../../assets/img/slide3.jpeg'
+import slide2 from '../../assets/img/slide3.jpeg'
 import slide3 from '../../assets/img/slide3.jpeg'
 
 function ControlledCarousel({alertEffect}) {
