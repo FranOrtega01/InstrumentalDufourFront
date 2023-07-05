@@ -26,7 +26,7 @@ export const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
             const generatedToken = data.payload; // Asegúrate de obtener el campo correcto del objeto de respuesta
 
             setToken(generatedToken);
-            copyToClipboard(`https://carmine-bat-cap.cyclic.app/preservice/${generatedToken}`);
+            copyToClipboard(`https://instrumental-dufour-front-6f5a.vercel.app/preservice/${generatedToken}`);
             // copyToClipboard(generatedToken);
         } catch (error) {
             console.error('Error al generar el token:', error);
