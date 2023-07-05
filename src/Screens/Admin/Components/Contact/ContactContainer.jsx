@@ -15,6 +15,7 @@ export const ContactContainer = ({ contact }) => {
     const [sort, setSort] = useState('')
     const [query, setQuery] = useState('')
     const [limit, setLimit] = useState('')
+    const [page, setPage] = useState(1)
 
     const location = useLocation();
 
@@ -22,13 +23,15 @@ export const ContactContainer = ({ contact }) => {
         const fetchData = async () => {
             try {
                 setLoading(true)
-                console.log(location);
                 // Construir los parámetros de búsqueda
                 const params = new URLSearchParams()
                 if (query) params.append('query', query)
                 if (sort) params.append('sort', sort)
                 if (limit) params.append('limit', limit)
-                const response = await fetch(`http://127.0.0.1:8080${location.pathname}?${params.toString()}`);
+                if (page) params.append('page', page)
+
+                console.log(params);
+                const response = await fetch(`https://carmine-bat-cap.cyclic.app${location.pathname}?${params.toString()}`);
                 const json = await response.json();
                 const jsonContacts = await json.payload
                 // Asignar los contactos 
@@ -44,7 +47,7 @@ export const ContactContainer = ({ contact }) => {
             }
         };
         fetchData();
-    }, [location, sort, query, limit]);
+    }, [location, sort, query, limit, page]);
 
     return (
         <>
@@ -75,8 +78,8 @@ export const ContactContainer = ({ contact }) => {
                     <>
                         {contact ? <ContactList contacts={contacts} /> : <EnterpriseList enterprise={contacts} />}
                         <div className="paginateBtn">
-                            {data.hasPrevPage && <Link to={data.prevLink}>{data.prevPage}</Link>}
-                            {data.hasNextPage && <Link to={data.nextLink}>{data.nextPage}</Link>}
+                            {data.hasPrevPage && <span onClick={() => setPage(page - 1)}>{data.prevPage}</span>}
+                            {data.hasNextPage && <span onClick={() => setPage(page + 1)}>{data.nextPage}</span>}
                         </div>
                     </>
                 )}

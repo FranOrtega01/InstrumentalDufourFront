@@ -23,7 +23,7 @@ export const FlowContainer = () => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await fetch('http://127.0.0.1:8080/api/admin/contact/all');
+                const response = await fetch('https://carmine-bat-cap.cyclic.app/api/admin/contact/all');
                 const json = await response.json();
                 const contacts = await json.contacts
                 // Filtrar los contactos por estado y asignarlos a los estados correspondientes

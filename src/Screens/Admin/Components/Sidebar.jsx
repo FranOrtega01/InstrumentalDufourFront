@@ -20,13 +20,13 @@ export const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
 
     const generateToken = async () => {
         try {
-            const response = await fetch('http://127.0.0.1:8080/preservice/generate-token'); // Reemplaza la URL con la ruta de tu backend para generar el token
+            const response = await fetch('https://carmine-bat-cap.cyclic.app/preservice/generate-token'); // Reemplaza la URL con la ruta de tu backend para generar el token
             const data = await response.json();
             console.log(data);
             const generatedToken = data.payload; // Asegúrate de obtener el campo correcto del objeto de respuesta
 
             setToken(generatedToken);
-            copyToClipboard(`http://127.0.0.1:3000/preservice/${generatedToken}`);
+            copyToClipboard(`https://carmine-bat-cap.cyclic.app/preservice/${generatedToken}`);
             // copyToClipboard(generatedToken);
         } catch (error) {
             console.error('Error al generar el token:', error);

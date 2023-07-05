@@ -30,7 +30,7 @@ export const PreContainer = () => {
         const validateToken = async () => {
             try {
                 // Realiza una solicitud al backend para validar el token
-                const response = await fetch('http://127.0.0.1:8080/preservice/authorizate-token', {
+                const response = await fetch('https://carmine-bat-cap.cyclic.app/preservice/authorizate-token', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
@@ -122,7 +122,7 @@ export const PreContainer = () => {
             lastDevCurve.map(file => formData.append('lastDevCurve[]', file))
 
 
-            const response = await fetch('http://127.0.0.1:8080/preservice/test', {
+            const response = await fetch('https://carmine-bat-cap.cyclic.app/preservice/test', {
                 method: 'POST',
                 body: formData
             })

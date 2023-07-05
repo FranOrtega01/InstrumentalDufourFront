@@ -11,7 +11,7 @@ export const EnterpriseContainer = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch('http://127.0.0.1:8080/api/admin/enterprise');
+        const response = await fetch('https://carmine-bat-cap.cyclic.app/api/admin/enterprise');
         const json = await response.json();
         const jsonContacts = await json.enterprises
 

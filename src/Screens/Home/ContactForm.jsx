@@ -18,7 +18,7 @@ export const ContactForm = () => {
 
         setLoading(true)
 
-        const response = await fetch('http://127.0.0.1:8080/send', {
+        const response = await fetch('https://carmine-bat-cap.cyclic.app/send', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
