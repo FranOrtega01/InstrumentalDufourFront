@@ -1,7 +1,66 @@
 import * as React from "react"
-export const SvgComponent = ({ title, handleCircle, ...props }) => {
+export const SvgComponent = ({ title, handleCircle,changeCircleColor, ...props }) => {
 
+    const handleAth = (e) => {
+        e.stopPropagation();
+        const gElement = e.target.parentNode;
+        const dataNameValue = gElement.getAttribute('data-name');
+        const dataPosition = gElement.getAttribute('data-position');
 
+        const targetElement = document.querySelectorAll(`[data-name="${dataNameValue}"]`);
+
+        if (dataPosition === 'right'){
+            const ellipses = targetElement[1].querySelectorAll('ellipse');
+            
+            ellipses.forEach(el => {
+                let id = el.getAttribute('data-id')
+                id == 2 ? id = 0 : id++
+                el.setAttribute('data-id', id )
+                changeCircleColor(el, id)
+            })
+            
+            let idValue = ellipses[0].getAttribute('data-id')
+
+            const complementEllipses = targetElement[0].querySelectorAll('ellipse');
+            console.log(complementEllipses);
+            console.log(idValue);
+            complementEllipses.forEach(el => {
+                let id
+                if(idValue == 0) id = 0;
+                if(idValue == 1) id = 2;
+                if(idValue == 2) id = 1;
+                el.setAttribute('data-id', id)
+                changeCircleColor(el, id)
+
+            })
+        }else{
+            const ellipses = targetElement[0].querySelectorAll('ellipse');
+            
+            ellipses.forEach(el => {
+                let id = el.getAttribute('data-id')
+                id == 2 ? id = 0 : id++
+                el.setAttribute('data-id', id )
+                changeCircleColor(el, id)
+            })
+            
+            let idValue = ellipses[0].getAttribute('data-id')
+
+            const complementEllipses = targetElement[1].querySelectorAll('ellipse');
+            console.log(complementEllipses);
+            console.log(idValue);
+            complementEllipses.forEach(el => {
+                let id
+                if(idValue == 0) id = 0;
+                if(idValue == 1) id = 2;
+                if(idValue == 2) id = 1;
+                el.setAttribute('data-id', id)
+                changeCircleColor(el, id)
+
+            })
+        }
+
+        
+    };
 
     return (
         <div className="svgContainer">
@@ -584,329 +643,381 @@ export const SvgComponent = ({ title, handleCircle, ...props }) => {
                         <line className="cls-9" x1={360.1} y1={766.27} x2={360.1} y2={804.04} />
                         <line className="cls-9" x1={325.78} y1={229.5} x2={360.1} y2={242.18} />
                     </g>
+                    {/* Magnets Left */}
                     <g id="Capa_2" data-name="Capa 2">
-                        <ellipse
-                            className="cls-7 pointer"
-                            cx={194.39}
-                            cy={746.72}
-                            rx={15.05}
-                            ry={15.37}
-                            onClick={e => handleCircle(e)}
+                        {/* Fore Magnets Left*/}
+                        <g >
 
-                        />
-                        <ellipse
-                            className="cls-7 pointer"
-                            cx={194.39}
-                            cy={711.48}
-                            rx={15.05}
-                            ry={15.37}
-                            onClick={e => handleCircle(e)}
+                            <ellipse
+                                className="cls-7 pointer"
+                                cx={194.39}
+                                cy={746.72}
+                                rx={15.05}
+                                ry={15.37}
+                                onClick={e => handleCircle(e)}
 
-                        />
-                        <ellipse
-                            className="cls-7 pointer"
-                            cx={194.39}
-                            cy={676.25}
-                            rx={15.05}
-                            ry={15.37}
-                            onClick={e => handleCircle(e)}
+                            />
+                            <ellipse
+                                className="cls-7 pointer"
+                                cx={194.39}
+                                cy={711.48}
+                                rx={15.05}
+                                ry={15.37}
+                                onClick={e => handleCircle(e)}
 
-                        />
-                        <ellipse
-                            className="cls-7 pointer"
-                            cx={194.39}
-                            cy={641.02}
-                            rx={15.05}
-                            ry={15.37}
-                            onClick={e => handleCircle(e)}
+                            />
+                            <ellipse
+                                className="cls-7 pointer"
+                                cx={194.39}
+                                cy={676.25}
+                                rx={15.05}
+                                ry={15.37}
+                                onClick={e => handleCircle(e)}
 
-                        />
-                        <ellipse
-                            className="cls-7 pointer"
-                            cx={194.39}
-                            cy={605.77}
-                            rx={15.05}
-                            ry={15.37}
-                            onClick={e => handleCircle(e)}
+                            />
+                            <ellipse
+                                className="cls-7 pointer"
+                                cx={194.39}
+                                cy={641.02}
+                                rx={15.05}
+                                ry={15.37}
+                                onClick={e => handleCircle(e)}
 
-                        />
-                        <ellipse
-                            className="cls-7 pointer"
-                            cx={194.39}
-                            cy={570.54}
-                            rx={15.05}
-                            ry={15.37}
-                            onClick={e => handleCircle(e)}
+                            />
+                            <ellipse
+                                className="cls-7 pointer"
+                                cx={194.39}
+                                cy={605.77}
+                                rx={15.05}
+                                ry={15.37}
+                                onClick={e => handleCircle(e)}
 
-                        />
-                        <ellipse
-                            className="cls-7 pointer"
-                            cx={194.39}
-                            cy={535.31}
-                            rx={15.05}
-                            ry={15.37}
-                            onClick={e => handleCircle(e)}
+                            />
+                            <ellipse
+                                className="cls-7 pointer"
+                                cx={194.39}
+                                cy={570.54}
+                                rx={15.05}
+                                ry={15.37}
+                                onClick={e => handleCircle(e)}
 
-                        />
-                        <ellipse
-                            className="cls-7 pointer"
-                            cx={194.39}
-                            cy={500.07}
-                            rx={15.05}
-                            ry={15.37}
-                            onClick={e => handleCircle(e)}
+                            />
+                            <ellipse
+                                className="cls-7 pointer"
+                                cx={194.39}
+                                cy={535.31}
+                                rx={15.05}
+                                ry={15.37}
+                                onClick={e => handleCircle(e)}
 
-                        />
-                        <ellipse
-                            className="cls-7 pointer"
-                            cx={194.39}
-                            cy={464.83}
-                            rx={15.05}
-                            ry={15.37}
-                            onClick={e => handleCircle(e)}
+                            />
+                            <ellipse
+                                className="cls-7 pointer"
+                                cx={194.39}
+                                cy={500.07}
+                                rx={15.05}
+                                ry={15.37}
+                                onClick={e => handleCircle(e)}
 
-                        />
-                        <ellipse
-                            className="cls-7 pointer"
-                            cx={194.39}
-                            cy={429.6}
-                            rx={15.05}
-                            ry={15.37}
-                            onClick={e => handleCircle(e)}
+                            />
+                            <ellipse
+                                className="cls-7 pointer"
+                                cx={194.39}
+                                cy={464.83}
+                                rx={15.05}
+                                ry={15.37}
+                                onClick={e => handleCircle(e)}
 
-                        />
-                        <ellipse
-                            className="cls-7 pointer"
-                            cx={194.39}
-                            cy={394.36}
-                            rx={15.05}
-                            ry={15.37}
-                            onClick={e => handleCircle(e)}
+                            />
+                            <ellipse
+                                className="cls-7 pointer"
+                                cx={194.39}
+                                cy={429.6}
+                                rx={15.05}
+                                ry={15.37}
+                                onClick={e => handleCircle(e)}
 
-                        />
-                        <ellipse
-                            className="cls-7 pointer"
-                            cx={194.39}
-                            cy={359.13}
-                            rx={15.05}
-                            ry={15.37}
-                            onClick={e => handleCircle(e)}
+                            />
+                            <ellipse
+                                className="cls-7 pointer"
+                                cx={194.39}
+                                cy={394.36}
+                                rx={15.05}
+                                ry={15.37}
+                                onClick={e => handleCircle(e)}
 
-                        />
-                        <ellipse
-                            className="cls-7 pointer"
-                            cx={194.39}
-                            cy={323.9}
-                            rx={15.05}
-                            ry={15.37}
-                            onClick={e => handleCircle(e)}
+                            />
+                            <ellipse
+                                className="cls-7 pointer"
+                                cx={194.39}
+                                cy={359.13}
+                                rx={15.05}
+                                ry={15.37}
+                                onClick={e => handleCircle(e)}
 
-                        />
-                        <ellipse
-                            className="cls-7 pointer"
-                            cx={194.39}
-                            cy={288.65}
-                            rx={15.05}
-                            ry={15.37}
-                            onClick={e => handleCircle(e)}
+                            />
+                            <ellipse
+                                className="cls-7 pointer"
+                                cx={194.39}
+                                cy={323.9}
+                                rx={15.05}
+                                ry={15.37}
+                                onClick={e => handleCircle(e)}
 
-                        />
-                        <ellipse
-                            className="cls-3"
-                            cx={340.83}
-                            cy={746.04}
-                            rx={15.05}
-                            ry={15.37}
-                        />
-                        <ellipse
-                            className="cls-3"
-                            cx={340.83}
-                            cy={710.81}
-                            rx={15.05}
-                            ry={15.37}
-                        />
-                        <ellipse
-                            className="cls-3"
-                            cx={340.84}
-                            cy={675.57}
-                            rx={15.05}
-                            ry={15.37}
-                        />
-                        <ellipse
-                            className="cls-3"
-                            cx={340.84}
-                            cy={640.33}
-                            rx={15.05}
-                            ry={15.37}
-                        />
-                        <ellipse
-                            className="cls-3"
-                            cx={340.83}
-                            cy={605.1}
-                            rx={15.05}
-                            ry={15.37}
-                        />
-                        <ellipse
-                            className="cls-3"
-                            cx={340.83}
-                            cy={569.87}
-                            rx={15.05}
-                            ry={15.37}
-                        />
-                        <ellipse
-                            className="cls-2"
-                            cx={340.83}
-                            cy={534.63}
-                            rx={15.05}
-                            ry={15.37}
-                        />
-                        <ellipse
-                            className="cls-5"
-                            cx={340.85}
-                            cy={499.42}
-                            rx={15.05}
-                            ry={15.37}
-                        />
-                        <ellipse
-                            className="cls-5"
-                            cx={340.85}
-                            cy={464.17}
-                            rx={15.05}
-                            ry={15.37}
-                        />
-                        <ellipse
-                            className="cls-5"
-                            cx={340.86}
-                            cy={428.94}
-                            rx={15.05}
-                            ry={15.37}
-                        />
-                        <ellipse
-                            className="cls-5"
-                            cx={340.85}
-                            cy={393.71}
-                            rx={15.05}
-                            ry={15.37}
-                        />
-                        <ellipse
-                            className="cls-5"
-                            cx={340.85}
-                            cy={358.47}
-                            rx={15.05}
-                            ry={15.37}
-                        />
-                        <ellipse
-                            className="cls-5"
-                            cx={340.85}
-                            cy={323.23}
-                            rx={15.05}
-                            ry={15.37}
-                        />
-                        <ellipse
-                            className="cls-4"
-                            cx={340.87}
-                            cy={288.02}
-                            rx={15.05}
-                            ry={15.37}
-                        />
-                        <ellipse
-                            className="cls-5"
-                            cx={335.54}
-                            cy={288.67}
-                            rx={15.05}
-                            ry={15.37}
-                        />
-                        <ellipse
-                            className="cls-5"
-                            cx={335.54}
-                            cy={323.57}
-                            rx={15.05}
-                            ry={15.37}
-                        />
-                        <ellipse
-                            className="cls-5"
-                            cx={335.54}
-                            cy={359.15}
-                            rx={15.05}
-                            ry={15.37}
-                        />
-                        <ellipse
-                            className="cls-5"
-                            cx={335.54}
-                            cy={394.26}
-                            rx={15.05}
-                            ry={15.37}
-                        />
-                        <ellipse
-                            className="cls-5"
-                            cx={335.54}
-                            cy={429.62}
-                            rx={15.05}
-                            ry={15.37}
-                        />
-                        <ellipse
-                            className="cls-5"
-                            cx={335.54}
-                            cy={464.85}
-                            rx={15.05}
-                            ry={15.37}
-                        />
-                        <ellipse
-                            className="cls-5"
-                            cx={335.54}
-                            cy={500.09}
-                            rx={15.05}
-                            ry={15.37}
-                        />
-                        <ellipse
-                            className="cls-5"
-                            cx={335.54}
-                            cy={535.33}
-                            rx={15.05}
-                            ry={15.37}
-                        />
-                        <ellipse
-                            className="cls-3"
-                            cx={335.52}
-                            cy={571.44}
-                            rx={15.05}
-                            ry={15.37}
-                        />
-                        <ellipse
-                            className="cls-3"
-                            cx={335.52}
-                            cy={605.89}
-                            rx={15.05}
-                            ry={15.37}
-                        />
-                        <ellipse
-                            className="cls-3"
-                            cx={335.52}
-                            cy={641.02}
-                            rx={15.05}
-                            ry={15.37}
-                        />
-                        <ellipse
-                            className="cls-3"
-                            cx={335.52}
-                            cy={676.25}
-                            rx={15.05}
-                            ry={15.37}
-                        />
-                        <ellipse
-                            className="cls-3"
-                            cx={335.52}
-                            cy={711.48}
-                            rx={15.05}
-                            ry={15.37}
-                        />
-                        <ellipse
-                            className="cls-3"
-                            cx={335.52}
-                            cy={745.79}
-                            rx={15.05}
-                            ry={15.37}
-                        />
+                            />
+                            <ellipse
+                                className="cls-7 pointer"
+                                cx={194.39}
+                                cy={288.65}
+                                rx={15.05}
+                                ry={15.37}
+                                onClick={e => handleCircle(e)}
+
+                            />
+                        </g>
+                        {/* Ath left */}
+                        <g>
+                            {/* 1 */}
+                            <g data-name={'1'} data-position={'left'} className="pointer" onClick={handleAth}>
+                                <ellipse
+                                    className="cls-5"
+                                    cx={340.87}
+                                    cy={288.02}
+                                    rx={15.05}
+                                    ry={15.37}
+                                />
+                                <ellipse
+                                    className="cls-5"
+                                    cx={335.54}
+                                    cy={288.67}
+                                    rx={15.05}
+                                    ry={15.37}
+                                />
+                            </g>
+                            {/* 2 */}
+                            <g data-name={'2'} data-position={'left'} className="pointer" onClick={handleAth}>
+                                <ellipse
+                                    className="cls-5"
+                                    cx={340.85}
+                                    cy={323.23}
+                                    rx={15.05}
+                                    ry={15.37}
+                                />
+                                <ellipse
+                                    className="cls-5"
+                                    cx={335.54}
+                                    cy={323.57}
+                                    rx={15.05}
+                                    ry={15.37}
+                                />
+                            </g>
+                            {/* 3 */}
+                            <g data-name={'3'} data-position={'left'} className="pointer" onClick={handleAth}>
+                                <ellipse
+                                    className="cls-5"
+                                    cx={340.85}
+                                    cy={358.47}
+                                    rx={15.05}
+                                    ry={15.37}
+                                />
+                                <ellipse
+                                    className="cls-5"
+                                    cx={335.54}
+                                    cy={359.15}
+                                    rx={15.05}
+                                    ry={15.37}
+                                />
+                            </g>
+                            {/* 4 */}
+                            <g data-name={'4'} data-position={'left'} className="pointer" onClick={handleAth}>
+                                <ellipse
+                                    className="cls-5"
+                                    cx={340.85}
+                                    cy={393.71}
+                                    rx={15.05}
+                                    ry={15.37}
+                                />
+                                <ellipse
+                                    className="cls-5"
+                                    cx={335.54}
+                                    cy={394.26}
+                                    rx={15.05}
+                                    ry={15.37}
+                                />
+                            </g>
+                            {/* 5 */}
+                            <g data-name={'5'} data-position={'left'} className="pointer" onClick={handleAth}>
+                                <ellipse
+                                    className="cls-5"
+                                    cx={340.86}
+                                    cy={428.94}
+                                    rx={15.05}
+                                    ry={15.37}
+                                />
+                                <ellipse
+                                    className="cls-5"
+                                    cx={335.54}
+                                    cy={429.62}
+                                    rx={15.05}
+                                    ry={15.37}
+                                />
+                            </g>
+                            {/* 6 */}
+                            <g data-name={'6'} data-position={'left'} className="pointer" onClick={handleAth}>
+                                <ellipse
+                                    className="cls-5"
+                                    cx={340.85}
+                                    cy={464.17}
+                                    rx={15.05}
+                                    ry={15.37}
+                                />
+                                <ellipse
+                                    className="cls-5"
+                                    cx={335.54}
+                                    cy={464.85}
+                                    rx={15.05}
+                                    ry={15.37}
+                                />
+                            </g>
+                            {/* 7 */}
+                            <g data-name={'7'} data-position={'left'} className="pointer" onClick={handleAth}>
+                                <ellipse
+                                    className="cls-5"
+                                    cx={340.85}
+                                    cy={499.42}
+                                    rx={15.05}
+                                    ry={15.37}
+                                />
+                                <ellipse
+                                    className="cls-5"
+                                    cx={335.54}
+                                    cy={500.09}
+                                    rx={15.05}
+                                    ry={15.37}
+                                />
+                            </g>
+                            {/* 8 */}
+                            <g data-name={'8'} data-position={'left'} className="pointer" onClick={handleAth}>
+                                <ellipse
+                                    className="cls-5"
+                                    cx={340.83}
+                                    cy={534.63}
+                                    rx={15.05}
+                                    ry={15.37}
+                                />
+                                <ellipse
+                                    className="cls-5"
+                                    cx={335.54}
+                                    cy={535.33}
+                                    rx={15.05}
+                                    ry={15.37}
+                                />
+                            </g>
+                            {/* 9 */}
+                            <g data-name={'9'} data-position={'left'} className="pointer" onClick={handleAth}>
+                                <ellipse
+                                    className="cls-5"
+                                    cx={340.83}
+                                    cy={569.87}
+                                    rx={15.05}
+                                    ry={15.37}
+                                />
+                                <ellipse
+                                    className="cls-5"
+                                    cx={335.52}
+                                    cy={571.44}
+                                    rx={15.05}
+                                    ry={15.37}
+                                />
+                            </g>
+                            {/* 10 */}
+                            <g data-name={'10'} data-position={'left'} className="pointer" onClick={handleAth}>
+                                <ellipse
+                                    className="cls-3"
+                                    cx={340.83}
+                                    cy={605.1}
+                                    rx={15.05}
+                                    ry={15.37}
+                                />
+                                <ellipse
+                                    className="cls-5"
+                                    cx={335.52}
+                                    cy={605.89}
+                                    rx={15.05}
+                                    ry={15.37}
+                                />
+                            </g>
+                            {/* 11 */}
+                            <g data-name={'11'} data-position={'left'} className="pointer" onClick={handleAth}>
+                                <ellipse
+                                    className="cls-3"
+                                    cx={340.84}
+                                    cy={640.33}
+                                    rx={15.05}
+                                    ry={15.37}
+                                />
+                                <ellipse
+                                    className="cls-5"
+                                    cx={335.52}
+                                    cy={641.02}
+                                    rx={15.05}
+                                    ry={15.37}
+                                />
+                            </g>
+                            {/* 12 */}
+                            <g data-name={'12'} data-position={'left'} className="pointer" onClick={handleAth}>
+                                <ellipse
+                                    className="cls-3"
+                                    cx={340.84}
+                                    cy={675.57}
+                                    rx={15.05}
+                                    ry={15.37}
+                                />
+                                <ellipse
+                                    className="cls-5"
+                                    cx={335.52}
+                                    cy={676.25}
+                                    rx={15.05}
+                                    ry={15.37}
+                                />
+                            </g>
+                            {/* 13 */}
+                            <g data-name={'13'} data-position={'left'} className="pointer" onClick={handleAth}>
+
+                                <ellipse
+                                    className="cls-3"
+                                    cx={340.83}
+                                    cy={710.81}
+                                    rx={15.05}
+                                    ry={15.37}
+                                />
+                                <ellipse
+                                    className="cls-5"
+                                    cx={335.52}
+                                    cy={711.48}
+                                    rx={15.05}
+                                    ry={15.37}
+                                />
+
+                            </g>
+                            {/* 14 */}
+                            <g data-name={'14'} data-position={'left'} className="pointer" onClick={handleAth}>
+                                <ellipse
+                                    className="cls-3"
+                                    cx={340.83}
+                                    cy={746.04}
+                                    rx={15.05}
+                                    ry={15.37}
+                                />
+                                <ellipse
+                                    className="cls-5"
+                                    cx={335.52}
+                                    cy={745.79}
+                                    rx={15.05}
+                                    ry={15.37}
+                                />
+                            </g>
+                        </g>
                     </g>
                 </g>
                 <g id="Capa_2-2" data-name="Capa 2">
@@ -1559,315 +1670,363 @@ export const SvgComponent = ({ title, handleCircle, ...props }) => {
                             y2={231.24}
                         />
                     </g>
+                    {/* Magnets Right */}
                     <g id="Capa_2-3" data-name="Capa 2">
-                        <ellipse
-                            className="cls-7 pointer"
-                            cx={1221.71}
-                            cy={750.84}
-                            rx={15.05}
-                            ry={15.37}
-                            onClick={e => handleCircle(e)}
-                        />
-                        <ellipse
-                            className="cls-7 pointer"
-                            cx={1221.71}
-                            cy={715.59}
-                            rx={15.05}
-                            ry={15.37}
-                            onClick={e => handleCircle(e)}
-                        />
-                        <ellipse
-                            className="cls-7 pointer"
-                            cx={1221.71}
-                            cy={680.35}
-                            rx={15.05}
-                            ry={15.37}
-                            onClick={e => handleCircle(e)}
-                        />
-                        <ellipse
-                            className="cls-7 pointer"
-                            cx={1221.71}
-                            cy={645.13}
-                            rx={15.05}
-                            ry={15.37}
-                            onClick={e => handleCircle(e)}
-                        />
-                        <ellipse
-                            className="cls-7 pointer"
-                            cx={1221.71}
-                            cy={609.89}
-                            rx={15.05}
-                            ry={15.37}
-                            onClick={e => handleCircle(e)}
-                        />
-                        <ellipse
-                            className="cls-7 pointer"
-                            cx={1221.71}
-                            cy={574.66}
-                            rx={15.05}
-                            ry={15.37}
-                            onClick={e => handleCircle(e)}
-                        />
-                        <ellipse
-                            className="cls-7 pointer"
-                            cx={1221.71}
-                            cy={539.41}
-                            rx={15.05}
-                            ry={15.37}
-                            onClick={e => handleCircle(e)}
-                        />
-                        <ellipse
-                            className="cls-7 pointer"
-                            cx={1221.71}
-                            cy={504.18}
-                            rx={15.05}
-                            ry={15.37}
-                            onClick={e => handleCircle(e)}
-                        />
-                        <ellipse
-                            className="cls-7 pointer"
-                            cx={1221.71}
-                            cy={468.95}
-                            rx={15.05}
-                            ry={15.37}
-                            onClick={e => handleCircle(e)}
-                        />
-                        <ellipse
-                            className="cls-7 pointer"
-                            cx={1221.71}
-                            cy={433.72}
-                            rx={15.05}
-                            ry={15.37}
-                            onClick={e => handleCircle(e)}
-                        />
-                        <ellipse
-                            className="cls-7 pointer"
-                            cx={1221.71}
-                            cy={398.47}
-                            rx={15.05}
-                            ry={15.37}
-                            onClick={e => handleCircle(e)}
-                        />
-                        <ellipse
-                            className="cls-7 pointer"
-                            cx={1221.71}
-                            cy={363.24}
-                            rx={15.05}
-                            ry={15.37}
-                            onClick={e => handleCircle(e)}
-                        />
-                        <ellipse
-                            className="cls-7 pointer"
-                            cx={1221.71}
-                            cy={328.01}
-                            rx={15.05}
-                            ry={15.37}
-                            onClick={e => handleCircle(e)}
-                        />
-                        <ellipse
-                            className="cls-7 pointer"
-                            cx={1221.71}
-                            cy={292.77}
-                            rx={15.05}
-                            ry={15.37}
-                            onClick={e => handleCircle(e)}
-                        />
-                        <ellipse
-                            className="cls-7"
-                            cx={1073.53}
-                            cy={745.72}
-                            rx={15.05}
-                            ry={15.37}
-                        />
-                        <ellipse
-                            className="cls-7"
-                            cx={1073.53}
-                            cy={710.49}
-                            rx={15.05}
-                            ry={15.37}
-                        />
-                        <ellipse
-                            className="cls-7"
-                            cx={1073.53}
-                            cy={675.25}
-                            rx={15.05}
-                            ry={15.37}
-                        />
-                        <ellipse
-                            className="cls-7"
-                            cx={1073.53}
-                            cy={640.02}
-                            rx={15.05}
-                            ry={15.37}
-                        />
-                        <ellipse
-                            className="cls-7"
-                            cx={1073.53}
-                            cy={604.78}
-                            rx={15.05}
-                            ry={15.37}
-                        />
-                        <ellipse
-                            className="cls-7"
-                            cx={1073.53}
-                            cy={569.54}
-                            rx={15.05}
-                            ry={15.37}
-                        />
-                        <ellipse
-                            className="cls-2"
-                            cx={1073.52}
-                            cy={534.31}
-                            rx={15.05}
-                            ry={15.37}
-                        />
-                        <ellipse
-                            className="cls-7"
-                            cx={1073.53}
-                            cy={499.08}
-                            rx={15.05}
-                            ry={15.37}
-                        />
-                        <ellipse
-                            className="cls-7"
-                            cx={1073.53}
-                            cy={463.83}
-                            rx={15.05}
-                            ry={15.37}
-                        />
-                        <ellipse
-                            className="cls-7"
-                            cx={1073.53}
-                            cy={428.6}
-                            rx={15.05}
-                            ry={15.37}
-                        />
-                        <ellipse
-                            className="cls-7"
-                            cx={1073.53}
-                            cy={393.37}
-                            rx={15.05}
-                            ry={15.37}
-                        />
-                        <ellipse
-                            className="cls-7"
-                            cx={1073.53}
-                            cy={358.13}
-                            rx={15.05}
-                            ry={15.37}
-                        />
-                        <ellipse
-                            className="cls-7"
-                            cx={1073.53}
-                            cy={322.9}
-                            rx={15.05}
-                            ry={15.37}
-                        />
-                        <ellipse
-                            className="cls-6"
-                            cx={1073.53}
-                            cy={287.64}
-                            rx={15.05}
-                            ry={15.37}
-                        />
-                        <ellipse
-                            className="cls-7"
-                            cx={1078.83}
-                            cy={288.33}
-                            rx={15.05}
-                            ry={15.37}
-                        />
-                        <ellipse
-                            className="cls-7"
-                            cx={1078.83}
-                            cy={323.24}
-                            rx={15.05}
-                            ry={15.37}
-                        />
-                        <ellipse
-                            className="cls-7"
-                            cx={1078.83}
-                            cy={358.81}
-                            rx={15.05}
-                            ry={15.37}
-                        />
-                        <ellipse
-                            className="cls-7"
-                            cx={1078.83}
-                            cy={393.91}
-                            rx={15.05}
-                            ry={15.37}
-                        />
-                        <ellipse
-                            className="cls-7"
-                            cx={1078.83}
-                            cy={429.28}
-                            rx={15.05}
-                            ry={15.37}
-                        />
-                        <ellipse
-                            className="cls-7"
-                            cx={1078.83}
-                            cy={464.51}
-                            rx={15.05}
-                            ry={15.37}
-                        />
-                        <ellipse
-                            className="cls-7"
-                            cx={1078.83}
-                            cy={499.75}
-                            rx={15.05}
-                            ry={15.37}
-                        />
-                        <ellipse
-                            className="cls-7"
-                            cx={1078.83}
-                            cy={534.99}
-                            rx={15.05}
-                            ry={15.37}
-                        />
-                        <ellipse
-                            className="cls-7"
-                            cx={1078.83}
-                            cy={571.12}
-                            rx={15.05}
-                            ry={15.37}
-                        />
-                        <ellipse
-                            className="cls-7"
-                            cx={1078.83}
-                            cy={605.57}
-                            rx={15.05}
-                            ry={15.37}
-                        />
-                        <ellipse
-                            className="cls-7"
-                            cx={1078.83}
-                            cy={640.69}
-                            rx={15.05}
-                            ry={15.37}
-                        />
-                        <ellipse
-                            className="cls-7"
-                            cx={1078.83}
-                            cy={675.93}
-                            rx={15.05}
-                            ry={15.37}
-                        />
-                        <ellipse
-                            className="cls-7"
-                            cx={1078.83}
-                            cy={711.16}
-                            rx={15.05}
-                            ry={15.37}
-                        />
-                        <ellipse
-                            className="cls-7"
-                            cx={1078.83}
-                            cy={745.48}
-                            rx={15.05}
-                            ry={15.37}
-                        />
+                        {/* FA Right */}
+                        <g>
+                            <ellipse
+                                className="cls-7 pointer"
+                                cx={1221.71}
+                                cy={750.84}
+                                rx={15.05}
+                                ry={15.37}
+                                onClick={e => handleCircle(e)}
+                            />
+                            <ellipse
+                                className="cls-7 pointer"
+                                cx={1221.71}
+                                cy={715.59}
+                                rx={15.05}
+                                ry={15.37}
+                                onClick={e => handleCircle(e)}
+                            />
+                            <ellipse
+                                className="cls-7 pointer"
+                                cx={1221.71}
+                                cy={680.35}
+                                rx={15.05}
+                                ry={15.37}
+                                onClick={e => handleCircle(e)}
+                            />
+                            <ellipse
+                                className="cls-7 pointer"
+                                cx={1221.71}
+                                cy={645.13}
+                                rx={15.05}
+                                ry={15.37}
+                                onClick={e => handleCircle(e)}
+                            />
+                            <ellipse
+                                className="cls-7 pointer"
+                                cx={1221.71}
+                                cy={609.89}
+                                rx={15.05}
+                                ry={15.37}
+                                onClick={e => handleCircle(e)}
+                            />
+                            <ellipse
+                                className="cls-7 pointer"
+                                cx={1221.71}
+                                cy={574.66}
+                                rx={15.05}
+                                ry={15.37}
+                                onClick={e => handleCircle(e)}
+                            />
+                            <ellipse
+                                className="cls-7 pointer"
+                                cx={1221.71}
+                                cy={539.41}
+                                rx={15.05}
+                                ry={15.37}
+                                onClick={e => handleCircle(e)}
+                            />
+                            <ellipse
+                                className="cls-7 pointer"
+                                cx={1221.71}
+                                cy={504.18}
+                                rx={15.05}
+                                ry={15.37}
+                                onClick={e => handleCircle(e)}
+                            />
+                            <ellipse
+                                className="cls-7 pointer"
+                                cx={1221.71}
+                                cy={468.95}
+                                rx={15.05}
+                                ry={15.37}
+                                onClick={e => handleCircle(e)}
+                            />
+                            <ellipse
+                                className="cls-7 pointer"
+                                cx={1221.71}
+                                cy={433.72}
+                                rx={15.05}
+                                ry={15.37}
+                                onClick={e => handleCircle(e)}
+                            />
+                            <ellipse
+                                className="cls-7 pointer"
+                                cx={1221.71}
+                                cy={398.47}
+                                rx={15.05}
+                                ry={15.37}
+                                onClick={e => handleCircle(e)}
+                            />
+                            <ellipse
+                                className="cls-7 pointer"
+                                cx={1221.71}
+                                cy={363.24}
+                                rx={15.05}
+                                ry={15.37}
+                                onClick={e => handleCircle(e)}
+                            />
+                            <ellipse
+                                className="cls-7 pointer"
+                                cx={1221.71}
+                                cy={328.01}
+                                rx={15.05}
+                                ry={15.37}
+                                onClick={e => handleCircle(e)}
+                            />
+                            <ellipse
+                                className="cls-7 pointer"
+                                cx={1221.71}
+                                cy={292.77}
+                                rx={15.05}
+                                ry={15.37}
+                                onClick={e => handleCircle(e)}
+                            />
+                        </g>
+                        <g>
+                            {/* 1 */}
+                            <g data-name={'1'} data-position={'right'} className="pointer"  onClick={handleAth}>
+                                <ellipse
+                                    className="cls-6"
+                                    cx={1073.53}
+                                    cy={287.64}
+                                    rx={15.05}
+                                    ry={15.37}
+                                />
+                                <ellipse
+                                    className="cls-7"
+                                    cx={1078.83}
+                                    cy={288.33}
+                                    rx={15.05}
+                                    ry={15.37}
+                                />
+                            </g>
+                            {/* 2 */}
+                            <g data-name={'2'} data-position={'right'} className="pointer"  onClick={handleAth}>
+                                <ellipse
+                                    className="cls-7"
+                                    cx={1073.53}
+                                    cy={322.9}
+                                    rx={15.05}
+                                    ry={15.37}
+                                />
+                                <ellipse
+                                    className="cls-7"
+                                    cx={1078.83}
+                                    cy={323.24}
+                                    rx={15.05}
+                                    ry={15.37}
+                                />
+                            </g>
+                            {/* 3 */}
+                            <g data-name={'3'} data-position={'right'} className="pointer"  onClick={handleAth}>
+                                <ellipse
+                                    className="cls-7"
+                                    cx={1073.53}
+                                    cy={358.13}
+                                    rx={15.05}
+                                    ry={15.37}
+                                />
+                                <ellipse
+                                    className="cls-7"
+                                    cx={1078.83}
+                                    cy={358.81}
+                                    rx={15.05}
+                                    ry={15.37}
+                                />
+                            </g>
+                            {/* 4 */}
+                            <g data-name={'4'} data-position={'right'} className="pointer"  onClick={handleAth}>
+                                <ellipse
+                                    className="cls-7"
+                                    cx={1073.53}
+                                    cy={393.37}
+                                    rx={15.05}
+                                    ry={15.37}
+                                />
+                                <ellipse
+                                    className="cls-7"
+                                    cx={1078.83}
+                                    cy={393.91}
+                                    rx={15.05}
+                                    ry={15.37}
+                                />
+                            </g>
+                            {/* 5 */}
+                            <g data-name={'5'} data-position={'right'} className="pointer"  onClick={handleAth}>
+                                <ellipse
+                                    className="cls-7"
+                                    cx={1073.53}
+                                    cy={428.6}
+                                    rx={15.05}
+                                    ry={15.37}
+                                />
+                                <ellipse
+                                    className="cls-7"
+                                    cx={1078.83}
+                                    cy={429.28}
+                                    rx={15.05}
+                                    ry={15.37}
+                                />
+                            </g>
+                            {/* 6 */}
+                            <g data-name={'6'} data-position={'right'} className="pointer"  onClick={handleAth}>
+                                <ellipse
+                                    className="cls-7"
+                                    cx={1073.53}
+                                    cy={463.83}
+                                    rx={15.05}
+                                    ry={15.37}
+                                />
+                                <ellipse
+                                    className="cls-7"
+                                    cx={1078.83}
+                                    cy={464.51}
+                                    rx={15.05}
+                                    ry={15.37}
+                                />
+                            </g>
+                            {/* 7 */}
+                            <g data-name={'7'} data-position={'right'} className="pointer"  onClick={handleAth}>
+                                <ellipse
+                                    className="cls-7"
+                                    cx={1073.53}
+                                    cy={499.08}
+                                    rx={15.05}
+                                    ry={15.37}
+                                />
+                                <ellipse
+                                    className="cls-7"
+                                    cx={1078.83}
+                                    cy={499.75}
+                                    rx={15.05}
+                                    ry={15.37}
+                                />
+                            </g>
+                            {/* 8 */}
+                            <g data-name={'8'} data-position={'right'} className="pointer"  onClick={handleAth}>
+                                <ellipse
+                                    className="cls-2"
+                                    cx={1073.52}
+                                    cy={534.31}
+                                    rx={15.05}
+                                    ry={15.37}
+                                />
+                                <ellipse
+                                    className="cls-7"
+                                    cx={1078.83}
+                                    cy={534.99}
+                                    rx={15.05}
+                                    ry={15.37}
+                                />
+                            </g>
+                            {/* 9 */}
+                            <g data-name={'9'} data-position={'right'} className="pointer"  onClick={handleAth}>
+                                <ellipse
+                                    className="cls-7"
+                                    cx={1073.53}
+                                    cy={569.54}
+                                    rx={15.05}
+                                    ry={15.37}
+                                />
+                                <ellipse
+                                    className="cls-7"
+                                    cx={1078.83}
+                                    cy={571.12}
+                                    rx={15.05}
+                                    ry={15.37}
+                                />
+                            </g>
+                            {/* 10 */}
+                            <g data-name={'10'} data-position={'right'} className="pointer"  onClick={handleAth}>
+                                <ellipse
+                                    className="cls-7"
+                                    cx={1073.53}
+                                    cy={604.78}
+                                    rx={15.05}
+                                    ry={15.37}
+                                />
+                                <ellipse
+                                    className="cls-7"
+                                    cx={1078.83}
+                                    cy={605.57}
+                                    rx={15.05}
+                                    ry={15.37}
+                                />
+                            </g>
+                            {/* 11 */}
+                            <g data-name={'11'} data-position={'right'} className="pointer"  onClick={handleAth}>
+                                <ellipse
+                                    className="cls-7"
+                                    cx={1073.53}
+                                    cy={640.02}
+                                    rx={15.05}
+                                    ry={15.37}
+                                />
+                                <ellipse
+                                    className="cls-7"
+                                    cx={1078.83}
+                                    cy={640.69}
+                                    rx={15.05}
+                                    ry={15.37}
+                                />
+                            </g>
+                            {/* 12 */}
+                            <g data-name={'12'} data-position={'right'} className="pointer"  onClick={handleAth}>
+                                <ellipse
+                                    className="cls-7"
+                                    cx={1073.53}
+                                    cy={675.25}
+                                    rx={15.05}
+                                    ry={15.37}
+                                />
+                                <ellipse
+                                    className="cls-7"
+                                    cx={1078.83}
+                                    cy={675.93}
+                                    rx={15.05}
+                                    ry={15.37}
+                                />
+                            </g>
+                            {/* 13 */}
+                            <g data-name={'13'} data-position={'right'} className="pointer"  onClick={handleAth}>
+                                <ellipse
+                                    className="cls-7"
+                                    cx={1073.53}
+                                    cy={710.49}
+                                    rx={15.05}
+                                    ry={15.37}
+                                />
+                                <ellipse
+                                    className="cls-7"
+                                    cx={1078.83}
+                                    cy={711.16}
+                                    rx={15.05}
+                                    ry={15.37}
+                                />
+                            </g >
+                            {/* 14 */}
+                            <g data-name={'14'} data-position={'right'} className="pointer"  onClick={handleAth}>
+                                <ellipse
+                                    className="cls-7"
+                                    cx={1073.53}
+                                    cy={745.72}
+                                    rx={15.05}
+                                    ry={15.37}
+                                />
+                                <ellipse
+                                    className="cls-7"
+                                    cx={1078.83}
+                                    cy={745.48}
+                                    rx={15.05}
+                                    ry={15.37}
+                                />
+                            </g>
+                        </g>
                     </g>
                 </g>
                 <g id="Capa_3" data-name="Capa 3">

@@ -18,31 +18,29 @@ export const LilleyContainer = () => {
                     <LilleyBoxPort title='PORTBOARD MAGNETS' handlePlate={handlePlate} className='compassSvg boxes'/>
                     <LilleyBoxStbd title='STARBOARD MAGNETS' handlePlate={handlePlate} className='compassSvg boxes'/>
                 </>
-                break;
             case 'Soft': 
             return <>
                 <LilleySoftPort title='PORTBOARD MAGNETS' handlePlate={handlePlate} className='compassSvg boxes'/>
                 <LilleySoftStbd title='STARBOARD MAGNETS' handlePlate={handlePlate} className='compassSvg boxes'/>
             </>
-            break;
             default:
                 break;
         }
     }
 
-    const changeCircleColor = (e, value) => {
-
+    const changeCircleColor = (event, value) => {
+        let e = event.target || event
         switch (value) {
             case 0:
-                e.target.style.fill = '#fff'
+                e.style.fill = '#fff'
                 break;
 
             case 1:
-                e.target.style.fill = '#e62e1e'
+                e.style.fill = '#e62e1e'
                 break;
 
             case 2:
-                e.target.style.fill = '#531ee6'
+                e.style.fill = '#531ee6'
                 break;
         }
     }
@@ -86,7 +84,7 @@ export const LilleyContainer = () => {
 
     return(
         <div className="Lilley">
-            <LilleyFAPort title="Fore and After Magnets" handleCircle={handleCircle} className='compassSvg big foreAfter' />
+            <LilleyFAPort title="Fore and After Magnets" handleCircle={handleCircle} changeCircleColor={changeCircleColor} className='compassSvg big foreAfter' />
             <LilleyHeeling title="Heelings" className='compassSvg heelings' />
             <LilleyFlinders title='Flinders'className='compassSvg flinders' />
             <select style={{width:'300px'}} className="form-select" onChange={e => setValue(e.target.value)}>
