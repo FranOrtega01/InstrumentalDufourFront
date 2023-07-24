@@ -10,6 +10,7 @@ h1{
     font-weight: 400;
     padding: 0 15px;
     margin: 0px;
+    user-select: none;
 }
 
 
@@ -39,7 +40,7 @@ h1{
 
 
 html,body{
-    overflow-x: hidden;
+    // overflow-x: hidden;
     a{
         text-decoration: none;
     }
@@ -78,9 +79,9 @@ html,body{
         grid-template: title;
         img{
             transition: all 300ms;
-        }
-        &:hover img{
-            transform: rotate(180deg);
+            &:hover{
+                transform: rotate(180deg);
+            }
         }
     }
     
@@ -213,13 +214,13 @@ footer{
     color: white;
     text-align: left;
     white-space: nowrap ;
-    // grid-area: title;
+    cursor: pointer
+    
 }
 .footer-slogan{
     @include footer-slogan;
     color: white;
     align-self: center;
-    // grid-area: slogan;
 
 }
 .made-by{

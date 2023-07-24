@@ -3,8 +3,7 @@
     padding: 0;
 }
 .preServiceSection{
-    background-color: white;
-    border-radius: 30px;
+    background-color: #ececec;
     h3{
         font-size: 25px;
     }
@@ -19,3 +18,13 @@
     }
 }
 
+.preServiceCont{
+    border-radius: 30px;
+    background-color: white;
+    textarea{
+        font-size: 18px;
+        padding:4px 8px;
+        height: 200px;
+        margin-block: 40px;
+    }
+}

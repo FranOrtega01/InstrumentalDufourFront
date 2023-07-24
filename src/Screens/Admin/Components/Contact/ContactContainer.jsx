@@ -1,12 +1,40 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useContext } from 'react'
 import { ContactList } from './ContactList'
 import { EnterpriseList } from '../Enterprise/EnterpriseList'
-import { Link, useLocation } from 'react-router-dom'
+import { useLocation } from 'react-router-dom'
+import config from '../../../../config/config'
+import { Loading } from '../../../../Components/Loading/Loading'
+import { AdminHeader } from '../AdminHeader'
+import { AuthContext } from '../../../../Context/authContext'
 
+export const ContactContainer = ({ update, contacts, ContactContainer }) => {
 
-export const ContactContainer = ({ contact }) => {
+    const resetParams = () => {
+        setSort('');
+        setInputSort('');
+        setQuery('');
+        setInputQuery('');
+        setLimit('5');
+        setInputLimit('5');
+        setPage(1);
+    };
 
-    const [contacts, setContacts] = useState([])
+    const handleSortChange = (e) => {
+        setSort(e.target.value);
+        setInputSort(e.target.value);
+    };
+
+    const handleQueryChange = (e) => {
+        setQuery(e.target.value);
+        setInputQuery(e.target.value);
+    };
+
+    const handleLimitChange = (e) => {
+        setLimit(e.target.value);
+        setInputLimit(e.target.value);
+    };
+
+    const [filteredContacts, setFilteredContacts] = useState([])
     const [error, setError] = useState(false)
 
     const [data, setData] = useState({})
@@ -17,7 +45,24 @@ export const ContactContainer = ({ contact }) => {
     const [limit, setLimit] = useState('')
     const [page, setPage] = useState(1)
 
+    const [inputSort, setInputSort] = useState('');
+    const [inputQuery, setInputQuery] = useState('');
+    const [inputLimit, setInputLimit] = useState('5');
+
     const location = useLocation();
+
+    
+
+    const { isLogged, checkIsLogged } = useContext(AuthContext)
+
+
+    useEffect(() => {
+        checkIsLogged()
+    }, [isLogged, checkIsLogged]);
+
+    useEffect(() => {
+        resetParams();
+    }, [location.pathname]);
 
     useEffect(() => {
         const fetchData = async () => {
@@ -30,14 +75,15 @@ export const ContactContainer = ({ contact }) => {
                 if (limit) params.append('limit', limit)
                 if (page) params.append('page', page)
 
-                console.log(params);
-                const response = await fetch(`https://carmine-bat-cap.cyclic.app${location.pathname}?${params.toString()}`);
+                const response = await fetch(`${config.backURL}/api${location.pathname}?${params.toString()}`, {
+                    credentials: 'include'
+
+                });
                 const json = await response.json();
                 const jsonContacts = await json.payload
                 // Asignar los contactos 
-                setContacts(jsonContacts);
+                setFilteredContacts(jsonContacts);
                 setData(json)
-                console.log(json);
             } catch (error) {
                 console.log(error);
                 setError(true);
@@ -47,43 +93,58 @@ export const ContactContainer = ({ contact }) => {
             }
         };
         fetchData();
-    }, [location, sort, query, limit, page]);
+    }, [location, sort, query, limit, page, contacts]);
 
     return (
         <>
-            <section className='contactBody'>
-                <header className='shadow'>
-                    <h2>{contact ? 'Contacts' : 'Enterprises'} <span>({data.totalDocs})</span></h2>
-                </header>
+            <section className='body contactBody'>
+                <AdminHeader><h2>{ContactContainer ? 'Contacts' : 'Enterprises'} <span>({data?.totalDocs})</span></h2></AdminHeader>
+
                 <div className="searchCont p-0">
                     <div>
-                        <input onChange={(e) => setQuery(e.target.value)} className="form-control my-4  px-3" name="query" placeholder="Search..." type="text" />
-                        <select onChange={(e) => setSort(e.target.value)} className="form-select mx-4" name="sort">
-                            <option selected disabled>Sort by</option>
+                        <input
+                            onChange={handleQueryChange}
+                            value={inputQuery}
+                            className="form-control my-4  px-3"
+                            name="query"
+                            placeholder="Search..."
+                            type="text"
+                        />
+                        <select onChange={handleSortChange} value={inputSort} className="form-select mx-4" name="sort">
+                            <option value=''>Sort by</option>
                             <option value="desc">Newer</option>
                             <option value="asc">Older</option>
                         </select>
-                        <select onChange={(e) => setLimit(e.target.value)} className="form-select" name="limit">
-                            <option selected disabled>Limit</option>
+                        <select onChange={handleLimitChange} value={inputLimit} className="form-select" name="limit">
                             <option value="5">5</option>
                             <option value="10">10</option>
                             <option value="20">20</option>
                         </select>
                     </div>
-                    <div className='formBtn'>
-                        <a className="btn btn-secondary" href="/admin/contact">Borrar filtros</a>
-                    </div>
+
                 </div>
-                {loading ? <p>loading...</p> : error ? <p>Something went wrong while fetching contacts.</p> : (
-                    <>
-                        {contact ? <ContactList contacts={contacts} /> : <EnterpriseList enterprise={contacts} />}
-                        <div className="paginateBtn">
-                            {data.hasPrevPage && <span onClick={() => setPage(page - 1)}>{data.prevPage}</span>}
-                            {data.hasNextPage && <span onClick={() => setPage(page + 1)}>{data.nextPage}</span>}
-                        </div>
-                    </>
-                )}
+                {loading ? <Loading />
+                    :
+                    error ? <p>Something went wrong while fetching contacts.</p> : filteredContacts?.length === 0 ?
+                        <p className='text-center'>No contacts found</p> :
+                        (
+                            <>
+                                {ContactContainer ? <ContactList contacts={filteredContacts} update={update} /> : <EnterpriseList update={update} enterprise={filteredContacts} />}
+                                <div className="paginateBtn">
+                                    {data.hasPrevPage && <span onClick={() => setPage(page - 1)}>{data.prevPage}</span>}
+                                    <span style={styles.page}>{page}</span>
+                                    {data.hasNextPage && <span onClick={() => setPage(page + 1)}>{data.nextPage}</span>}
+                                </div>
+                            </>
+                        )}
             </section>
         </>
     )
+}
+const styles = {
+    page: {
+        fontSize: 28,
+        color: '#4e4e4e',
+        cursor: 'auto'
+    }
 }

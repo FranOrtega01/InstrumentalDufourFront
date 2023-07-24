@@ -1,32 +1,30 @@
-import React, { useState, useContext, useEffect } from 'react';
+import React, { useState, useContext } from 'react';
 import { NavLink } from 'react-router-dom';
 
 import logo from '../../../assets/img/logo2.png'
 import { BsFillClipboardFill, BsCaretLeftFill, BsBuildingAdd, BsFillPersonPlusFill } from 'react-icons/bs'
 
 import { ModalContext } from '../../../Context/modalContext';
+import config from '../../../config/config';
+
 
 export const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
 
-    const { openModal } = useContext(ModalContext);
+    const { openContactModal, openEnterpriseModal } = useContext(ModalContext);
 
     const [token, setToken] = useState(null)
     const [copy, setCopy] = useState(null)
 
-    const handleOpenModal = (modal) => {
-        const id = 123; // ID que deseas pasar al contexto
-        openModal(modal, id);
-    };
 
     const generateToken = async () => {
         try {
-            const response = await fetch('https://carmine-bat-cap.cyclic.app/preservice/generate-token'); // Reemplaza la URL con la ruta de tu backend para generar el token
+            const response = await fetch(`${config.backURL}/preservice/generate-token`);
             const data = await response.json();
             console.log(data);
-            const generatedToken = data.payload; // Asegúrate de obtener el campo correcto del objeto de respuesta
+            const generatedToken = data.payload;
 
             setToken(generatedToken);
-            copyToClipboard(`https://instrumental-dufour-front-6f5a.vercel.app/preservice/${generatedToken}`);
+            copyToClipboard(`http://127.0.0.1:3000/preservice/${generatedToken}`);
             // copyToClipboard(generatedToken);
         } catch (error) {
             console.error('Error al generar el token:', error);
@@ -63,14 +61,14 @@ export const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
         {
             label: 'Add ship',
             icon: <BsFillPersonPlusFill />,
-            modal: () => handleOpenModal('ship'),
+            modal: () => openContactModal()
 
 
         },
         {
             label: 'Add company',
             icon: <BsBuildingAdd />,
-            modal: () => handleOpenModal('enterprise')
+            modal: () => openEnterpriseModal()
         },
     ]
     //#endregion

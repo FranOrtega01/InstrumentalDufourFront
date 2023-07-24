@@ -74,14 +74,15 @@
     padding-block: 24px;
 
     position: relative;
-    &::after{
+
+    &::after {
         content: '';
         position: absolute;
         bottom: 0;
         right: 50%;
         width: 95%;
         height: 1px;
-        background-color:rgba(255, 255, 255, 0.1);
+        background-color: rgba(255, 255, 255, 0.1);
         transform: translateX(50%);
     }
 
@@ -200,28 +201,13 @@
     font-size: 16px;
 }
 
+
 // Admin Body
 .adminBody {
     display: grid;
     grid-template-rows: 70px 150px auto;
     max-height: 100vh;
-
-    header {
-        padding-inline: 20px;
-        color: white;
-        background-color: #6456d4;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-
-        p {
-            font-size: 16px;
-        }
-
-        h2 {
-            font-size: 32px;
-        }
-    }
+    background-color: #ececec;
 }
 
 .alertCont {
@@ -247,7 +233,9 @@
 .flowCont {
     display: flex;
     overflow-x: scroll;
-    padding-bottom: 20px;
+    padding-block: 20px;
+    margin: 20px;
+    margin-top: 0;
 
     &::-webkit-scrollbar {
         height: 4px;
@@ -290,7 +278,6 @@
 
     &::-webkit-scrollbar {
         width: 4px;
-        background-color: white;
     }
 
     &::-webkit-scrollbar-thumb {
@@ -330,10 +317,6 @@
         white-space: nowrap;
         overflow: hidden;
     }
-
-    box-shadow: 0px 4px 8px 1px rgba(0, 0, 0, 0.24);
-    -webkit-box-shadow: 0px 4px 8px 1px rgba(0, 0, 0, 0.24);
-    -moz-box-shadow: 0px 4px 8px 1px rgba(0, 0, 0, 0.24);
 }
 
 .flowContact-name {
@@ -362,7 +345,6 @@
     color: #272727;
     font-weight: bold;
 }
-
 
 .flowContact-btn {
     grid-area: btn;
@@ -393,6 +375,76 @@
         &:hover {
             transform: translateY(-3px);
         }
+    }
+}
+
+// History Modal
+
+.historyCont {
+    font-size: 16px;
+
+    textarea {
+        width: 100%;
+        height: 100px;
+        resize: none;
+        padding: 5px 10px;
+
+        &::-webkit-scrollbar {
+            height: 4px;
+            width: 7px;
+        }
+
+        &::-webkit-scrollbar-thumb {
+            background-color: #A9A9A9;
+            border-radius: 30px;
+        }
+    }
+
+    form {
+        display: flex;
+        flex-direction: column;
+    }
+
+    button {
+        align-self: flex-end;
+        margin-top: 10px;
+    }
+
+    li {
+        list-style: disc;
+        grid-row: 1 / span 2;
+
+    }
+
+    ul div {
+        display: grid;
+        grid-template-columns: 3fr 1fr;
+        grid-gap: 10px;
+        margin: 6px 4px;
+    }
+
+    ul {
+        max-height: 300px;
+        overflow-y: scroll;
+
+        &::-webkit-scrollbar {
+            height: 4px;
+            width: 7px;
+        }
+
+        &::-webkit-scrollbar-thumb {
+            background-color: #A9A9A9;
+            border-radius: 30px;
+        }
+    }
+
+    svg {
+        cursor: pointer;
+    }
+
+    svg,
+    p {
+        justify-self: flex-end;
     }
 }
 
@@ -428,6 +480,7 @@
         white-space: nowrap;
         overflow: hidden;
     }
+
 }
 
 
@@ -520,6 +573,7 @@
         font-size: 22px;
         margin: auto 0;
         cursor: pointer;
+        margin-inline: 10px;
     }
 }
 
@@ -546,6 +600,16 @@
 }
 
 //#endregion
+
+// Sweet Alert
+
+.swal2-popup {
+
+    div,
+    button {
+        font-size: 16px;
+    }
+}
 
 
 @keyframes upDown {

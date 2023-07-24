@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import Carousel from 'react-bootstrap/Carousel';
-import slide1 from '../../assets/img/slide3.jpeg'
-import slide2 from '../../assets/img/slide3.jpeg'
+import slide1 from '../../assets/img/Buque.mp4'
+import slide2 from '../../assets/img/video2.mp4'
 import slide3 from '../../assets/img/slide3.jpeg'
 
 function ControlledCarousel({alertEffect}) {
@@ -37,7 +37,7 @@ function ControlledCarousel({alertEffect}) {
                     <div className="absolute d-flex col-12 p-0 justify-content-center">
                         <div className="col-10 p-0">
                             <div className="slide2Content col-lg-8 col-12">
-                                <h3 className="">We are the first enterprise to introduce <span>remote adjustment service</span> for magnetic compass.
+                                <h3 >We are the first enterprise to introduce <span>remote adjustment service</span> for magnetic compass.
                                 </h3>
                                 <p>Have your magnetic compass adjusted remotely. And get all necessaries certificates to be presented to any local or international authority.
                                 </p>
@@ -57,11 +57,11 @@ function ControlledCarousel({alertEffect}) {
                                 <h3 className="text-center">All your certificates in one place.</h3>
                                 <p>Create your ship profile and download all your magnetic compass certificates and documents whenever it is necessary.
                                 </p>
-                                <a onClick={alertEffect}>Learn more</a>
+                                <a href='#' onClick={alertEffect}>Learn more</a>
                             </div>
                         </div>
                     </div>
-                    <img src={slide3} alt="Captain using the platform representative image" />
+                    <img src={slide3} alt="Captain using the platform" />
                 </div>
             </Carousel.Item>
         </Carousel>

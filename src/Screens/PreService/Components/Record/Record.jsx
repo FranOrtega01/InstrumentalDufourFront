@@ -3,18 +3,21 @@ import './record.scss'
 export const Record = ({ recordRef }) => {
     const [tableData, setTableData] = useState([]);
 
-    const calculateColumn4Value = (gyro, magneticCourse, variation) => {
+    const calculateColumn4Value = (rawGyro, magneticCourse, variation) => {
+        
+        let gyro = parseInt(rawGyro)
 
         let guti = gyro - variation
         guti = guti < 0 ? guti + 360 : guti
         let deviation = guti - magneticCourse
-        
-        deviation = deviation >= 360 ? deviation - 360 : deviation
-        
-        if (variation === '') deviation = 0
 
-        if(deviation > 180 && gyro === 0 ) deviation -= 360
-        if(deviation < -180 && gyro === 0) deviation += 360
+        deviation = deviation >= 360 ? deviation - 360 : deviation
+
+        
+        if (deviation > 180 && gyro === 0) deviation -= 360
+        if (deviation < -180 && gyro === 0) deviation += 360
+        
+        if (variation === '' && magneticCourse === '') deviation = 0
 
         return deviation;
     };
@@ -30,11 +33,17 @@ export const Record = ({ recordRef }) => {
 
     useEffect(() => {
         // Inicializar los datos de la tabla
-        const initialData = Array.from(Array(8).keys()).map((rowIndex) => [
-            rowIndex * 45, // Valor de la primera columna
-            0, // Valor de la segunda columna
-            0, // Valor de la tercera columna
-        ]);
+        const initialData = [
+            ['000', '', ''],   
+            ['045', '', ''],  
+            ['090', '', ''],  
+            [135, '', ''], 
+            [180, '', ''], 
+            [225, '', ''], 
+            [270, '', ''], 
+            [315, '', ''], 
+        ];
+
         setTableData(initialData);
     }, []);
 
@@ -60,6 +69,7 @@ export const Record = ({ recordRef }) => {
                                 <input
                                     type="number"
                                     value={row[1]}
+                                    placeholder='0'
                                     onChange={(e) => handleInputChange(e, rowIndex, 1)}
                                 />
                             </td>
@@ -67,6 +77,7 @@ export const Record = ({ recordRef }) => {
                                 <input
                                     type="number"
                                     value={row[2]}
+                                    placeholder='0'
                                     onChange={(e) => handleInputChange(e, rowIndex, 2)}
                                 />
                             </td>

@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import './Redirect.scss'
 import { useNavigate } from 'react-router-dom';
 
 export const Redirect = ({ to, message }) => {
@@ -14,6 +15,8 @@ export const Redirect = ({ to, message }) => {
 
 
     return (
-        timer ? navigate(to, { replace: true }) : <p>{message}</p>
+        <section className='redirectCont'>
+            {timer ? navigate(to, { replace: true }) : <p>{message}</p>}
+        </section>
     )
 }

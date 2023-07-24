@@ -1,4 +1,4 @@
-import React, { useCallback, useState, useMemo } from 'react'
+import React, { useCallback, useMemo } from 'react'
 import { useDropzone } from 'react-dropzone'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faXmark } from '@fortawesome/free-solid-svg-icons'
@@ -15,7 +15,7 @@ export const Dropzone = ({ title, id, files, setFiles }) => {
                 ...acceptedFiles.map(file => Object.assign(file, {preview: URL.createObjectURL(file)}))
             ]);
         }
-    }, [])
+    }, [setFiles])
     const { getRootProps, getInputProps, isFocused, isDragAccept, isDragReject, isDragActive } = useDropzone({
         onDrop,
         accept: {
@@ -28,7 +28,7 @@ export const Dropzone = ({ title, id, files, setFiles }) => {
         },
         maxSize: 1024 * 5000,
     })
-
+    
     const removeFile = name => {
         setFiles(files => files.filter(file => file.name !== name))
     }
@@ -53,7 +53,7 @@ export const Dropzone = ({ title, id, files, setFiles }) => {
                     style
                 })}
                 >
-                    <input {...getInputProps()} />
+                    <input {...getInputProps({})} />
                     {
                         !isDragActive ? (
                             <>
@@ -70,7 +70,7 @@ export const Dropzone = ({ title, id, files, setFiles }) => {
                 </div>
 
                 {/* Preview */}
-                {files && <h3 className='mt-2' style={{ fontSize: 20 }}>Files ({files.length})</h3>}
+                {files && <h4 className='mt-2' style={{ fontSize: 20 }}>Files ({files.length})</h4>}
                 <ul className='dropzoneList'>
                     {files.map((file, index) => (
                         <li key={`${file.name} - ${index}`}>

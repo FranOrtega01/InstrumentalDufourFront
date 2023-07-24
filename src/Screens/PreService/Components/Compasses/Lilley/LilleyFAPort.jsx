@@ -14,21 +14,19 @@ export const SvgComponent = ({ title, handleCircle,changeCircleColor, ...props }
             
             ellipses.forEach(el => {
                 let id = el.getAttribute('data-id')
-                id == 2 ? id = 0 : id++
+                id >= 2 ? id = 0 : id++
                 el.setAttribute('data-id', id )
                 changeCircleColor(el, id)
             })
             
-            let idValue = ellipses[0].getAttribute('data-id')
+            let idValue = Number(ellipses[0].getAttribute('data-id'))
 
             const complementEllipses = targetElement[0].querySelectorAll('ellipse');
-            console.log(complementEllipses);
-            console.log(idValue);
             complementEllipses.forEach(el => {
                 let id
-                if(idValue == 0) id = 0;
-                if(idValue == 1) id = 2;
-                if(idValue == 2) id = 1;
+                if(idValue === 0) id = 0;
+                if(idValue === 1) id = 2;
+                if(idValue === 2) id = 1;
                 el.setAttribute('data-id', id)
                 changeCircleColor(el, id)
 
@@ -37,22 +35,20 @@ export const SvgComponent = ({ title, handleCircle,changeCircleColor, ...props }
             const ellipses = targetElement[0].querySelectorAll('ellipse');
             
             ellipses.forEach(el => {
-                let id = el.getAttribute('data-id')
-                id == 2 ? id = 0 : id++
+                let id = Number(el.getAttribute('data-id'))
+                id >= 2 ? id = 0 : id++
                 el.setAttribute('data-id', id )
                 changeCircleColor(el, id)
             })
             
-            let idValue = ellipses[0].getAttribute('data-id')
-
+            let idValue = Number(ellipses[0].getAttribute('data-id')
+)
             const complementEllipses = targetElement[1].querySelectorAll('ellipse');
-            console.log(complementEllipses);
-            console.log(idValue);
             complementEllipses.forEach(el => {
                 let id
-                if(idValue == 0) id = 0;
-                if(idValue == 1) id = 2;
-                if(idValue == 2) id = 1;
+                if(idValue === 0) id = 0;
+                if(idValue === 1) id = 2;
+                if(idValue === 2) id = 1;
                 el.setAttribute('data-id', id)
                 changeCircleColor(el, id)
 

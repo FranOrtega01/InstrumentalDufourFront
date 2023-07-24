@@ -1,0 +1,26 @@
+.adminHeader {
+    padding-inline: 20px;
+    color: white;
+    background-color: #6456d4;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    p {
+        font-size: 16px;
+        margin-right: 15px;
+    }
+
+    h2 {
+        font-size: 32px;
+    }
+    svg{
+        cursor: pointer;
+        font-size: 32px;
+    }
+}
+
+.adminHeader-session{
+    display: flex;
+    align-items: center;
+}

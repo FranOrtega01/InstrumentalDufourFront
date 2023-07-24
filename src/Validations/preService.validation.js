@@ -9,5 +9,9 @@ export const preServiceSchema = yup.object().shape({
     serial: yup.string().required("Serial is required"),
     currentVariation: yup.string().required("Current variation is required"),
     mark: yup.string().required("Compass mark is required"),
-    model:yup.string()
+    model: yup.string(),
+    particulars: yup.array().min(1, 'At least one file is required for Ship Particulars'),
+    compassPhotos: yup.array().min(1, 'At least one file is required for Compass Photos'),
+    lastDevCurve: yup.array().min(1, 'At least one file is required for Last Deviation Curve'),
+    obs: yup.string()
 })

@@ -1,5 +1,5 @@
 import React from "react";
-import { SvgComponent as OsakaHeeling} from "./OsakaHeelings";
+import { SvgComponent as OsakaHeeling } from "./OsakaHeelings";
 import { SvgComponent as OsakaFA } from "./OsakaFA";
 import { SvgComponent as OsakaBoxPort } from './OsakaBoxPort';
 import { SvgComponent as OsakaBoxStbd } from "./OsakaBoxStbd";
@@ -11,10 +11,6 @@ export const OsakaContainer = () => {
     const changeCircleColor = (e, value) => {
 
         switch (value) {
-            case 0:
-                e.target.style.fill = '#fff'
-                break;
-
             case 1:
                 e.target.style.fill = '#e62e1e'
                 break;
@@ -22,28 +18,31 @@ export const OsakaContainer = () => {
             case 2:
                 e.target.style.fill = '#531ee6'
                 break;
+
+            default:
+                e.target.style.fill = '#fff'
+                break;
         }
     }
 
     const changePlateColor = (e, value) => {
-
         switch (value) {
-            case 0:
-                e.target.style.fill = '#fff'
-                break;
-
             case 1:
                 e.target.style.fill = '#000'
+                break;
+
+            default:
+                e.target.style.fill = '#fff'
                 break;
         }
     }
 
     const handlePlate = (e) => {
-        let value = e.target.getAttribute('data-value')
+        let value = Number(e.target.getAttribute('data-value'))
 
         if (!value) e.target.setAttribute('data-value', 0)
 
-        value == 1 ? value = 0 : value++
+        value === 1 ? value = 0 : value++
 
         e.target.setAttribute('data-value', value)
 
@@ -51,25 +50,25 @@ export const OsakaContainer = () => {
     }
 
     const handleCircle = (e) => {
-        let value = e.target.getAttribute('data-value')
+        let value = Number(e.target.getAttribute('data-value'))
 
         if (!value) e.target.setAttribute('data-value', 0)
 
-        value == 2 ? value = 0 : value++
+        value === 2 ? value = 0 : value++
 
         e.target.setAttribute('data-value', value)
 
         changeCircleColor(e, value)
     }
 
-    return(
+    return (
         <div className="OsakaNunotani">
             <OsakaFA title="Fore and After Magnets" handleCircle={handleCircle} className='compassSvg foreAfter' />
             <OsakaHeeling title="Heelings" className='compassSvg heelings' />
-            <OsakaFlinders title='Flinders'handlePlate={handlePlate} className='compassSvg flinders' />
+            <OsakaFlinders title='Flinders' handlePlate={handlePlate} className='compassSvg flinders' />
             <OsakaAth title='Athwartships' handleCircle={handleCircle} className='compassSvg ath' />
-            <OsakaBoxPort title='PORTBOARD MAGNETS' handlePlate={handlePlate} className='compassSvg boxes'/>
-            <OsakaBoxStbd title='STARBOARD MAGNETS' handlePlate={handlePlate} className='compassSvg boxes'/>
+            <OsakaBoxPort title='PORTBOARD MAGNETS' handlePlate={handlePlate} className='compassSvg boxes' />
+            <OsakaBoxStbd title='STARBOARD MAGNETS' handlePlate={handlePlate} className='compassSvg boxes' />
         </div>
     )
 }

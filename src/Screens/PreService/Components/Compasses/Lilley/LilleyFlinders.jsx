@@ -85,8 +85,8 @@ export const SvgComponent = ({ title, ...props }) => {
                 </text>
                 <circle className="cls-2" cx={294} cy={415.03} r={5.02} />
                 <circle className="cls-2" cx={294} cy={90.89} r={5.02} />
-                <text className="cls-1" transform="translate(252.69 452.05)">
-                    <tspan x={0} y={0}>
+                <text className="cls-1" transform="translate(238.69 452.05)">
+                    <tspan style={{fontSize:15}} x={0} y={0}>
                         {"25mm x 500mm"}
                     </tspan>
                 </text>

@@ -1,41 +1,34 @@
 import './App.scss';
 import React from 'react';
-import { BrowserRouter as Router, Routes, Route, Navigate} from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import { PreContainer } from './Screens/PreService/PreService';
 import { Home } from './Screens/Home/Home';
 import { AdminContainer } from './Screens/Admin/adminContainer'
-import { ThemeProvider } from 'react-bootstrap';
-import { ModalProvider } from './Context/modalContext'
 import { Redirect } from './Components/Redirect/Redirect';
-
+import { Login } from './Screens/Session/Login';
+import { Register } from './Screens/Session/Register';
+import { AuthProvider } from './Context/authContext';
+import { PrivateRoute } from './Components/PrivateRoute/PrivateRoute';
 
 function App() {
 
-  
 
   return (
     <>
-      {/* <Header/> */}
-      <ThemeProvider>
+      <AuthProvider>
         <Router>
           <Routes>
-            <Route path='/preservice/:token' element={<PreContainer/>} />
+            <Route path='/preservice/:token' element={<PreContainer />} />
             <Route path='/' element={<Home />} />
-            <Route path="/admin" element={<Navigate to="/admin/dashboard"/>} />
-            <Route
-              path='/admin/*'
-              element={
-                <ModalProvider>
-                  <AdminContainer />
-                </ModalProvider>
-              }
-            />
+            <Route path="/admin" element={<PrivateRoute to={'/session/login'}><Navigate to="/admin/dashboard" /></PrivateRoute>} />
+            <Route path='/session/login' element={<Login />} />
+            <Route path='/session/register' element={<PrivateRoute to={'/'}><Register /></PrivateRoute>} />
+            <Route path='/admin/*' element={<PrivateRoute to={'/session/login'}><AdminContainer /></PrivateRoute>} />
             <Route path="*" element={<Redirect to={'/'} message={'Page not found! Redirecting to home...'} />} />
           </Routes>
         </Router>
-      </ThemeProvider>
+      </AuthProvider>
     </>
   )
 }
-
 export default App;

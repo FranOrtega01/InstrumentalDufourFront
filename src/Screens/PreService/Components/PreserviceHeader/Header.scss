@@ -11,8 +11,15 @@ a{
     text-decoration: none;
 }
 .header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    background-color: white;
+    margin-bottom: 20px;
+    padding-inline: 10px;
+
     div{
-        background-color: white;
         display: flex;
         flex-direction: row;
         align-items: center;
@@ -21,5 +28,10 @@ a{
             padding: 15px;
         }
     }
-    margin-bottom: 20px;
+    svg{
+        font-size: 35px;
+        color: #6f6f6f;
+        margin-right: 40px;
+        cursor: pointer;
+    }
 }

@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react'
+import React, { useEffect } from 'react'
 import './scss/-scss.scss'
 import logo from '../../assets/img/logo2.png'
 import wpp from '../../assets/img/wpp.png'
@@ -50,12 +50,11 @@ export const Home = () => {
             <header id="header">
                 {/* <!-- Logo --> */}
                 <div className="grid-header">
-                    <div>
-                        <a href="#">
-                            <h1 className="img-fluid">Instrumental Dufour</h1>
-                        </a>
-                        <a href="#"> <img src={logo} alt="Instrumental Dufour" /> </a>
-
+                    <div onClick={() => {
+                        window.scrollTo({ top: 0, behavior: 'smooth' });
+                    }}>
+                        <h1 className="img-fluid">Instrumental Dufour</h1>
+                        <img src={logo} alt="Instrumental Dufour" />
                     </div>
                     {/* <!-- Nav --> */}
                     <nav>
@@ -97,7 +96,7 @@ export const Home = () => {
 
                 {/* <!-- WhatsApp Logo --> */}
 
-                <a href="https://api.whatsapp.com/send?phone=5491154558216" target="_blank"> <img src={wpp} id="wpp"
+                <a href="https://api.whatsapp.com/send?phone=5491154558216" target="_blank" rel="noreferrer"> <img src={wpp} id="wpp"
                     alt="Whatsapp" /></a>
 
                 {/* <!-- About us --> */}
@@ -149,14 +148,14 @@ export const Home = () => {
                                     <h3 className="new-subtitle m-0">Keep it simple.</h3>
                                     <p className="text-light">As a complement to the remote calibration service, we have developed an online platform where each ship has all the magnetic compass certificates uploaded and ready to download whenever necessary. Furthermore, the ship will count with 24/7 assistance if needed. One month before the expiration date the ship will receive a notification in order to renew all magnetic compass certificates.</p>
                                 </div>
-                                <img className="img-fluid" src={simple} alt="Online platform representative image" />
+                                <img className="img-fluid" src={simple} alt="Online platform" />
                             </div>
                             <div className="flex-row-reverse col-11 py-5 my-5 justify-content-center newInfo" data-aos="fade-right" data-aos-delay="100" data-aos-duration="600">
                                 <div className="col-xl-7 col-lg-10 col-12 p-0 new-p">
                                     <h3 className="new-subtitle m-0">Go Paperless.</h3>
                                     <p className="text-light">In order to contribute with climate change as well as we increase the security of our work we have replaced the old and traditional hand-drown sign for the digital one. This method speed up the process and count with all legal validations.</p>
                                 </div>
-                                <img className="img-fluid" src={paperless} alt="Digital sign representative image" />
+                                <img className="img-fluid" src={paperless} alt="Digital sign" />
                             </div>
                         </article>
                     </div>
@@ -249,7 +248,7 @@ export const Home = () => {
                                 </div>
 
                                 <div>
-                                    <a href="mailto:info@instrumentaldufour.net?" target="_blank">info@instrumentaldufour.net</a>
+                                    <a href="mailto:info@instrumentaldufour.net?" target="_blank" rel="noreferrer">info@instrumentaldufour.net</a>
                                     <div>
                                         <i className="fa-solid fa-envelope"></i>
                                         <p>Email us</p>
@@ -257,7 +256,7 @@ export const Home = () => {
                                 </div>
 
                                 <div>
-                                    <a href="https://www.google.com.ar/maps/place/Don+Orione+651,+B1644BMK+Victoria,+Provincia+de+Buenos+Aires/@-34.4498501,-58.5329738,17z/data=!3m1!4b1!4m6!3m5!1s0x95bcafc2bb2d4b9b:0x498bd94a94c1372!8m2!3d-34.4498501!4d-58.5307851!16s%2Fg%2F11mtscl02t" target="_blank">Open in Maps</a>
+                                    <a href="https://www.google.com.ar/maps/place/Don+Orione+651,+B1644BMK+Victoria,+Provincia+de+Buenos+Aires/@-34.4498501,-58.5329738,17z/data=!3m1!4b1!4m6!3m5!1s0x95bcafc2bb2d4b9b:0x498bd94a94c1372!8m2!3d-34.4498501!4d-58.5307851!16s%2Fg%2F11mtscl02t" target="_blank" rel="noreferrer">Open in Maps</a>
                                     <div>
                                         <i className="fa-sharp fa-solid fa-location-dot"></i>
                                         <p>Find us</p>
