@@ -53,12 +53,11 @@ export const ContactContainer = ({ update, contacts, ContactContainer }) => {
 
     
 
-    const { isLogged, checkIsLogged } = useContext(AuthContext)
-
+    const { checkIsLogged } = useContext(AuthContext)
 
     useEffect(() => {
         checkIsLogged()
-    }, [isLogged, checkIsLogged]);
+    }, []);
 
     useEffect(() => {
         resetParams();
@@ -85,7 +84,6 @@ export const ContactContainer = ({ update, contacts, ContactContainer }) => {
                 setFilteredContacts(jsonContacts);
                 setData(json)
             } catch (error) {
-                console.log(error);
                 setError(true);
             }
             finally {

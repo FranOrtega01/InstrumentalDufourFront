@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import './adminContainer.scss'
 import { Sidebar } from './Components/Sidebar.jsx'
-import { Routes, Route, Navigate } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 import { Dashboard } from './Components/Dashboard/Dashboard';
 import { ContactContainer } from './Components/Contact/ContactContainer';
 import { ModalProvider } from '../../Context/modalContext';
@@ -9,9 +9,12 @@ import { PrivateRoute } from '../../Components/PrivateRoute/PrivateRoute';
 
 import { useLocalStorage } from '../../customHooks/useLocalStorage';
 
+import { ToastContainer } from 'react-toastify';
+
 import config from '../../config/config';
 
 export const AdminContainer = () => {
+
 
     const [sidebarOpen, setSidebarOpen] = useLocalStorage('sidebar', true)
     const [contacts, setContacts] = useState([]);
@@ -39,30 +42,29 @@ export const AdminContainer = () => {
     };
 
     useEffect(() => {
+        document.title = 'Instrumental Dufour | Admin Dashboard';
+
         const fetchData = async () => {
             try {
                 updateContacts()
                 updateEnterprises()
-            } catch (error) {
-                console.log(error);
+            } catch{
             }
         }
         fetchData()
     }, [])
 
-    
     return (
         <ModalProvider enterprises={enterprises} updateEnterprises={updateEnterprises} updateContacts={updateContacts}>
             <main className={sidebarOpen ? 'sidebarStatus active' : 'sidebarStatus'} >
                 <Sidebar sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen} />
                 <Routes>
-                    <Route path="/dashboard" element={<PrivateRoute to='/'><Dashboard contacts={contacts} /></PrivateRoute>} />
-                    <Route path="/dashboard" element={<PrivateRoute to='/session/login'><Dashboard contacts={contacts} /></PrivateRoute>} />
+                    <Route path="/dashboard" element={<PrivateRoute to='/session/login'><Dashboard contacts={contacts} updateContacts={updateContacts} /></PrivateRoute>} />
                     <Route path="/contact" element={<PrivateRoute to='/session/login'><ContactContainer update={updateContacts} contacts={contacts} ContactContainer /></PrivateRoute>} />
                     <Route path="/enterprise" element={<PrivateRoute to='/session/login'><ContactContainer update={updateEnterprises} contacts={enterprises} /></PrivateRoute>} />
-                    <Route path="*" element={<PrivateRoute to='/session/login'><Navigate to={'dashboard'} /></PrivateRoute>} />
                 </Routes>
             </main>
+            <ToastContainer />
         </ModalProvider>
     )
 }

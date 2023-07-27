@@ -5,44 +5,54 @@ import { contactSchema } from '../../Validations/contact.validation';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup'
 import config from '../../config/config';
-import ReCAPTCHA from "react-google-recaptcha";
-
+import { useGoogleReCaptcha } from 'react-google-recaptcha-v3';
 
 
 export const ContactForm = () => {
 
     const [loading, setLoading] = useState(false)
-    const [isCaptchaVerified, setIsCaptchaVerified] = useState(false);
+
+    const { executeRecaptcha } = useGoogleReCaptcha();
 
     const { register, handleSubmit, reset, formState: { errors } } = useForm({
         resolver: yupResolver(contactSchema)
     });
 
     const onSubmit = async (data) => {
-        if (!isCaptchaVerified) return console.log('Captcha invalido');
-
-        setLoading(true)
         try {
+            if (!executeRecaptcha) {
+                console.log('Execute recaptcha not yet available');
+                return;
+            }
+
+            setLoading(true);
+
+            const token = await executeRecaptcha()
+
+            if (!token) {
+                console.log('Captcha inválido');
+                setLoading(false);
+                return;
+            }
+
             const response = await fetch(`${config.backURL}/send`, {
                 method: 'POST',
                 headers: {
-                    'Content-Type': 'application/json'
+                    'Content-Type': 'application/json',
                 },
-                body: JSON.stringify(data)
-            })
+                body: JSON.stringify({ ...data, token }),
+            });
 
             const json = await response.json();
-            notify(json.status, json.message)
+            notify(json.status, json.message);
 
-            // Reiniciar el formulario después de enviarlo
             reset();
-            setLoading(false)
-
+            setLoading(false);
         } catch (error) {
-            setLoading(false)
-            notify('error', 'Something went wrong! Please try again later or send an email manually.')
+            setLoading(false);
+            notify('error', 'Something went wrong! Please try again later or send an email manually.');
         }
-    }
+    };
 
     const notify = (value, message) => {
         if (value === 'success') return toast.success(message, {
@@ -71,28 +81,6 @@ export const ContactForm = () => {
                 fontSize: '18px'
             }
         })
-    };
-
-    const handleCaptchaChange = (token) => {
-        fetch("/verify-recaptcha", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify({ token }),
-        })
-            .then((response) => {
-                if (response.ok) {
-                    setIsCaptchaVerified(true);
-                    console.log("Token de reCAPTCHA válido");
-                } else {
-                    console.log("Error de verificación de reCAPTCHA");
-                }
-            })
-
-            .catch((error) => {
-                console.error("Error del servidor:", error);
-            });
     };
 
     return (
@@ -154,10 +142,6 @@ export const ContactForm = () => {
                         <p className='error'>{errors.message?.message}</p>
                     </div>
 
-                    <ReCAPTCHA
-                        sitekey="6LeJMUsnAAAAAIRowguL2UeHjTPw8X2vZWSXBQAC"
-                        onChange={handleCaptchaChange}
-                    />
                     <div className="action col-12" id="submit">
                         <input type="submit" className="action-button" disabled={loading}
                             value={loading ? "Sending... Please wait." : "Send"}

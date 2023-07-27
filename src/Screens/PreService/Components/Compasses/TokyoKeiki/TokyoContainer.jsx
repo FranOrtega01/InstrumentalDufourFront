@@ -9,10 +9,6 @@ import { SvgComponent as TokyoBoxesStbd } from "../SauraKeiki/SauraBoxStbd";
 
 export const TokyoContainer = () => {
 
-    const handleChain = e => {
-        console.log('click');
-    }
-
     const changeCircleColor = (e, value) => {
 
         switch (value) {
@@ -69,7 +65,7 @@ export const TokyoContainer = () => {
     return (
         <div className="TokyoKeiki">
             <TokyoFA title="Fore and After Magnets" handleCircle={handleCircle} className='compassSvg foreAfter' />
-            <TokyoHeeling title="Healings" handleChain={handleChain} className='compassSvg heelings' />
+            <TokyoHeeling title="Healings" className='compassSvg heelings' />
             <TokyoFlinders title='Flinders' handlePlate={handlePlate} className='compassSvg flinders' />
             <TokyoAthwartship title='Athwartships' handleCircle={handleCircle} className='compassSvg ath' />
             <TokyoBoxesPort title='Boxes Port' handlePlate={handlePlate} className='compassSvg boxes' />

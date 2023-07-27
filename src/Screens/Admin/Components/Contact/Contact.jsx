@@ -32,7 +32,9 @@ export const Contact = ({ update, contact }) => {
         }).then((result) => {
             if (result.isConfirmed) {
                 fetch(`${config.backURL}/api/admin/contact/${id}`, {
-                    method: 'DELETE'
+                    method: 'DELETE',
+                    credentials: 'include'
+
                 }).then(() => {
                     Swal.fire(
                         'Deleted!',

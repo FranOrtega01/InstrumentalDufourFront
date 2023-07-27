@@ -11,11 +11,10 @@ import { CassensContainer } from "./Components/Compasses/Cassens/CassensContaine
 import { LilleyContainer } from "./Components/Compasses/Lilley/LilleyContainer";
 import { OtherContainer } from './Components/Compasses/Other/OtherContainer';
 
-import { CustomForm } from "./Components/Form/FormContainer";
-import { Dropzone } from '../../Components/Dropzone/Dropzone'
+import { CustomForm } from "./Components/Form/FormContainerPost";
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup'
-import { preServiceSchema } from "../../Validations/preService.validation";
+import { postServiceSchema } from "../../Validations/postService.validation";
 
 import { useParams, useNavigate } from 'react-router-dom';
 
@@ -28,15 +27,15 @@ import config from '../../config/config'
 import { ToastContainer, toast } from 'react-toastify';
 
 
-export const PreContainer = () => {
+export const PostContainer = () => {
 
     const { token } = useParams();
     const [unauthorized, setUnauthorized] = useState(false)
     const [showHelp, setShowHelp] = useState(true)
     const navigate = useNavigate();
-    
+
     useEffect(() => {
-        document.title = 'Pre Service | Instrumental Dufour';
+        document.title = 'Instrumental Dufour | Post Service';
     }, []);
 
     useEffect(() => {
@@ -94,25 +93,16 @@ export const PreContainer = () => {
 
     // States Hook
     const [loading, setLoading] = useState(false)
-
-    const [particulars, setParticulars] = useState([])
-    const [compassPhotos, setCompassPhotos] = useState([])
-    const [lastDevCurve, setLastDevCurve] = useState([])
     const [other, setOther] = useState([])
-
-    const [particularsError, setParticularsError] = useState('')
-    const [compassPhotosError, setCompassPhotosError] = useState('')
-    const [lastDevCurveError, setLastDevCurveError] = useState('')
     const [otherError, setOtherError] = useState('')
 
     // Ref Hook
     const svgRef = useRef()
     const recordRef = useRef()
 
-
     // Form Hook
     const { register, watch, handleSubmit, formState: { errors } } = useForm({
-        resolver: yupResolver(preServiceSchema)
+        resolver: yupResolver(postServiceSchema)
     });
 
     const markValue = watch('mark');
@@ -125,15 +115,8 @@ export const PreContainer = () => {
     }, [markValue])
 
     const onSubmit = async (data) => {
-        setParticularsError('')
-        setCompassPhotosError('')
-        setLastDevCurveError('')
-        if (particulars?.length === 0) setParticularsError('At least one file is required for Ship Particulars')
-        if (compassPhotos?.length === 0) setCompassPhotosError('At least one file is required for Compass Photos')
-        if (lastDevCurve?.length === 0) setLastDevCurveError('At least one file is required for Last Deviation Curve')
-        if (markValue === "OTHER" && other?.length === 0) return setOtherError('At least one file is required for Other')
 
-        if ((particulars?.length === 0 || compassPhotos?.length === 0 || lastDevCurve?.length === 0)) return
+        if (markValue === "OTHER" && other?.length === 0) return setOtherError('At least one file is required for Other')
 
         setLoading(true)
 
@@ -150,51 +133,44 @@ export const PreContainer = () => {
             }
 
             // Files
-
-            particulars.map(file => formData.append('particulars[]', file))
-            compassPhotos.map(file => formData.append('compassPhotos[]', file))
-            lastDevCurve.map(file => formData.append('lastDevCurve[]', file))
             if (markValue === 'OTHER') {
                 other.map(file => formData.append('other[]', file))
             }
-
-
-            const response = await fetch(`${config.backURL}/preservice/${token}/send`, {
+            const response = await fetch(`${config.backURL}/preservice/${token}/send-post`, {
                 method: 'POST',
                 body: formData
             })
-            if(response.ok) {
+            if (response.ok) {
                 toast.success("Pre Service sent. Redirecting", {
-                position: "top-right",
-                autoClose: 5000,
-                hideProgressBar: true,
-                closeOnClick: true,
-                pauseOnHover: true,
-                draggable: true,
-                progress: 0,
-                theme: "light",
-                style: {
-                    fontSize: '18px'
-                }})
+                    position: "top-right",
+                    autoClose: 5000,
+                    hideProgressBar: true,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: 0,
+                    theme: "light",
+                    style: {
+                        fontSize: '18px'
+                    }
+                })
                 setTimeout(() => {
                     navigate('/')
                 }, 2000);
             }
-            
-        }finally {
+        } finally {
             setLoading(false)
         }
-
     }
     return (
         unauthorized ? <Redirect to='/' message={'Unauthorized, redirecting to home.'} /> : (
             <>
                 <section className="preServiceSection">
-                    <PreserviceHeader setShowHelp={setShowHelp}/>
+                    <PreserviceHeader setShowHelp={setShowHelp} />
                     <div className='preServiceCont col-10 container justify-content-center '>
-                        <h2>Pre Service Form</h2>
-                        <form onSubmit={handleSubmit(onSubmit)} 
-                        className="row m-0 justify-content-center"
+                        <h2>Post Service Form</h2>
+                        <form onSubmit={handleSubmit(onSubmit)}
+                            className="row m-0 justify-content-center"
                         >
                             <CustomForm
                                 errors={errors}
@@ -205,30 +181,8 @@ export const PreContainer = () => {
                                 {renderCompass(markValue)}
                             </div>
 
-                            <Dropzone
-                                files={particulars}
-                                setFiles={setParticulars}
-                                id={'particulars'}
-                                title={'Ship Particulars'} />
-
-                            {particularsError && <p className="error">{particularsError}</p>}
-
-                            <Dropzone
-                                files={compassPhotos}
-                                setFiles={setCompassPhotos}
-                                id={'compassPhotos'}
-                                title={'Compass Photos'} />
-                            {compassPhotosError && <p className="error">{compassPhotosError}</p>}
-
-                            <Dropzone
-                                files={lastDevCurve}
-                                setFiles={setLastDevCurve}
-                                id={'lastDevCurve'}
-                                title={'Last Deviation Curve'} />
-                            {lastDevCurveError && <p className="error">{lastDevCurveError}</p>}
-
-                            <textarea 
-                                {...register('obs')} 
+                            <textarea
+                                {...register('obs')}
                                 placeholder="Clarification or comment..."
                                 className="col-10"
                             ></textarea>
@@ -244,7 +198,7 @@ export const PreContainer = () => {
                     </div>
                 </section>
                 <ToTop />
-                <HelpModal showHelp={showHelp} setShowHelp={setShowHelp}/>
+                <HelpModal showHelp={showHelp} setShowHelp={setShowHelp} />
                 <ToastContainer />
             </>
         )

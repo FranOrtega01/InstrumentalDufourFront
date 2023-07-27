@@ -10,9 +10,14 @@ import paperless from '../../assets/img/goPaperless.jpeg'
 import ControlledCarousel from './Carousel'
 import { Footer } from './Footer.jsx'
 import { ContactForm } from './ContactForm.jsx'
+import { BsArrowDownShort } from 'react-icons/bs'
 
 import AOS from 'aos';
 import 'aos/dist/aos.css';
+
+import {
+    GoogleReCaptchaProvider
+} from 'react-google-recaptcha-v3';
 
 export const Home = () => {
 
@@ -169,7 +174,7 @@ export const Home = () => {
                         <ul className="col-md-10 col-12" id="accordion">
                             <li>
                                 <input type="checkbox" name="accordion" id="firstAccordion" />
-                                <label htmlFor="firstAccordion">Remote Calibration<i className="fa-solid fa-angle-down"></i></label>
+                                <label htmlFor="firstAccordion">Remote Calibration <BsArrowDownShort /> </label>
                                 <p className="servicesSubtitle">Get in touch with one of our technicians and receive the step-by-step instruction to calibrate the deviations of your magnetic compass. </p>
                                 <div className="contentAccordion">
                                     <h4>How is the procedure?</h4>
@@ -196,7 +201,7 @@ export const Home = () => {
                             <li>
                                 <input type="checkbox" className="label" name="accordion" id="secondAccordion" />
                                 <label htmlFor="secondAccordion">On-board calibration
-                                    <i className="fa-solid fa-angle-down"></i>
+                                    <BsArrowDownShort />
                                 </label>
                                 <p className="servicesSubtitle">Get a technician on-board who manually calibrates the magnetic compass.</p>
 
@@ -211,7 +216,7 @@ export const Home = () => {
                             <li>
                                 <input type="checkbox" name="accordion" id="thirdAccordion" />
                                 <label htmlFor="thirdAccordion">Magnetic compass reparation
-                                    <i className="fa-solid fa-angle-down"></i> </label>
+                                    <BsArrowDownShort /> </label>
                                 <p className="servicesSubtitle">Ship or bring us your magnetic compass to our laboratory to have it repaired by a professional technician.</p>
 
                                 <div className="contentAccordion">
@@ -266,7 +271,10 @@ export const Home = () => {
                         </div>
 
                         {/* <!-- Form --> */}
-                        <ContactForm />
+                        <GoogleReCaptchaProvider reCaptchaKey="6LeJMUsnAAAAAIRowguL2UeHjTPw8X2vZWSXBQAC">
+                            <ContactForm />
+                        </GoogleReCaptchaProvider>
+
                     </article>
                 </section>
 

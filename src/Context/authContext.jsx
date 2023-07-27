@@ -36,6 +36,7 @@ const AuthProvider = ({ children }) => {
     };
 
     const login = async (data) => {
+        setLoading(true)
         const response = await fetch(`${config.backURL}/session/login`, {
             method: 'POST',
             headers: {
@@ -47,31 +48,29 @@ const AuthProvider = ({ children }) => {
             withCredentials: true,
         })
 
+        if (response.ok) {
+            setIsLogged(true)
+        }
+        setLoading(false)
         return response.ok
     }
 
     const logout = async () => {
-        try {
-            const response = await fetch(`${config.backURL}/session/logout`, {
-                method: 'DELETE',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                credentials: 'include',
-            })
+        const response = await fetch(`${config.backURL}/session/logout`, {
+            method: 'DELETE',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            credentials: 'include',
+        })
 
-            setIsLogged(false)
+        setIsLogged(false)
 
-            return response.ok
-
-        } catch (error) {
-            console.log(error);
-        }
-
+        return response.ok
     }
 
     return (
-        <AuthContext.Provider value={{checkIsLogged, login, logout, currentUser, isLogged }}>
+        <AuthContext.Provider value={{ checkIsLogged, login, logout, currentUser, isLogged }}>
             {loading ? (
                 <Loading />
             ) : (

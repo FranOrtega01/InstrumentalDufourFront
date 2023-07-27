@@ -178,6 +178,7 @@
 
 .jwtBorder {
     border: 1px solid rgba(255, 255, 255, 0.6);
+    border-radius: 4px;
 }
 
 .tokenContainer {
@@ -185,6 +186,12 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+
+    h4 {
+        font-size: 14px;
+        margin-bottom: 5px;
+        color: rgba(255, 255, 255, 0.6);
+    }
 
     span {
         font-size: 14px;
@@ -209,25 +216,6 @@
     max-height: 100vh;
     background-color: #ececec;
 }
-
-.alertCont {
-    margin: 10px 30px;
-    border-radius: 10px;
-    display: flex;
-    align-items: center;
-
-    div {
-        padding: 10px;
-        width: 300px;
-        height: 90%;
-        font-size: 18px;
-        color: white;
-        border-radius: 15px;
-        background-color: rgba(219, 0, 45, 0.795);
-        margin-inline-end: 20px;
-    }
-}
-
 
 //#region Flow Contact
 .flowCont {
@@ -299,15 +287,18 @@
 .flowContactCard {
     display: grid;
     grid-template-areas:
+        "created created created"
         "name enterprise btn"
         "mark mmsi btn";
     grid-template-columns: 6fr 3fr 2fr;
+    grid-template-rows: 14px auto auto;
 
     height: 80px;
     width: 100%;
 
     margin-bottom: 15px;
     padding: 10px;
+    padding-top: 5px;
     border: 1px solid #DFDFDF;
     border-radius: 10px;
     font-size: 16px;
@@ -317,6 +308,13 @@
         white-space: nowrap;
         overflow: hidden;
     }
+}
+
+.flowContact-created {
+    grid-area: created;
+    color: #989898;
+    font-size: 12px;
+
 }
 
 .flowContact-name {
@@ -608,6 +606,24 @@
     div,
     button {
         font-size: 16px;
+    }
+}
+
+// Date Picker
+
+.datePicker {
+    color: #858796;
+
+    svg {
+        font-size: 24px;
+        fill: #858796;
+        top:4px;
+    }
+    *{
+        font-size: 10px;
+    }
+    input{
+        font-size: 14px;
     }
 }
 

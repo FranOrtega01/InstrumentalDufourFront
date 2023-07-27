@@ -1,7 +1,6 @@
 import React, { useCallback, useMemo } from 'react'
 import { useDropzone } from 'react-dropzone'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faXmark } from '@fortawesome/free-solid-svg-icons'
+import {BsFillXCircleFill} from 'react-icons/bs'
 import './Dropzone.scss'
 
 export const Dropzone = ({ title, id, files, setFiles }) => {
@@ -86,7 +85,7 @@ export const Dropzone = ({ title, id, files, setFiles }) => {
                                 type='button'
                                 onClick={() => removeFile(file.name)}
                             >
-                                <FontAwesomeIcon icon={faXmark} width={25} />
+                                <BsFillXCircleFill fontSize={24}/>
                             </button>
                             <p>{file.name}</p>
                         </li>

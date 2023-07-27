@@ -1,6 +1,6 @@
 import React, { useState, useRef } from "react";
 import '../svg.scss'
-export const SvgComponent = ({ title, handleChain, ...props }) => {
+export const SvgComponent = ({ title, ...props }) => {
 
   const [isDragging, setIsDragging] = useState(false);
   const [startPos, setStartPos] = useState({ x: 0, y: 0 });

@@ -3,7 +3,8 @@ import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
 import config from '../config/config';
 import { BsFillTrashFill } from 'react-icons/bs'
-
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
 
 const ModalContext = createContext();
 
@@ -11,7 +12,7 @@ const ModalProvider = ({ updateEnterprises, updateContacts, enterprises, childre
     const [showShip, setShowShip] = useState(false);
     const [showEnterprise, setShowEnterprise] = useState(false);
     const [showHistory, setShowHistory] = useState(false);
-
+    const [selectedDate, setSelectedDate] = useState(new Date());
 
     // Contact Modal
 
@@ -28,7 +29,6 @@ const ModalProvider = ({ updateEnterprises, updateContacts, enterprises, childre
     const [contactMark, setContactMark] = useState('');
     const [contactSerial, setContactSerial] = useState('');
     const [contactStatus, setContactStatus] = useState('');
-
     const [contactID, setContactID] = useState(null);
 
     // Enterprise Modal
@@ -64,6 +64,8 @@ const ModalProvider = ({ updateEnterprises, updateContacts, enterprises, childre
         setContactSerial('')
         setContactStatus('')
         setContactID(null)
+        setSelectedDate(new Date());
+
     }
 
     const resetEnterpriseForm = () => {
@@ -100,7 +102,7 @@ const ModalProvider = ({ updateEnterprises, updateContacts, enterprises, childre
             setContactMark(contact.mark)
             setContactSerial(contact.serialNumber)
             setContactStatus(contact.status)
-
+            setSelectedDate(contact?.alerts[0]?.date ? new Date(contact.alerts[0].date) : new Date())
         }
         setShowShip(true)
     };
@@ -108,7 +110,7 @@ const ModalProvider = ({ updateEnterprises, updateContacts, enterprises, childre
     const openEnterpriseModal = async (id = null) => {
         if (id) {
             setEnterpriseID(id);
-            const response = await fetch(`${config.backURL}/api/admin/enterprise/${id}`,{
+            const response = await fetch(`${config.backURL}/api/admin/enterprise/${id}`, {
                 credentials: 'include'
 
             })
@@ -169,10 +171,10 @@ const ModalProvider = ({ updateEnterprises, updateContacts, enterprises, childre
             compass: contactCompass,
             mark: contactMark,
             serialNumber: contactSerial,
-            status: contactStatus
+            status: contactStatus,
+            alertDate: selectedDate
         })
         const uri = `${config.backURL}/api/admin/contact${method === 'POST' ? '' : '/' + contactID}`
-        console.log(uri);
         try {
             const response = await fetch(uri, {
                 method: method,
@@ -183,16 +185,12 @@ const ModalProvider = ({ updateEnterprises, updateContacts, enterprises, childre
 
                 body: data
             })
-            const json = await response.json()
             if (response.ok) {
                 updateContacts()
                 resetContactForm()
                 closeModal()
-            } else {
-                console.error(json.message);
             }
-        } catch (error) {
-            console.log(error);
+        } catch{
         }
     }
 
@@ -224,8 +222,7 @@ const ModalProvider = ({ updateEnterprises, updateContacts, enterprises, childre
             } else {
                 console.error(json.message);
             }
-        } catch (error) {
-            console.log(error);
+        } catch {
         }
     }
 
@@ -244,11 +241,8 @@ const ModalProvider = ({ updateEnterprises, updateContacts, enterprises, childre
             if (response.ok) {
                 setHistoryMessage('')
                 fetchHisotry(historyID)
-            } else {
-                console.error(json.message);
             }
-        } catch (error) {
-            console.log(error);
+        } catch{
         }
     }
 
@@ -264,15 +258,10 @@ const ModalProvider = ({ updateEnterprises, updateContacts, enterprises, childre
             const json = await response.json()
             if (response.ok) {
                 fetchHisotry(historyID)
-            } else {
-                console.error(json.message);
             }
-        } catch (error) {
-            console.log(error);
+        } catch {
         }
-
     }
-
     //#endregion
 
     // Modals Content
@@ -286,7 +275,7 @@ const ModalProvider = ({ updateEnterprises, updateContacts, enterprises, childre
                 <Modal.Title style={styles.title}>{contactID ? 'Update Ship' : 'Add Ship'}</Modal.Title>
             </Modal.Header>
             <Modal.Body>
-                <form id="contactForm">
+                <form id="contactForm" className='row'>
 
                     {/* Enterprise  */}
                     <div className="form-group">
@@ -295,7 +284,7 @@ const ModalProvider = ({ updateEnterprises, updateContacts, enterprises, childre
                             onChange={e => setContactEnterprise(e.target.value)}
                         >
                             <option value="" selected disabled>Enterprise</option>
-                            {enterprises.map(el =>
+                            {enterprises?.map(el =>
                                 <option key={`contactModal - ${el.name}`} value={el.name}>{el.name}</option>
                             )}
                         </select>
@@ -329,14 +318,14 @@ const ModalProvider = ({ updateEnterprises, updateContacts, enterprises, childre
                     </div>
 
                     {/* IMO Number  */}
-                    <div className="form-group">
+                    <div className="form-group col-6">
                         <input required type="text" className="form-control" id="imoNumber" name="imoNumber" aria-describedby="imoNumber" placeholder="IMO Number"
                             value={contactImo}
                             onChange={(e) => setContactImo(e.target.value)} />
                     </div>
 
                     {/* MMSI  */}
-                    <div className="form-group">
+                    <div className="form-group col-6">
                         <input required type="text" className="form-control" id="mmsi" name="mmsi" aria-describedby="mmsi" placeholder="MMSI"
                             value={contactMmsi}
                             onChange={(e) => setContactMmsi(e.target.value)}
@@ -344,28 +333,28 @@ const ModalProvider = ({ updateEnterprises, updateContacts, enterprises, childre
                     </div>
 
                     {/* Call Sign  */}
-                    <div className="form-group">
+                    <div className="form-group col-6">
                         <input required type="text" className="form-control" id="callSign" name="callSign" aria-describedby="callSign" placeholder="Call sign"
                             value={contactCallSign}
                             onChange={(e) => setContactCallSign(e.target.value)} />
                     </div>
 
                     {/* Flag (Country)  */}
-                    <div className="form-group">
+                    <div className="form-group col-6">
                         <input required className="form-control" id="flag" name="flag" aria-describedby="flag" placeholder="Flag"
                             value={contactFlag}
                             onChange={(e) => setContactFlag(e.target.value)} />
                     </div>
 
                     {/* Port Reglamentation  */}
-                    <div className="form-group">
+                    <div className="form-group col-6">
                         <input required type="text" className="form-control" id="portReg" name="portReg" aria-describedby="portReg" placeholder="Port Reg"
                             value={contactPort}
                             onChange={(e) => setContactPort(e.target.value)} />
                     </div>
 
                     {/* Compass  */}
-                    <div className="form-group">
+                    <div className="form-group col-6">
                         <input required type="text" className="form-control" id="compass" name="compass" aria-describedby="compass" placeholder="Compass"
                             value={contactCompass}
                             onChange={(e) => setContactCompass(e.target.value)} />
@@ -398,6 +387,19 @@ const ModalProvider = ({ updateEnterprises, updateContacts, enterprises, childre
                             <option value="billing">En Facturacion</option>
                             <option value="closed">Cerrado</option>
                         </select>
+                    </div>
+                    <div className=' datePicker'>
+                        <p style={{ color: '#858796', fontSize: 18 }}>Alert</p>
+                        <DatePicker
+                            selected={selectedDate}
+                            onChange={(date) => setSelectedDate(date)}
+                            dateFormat="dd/MM/yyyy"
+                            className="form-control"
+                            showIcon
+                            fixedHeight
+                            minDate={new Date()}
+                        />
+
                     </div>
                 </form>
             </Modal.Body>
@@ -484,10 +486,10 @@ const ModalProvider = ({ updateEnterprises, updateContacts, enterprises, childre
             </Modal.Header>
             <Modal.Body className='historyCont'>
                 <ul>
-                    {history.map((log, index) => (
-                        <div>
-                            <li key={`${historyID} - ${log.date} - MESSAGE`}>{log.message}</li>
-                            <p key={`${index} - ${historyID} - ${log.date} - DATE`}>{log.date}</p>
+                    {history?.map((log, index) => (
+                        <div key={`${index} - ${historyID} - ${log.date} - DATE`} >
+                            <li>{log.message}</li>
+                            <p>{log.date}</p>
                             <BsFillTrashFill color='#DB0035' onClick={e => handleHistoryDelete(e)} data-id={log.id} />
                         </div>
                     ))}

@@ -12,31 +12,37 @@ export const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
 
     const { openContactModal, openEnterpriseModal } = useContext(ModalContext);
 
-    const [token, setToken] = useState(null)
+    const [preToken, setPreToken] = useState(null)
+    const [postToken, setPostToken] = useState(null)
     const [copy, setCopy] = useState(null)
 
 
-    const generateToken = async () => {
+
+
+    const generateToken = async (service) => {
         try {
             const response = await fetch(`${config.backURL}/preservice/generate-token`);
             const data = await response.json();
-            console.log(data);
             const generatedToken = data.payload;
 
-            setToken(generatedToken);
-            copyToClipboard(`http://127.0.0.1:3000/preservice/${generatedToken}`);
-            // copyToClipboard(generatedToken);
+            service === 'preservice' ? setPreToken(generatedToken) : setPostToken(generatedToken)
+            copyToClipboard(`http://127.0.0.1:3000/${service}/${generatedToken}`, service);
         } catch (error) {
             console.error('Error al generar el token:', error);
         }
     };
 
-    const copyToClipboard = (text) => {
+    const copyToClipboard = (text, service) => {
         navigator.clipboard.writeText(text)
             .then(() => {
                 setCopy('Copied to clipboard!')
+                setTimeout(() => {
+                    setCopy('')
+                    service === 'preservice' ? setPreToken(null) : setPostToken(null)
+
+                }, 3000);
             })
-            .catch((error) => {
+            .catch(() => {
                 setCopy("Couldn't copy to clipboard")
             });
     };
@@ -110,13 +116,23 @@ export const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
                     </NavLink>
                 </div>
             ))}
-            {sidebarOpen && <h3>Pre service</h3>}
+            {sidebarOpen && <h3>Services</h3>}
             <div className='tokenContainer'>
-                <div onClick={generateToken} className={sidebarOpen ? 'jwtLink jwtBorder' : 'jwtLink'}>
-                    {sidebarOpen && <p className='me-3'>{token ?? 'Click to generate Token'}</p>}
+                <h4>Pre service</h4>
+                <div onClick={() => generateToken('preservice')} className={sidebarOpen ? 'jwtLink jwtBorder' : 'jwtLink'}>
+                    {sidebarOpen && <p className='me-3'>{preToken ?? 'Click to generate Token'}</p>}
                     <BsFillClipboardFill />
                 </div>
-                {token && <span>{copy}</span>}
+                {preToken && <span>{copy}</span>}
+            </div>
+
+            <div className='tokenContainer mt-4'>
+                <h4>Post service</h4>
+                <div onClick={() => generateToken('postservice')} className={sidebarOpen ? 'jwtLink jwtBorder' : 'jwtLink'}>
+                    {sidebarOpen && <p className='me-3'>{postToken ?? 'Click to generate Token'}</p>}
+                    <BsFillClipboardFill />
+                </div>
+                {postToken && <span>{copy}</span>}
             </div>
 
         </section>

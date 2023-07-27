@@ -9,10 +9,10 @@ export const FlowList = ({title, contacts , ...props}) => {
     };
 
   return (
-    <article className='bg-light' onWheel={handleNestedScroll} ref={flowListRef}>
+    <article className='bg-light shadow' onWheel={handleNestedScroll} ref={flowListRef}>
         <h3>{title}</h3>
         <div className='flowContactCont'>
-            {contacts.map(contact => <FlowContact key={contact._id} contact={contact}/>)}
+            {contacts?.map(contact => <FlowContact key={contact._id} contact={contact}/>)}
         </div>
     </article>
   )

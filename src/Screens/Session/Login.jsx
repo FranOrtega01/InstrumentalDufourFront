@@ -13,7 +13,7 @@ import { AuthContext } from '../../Context/authContext';
 
 export const Login = () => {
 
-    const { login, isLogged } = useContext(AuthContext)
+    const { login } = useContext(AuthContext);
 
     const [loading, setLoading] = useState(false)
 
@@ -23,22 +23,22 @@ export const Login = () => {
         resolver: yupResolver(loginSchema)
     });
 
+    useEffect(() => {
+        document.title = 'Instrumental Dufour | Log In';
+    }, []);
+
+
     const onSubmit = async (data) => {
         setLoading(true)
         try {
-            await login(data);
-            navigate('/')
-
-        } catch (error) {
-            console.log(error);
-        } finally {
+            const loginSuccessful = await login(data);
+            if (loginSuccessful) {
+                navigate('/admin/dashboard');
+            }
+        }finally {
             setLoading(false)
         }
     }
-
-    useEffect(() => {
-        if(isLogged) navigate('/admin/dashboard')
-    }, [isLogged, navigate])
 
     return (
         <SessionContainer>
@@ -57,7 +57,6 @@ export const Login = () => {
                     </div>
                 </form>
             </div>
-            <p>{isLogged ? 'Logged' : 'Not Logged'}</p>
         </SessionContainer>
     )
 }

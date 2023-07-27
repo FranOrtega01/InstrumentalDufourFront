@@ -33,8 +33,10 @@ export const Enterprise = ({ update, enterprise }) => {
             confirmButtonText: 'Yes, delete it!',
         }).then((result) => {
             if (result.isConfirmed) {
-                fetch(`${config.backURL}/api/admin/enterprise/${id}`,{
-                    method: 'DELETE'
+                fetch(`${config.backURL}/api/admin/enterprise/${id}`, {
+                    method: 'DELETE',
+                    credentials: 'include'
+
                 }).then(() => {
                     Swal.fire(
                         'Deleted!',
@@ -47,7 +49,7 @@ export const Enterprise = ({ update, enterprise }) => {
                         'Error!',
                         'Couldnt delete enterprise.',
                         'error'
-                    ) 
+                    )
                 })
             }
 

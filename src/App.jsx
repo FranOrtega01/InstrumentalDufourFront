@@ -2,6 +2,7 @@ import './App.scss';
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import { PreContainer } from './Screens/PreService/PreService';
+import { PostContainer } from './Screens/PreService/PostService';
 import { Home } from './Screens/Home/Home';
 import { AdminContainer } from './Screens/Admin/adminContainer'
 import { Redirect } from './Components/Redirect/Redirect';
@@ -19,6 +20,7 @@ function App() {
         <Router>
           <Routes>
             <Route path='/preservice/:token' element={<PreContainer />} />
+            <Route path='/postservice/:token' element={<PostContainer />} />
             <Route path='/' element={<Home />} />
             <Route path="/admin" element={<PrivateRoute to={'/session/login'}><Navigate to="/admin/dashboard" /></PrivateRoute>} />
             <Route path='/session/login' element={<Login />} />

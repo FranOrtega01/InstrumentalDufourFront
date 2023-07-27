@@ -9,9 +9,6 @@ import { SvgComponent as TokimekBoxesStbd } from "../SauraKeiki/SauraBoxStbd";
 
 export const TokimekContainer = () => {
 
-    const handleChain = e => {
-        console.log('click');
-    }
 
     const changeCircleColor = (e, value) => {
 
@@ -70,7 +67,7 @@ export const TokimekContainer = () => {
     return (
         <div className="TokimekKeiki">
             <TokimekFA title="Fore and After Magnets" handleCircle={handleCircle} className='compassSvg foreAfter' />
-            <TokimekHeeling title="Healings" handleChain={handleChain} className='compassSvg heelings' />
+            <TokimekHeeling title="Healings" className='compassSvg heelings' />
             <TokimekFlinders title='Flinders' handlePlate={handlePlate} className='compassSvg flinders' />
             <TokimekAthwartship title='Athwartships' handleCircle={handleCircle} className='compassSvg ath' />
             <TokimekBoxesPort title='Boxes Port' handlePlate={handlePlate} className='compassSvg boxes' />
