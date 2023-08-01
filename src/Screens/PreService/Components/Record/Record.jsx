@@ -19,16 +19,31 @@ export const Record = ({ recordRef }) => {
         
         if (variation === '' && magneticCourse === '') deviation = 0
 
+        deviation = parseFloat(deviation.toFixed(2));
+
         return deviation;
     };
 
+    // const handleInputChange = (e, rowIndex, colIndex) => {
+    //     const { value } = e.target;
+    //     setTableData((prevData) => {
+    //         const newData = [...prevData];
+    //         newData[rowIndex][colIndex] = value ? parseInt(value, 10) : '';
+    //         return newData;
+    //     });
+    // };
+
     const handleInputChange = (e, rowIndex, colIndex) => {
         const { value } = e.target;
-        setTableData((prevData) => {
-            const newData = [...prevData];
-            newData[rowIndex][colIndex] = value ? parseInt(value, 10) : '';
-            return newData;
-        });
+    
+        // Validar si el valor es un número o una coma
+        if (/^[-\d,.]*$/.test(value)) {
+            setTableData((prevData) => {
+                const newData = [...prevData];
+                newData[rowIndex][colIndex] = value;
+                return newData;
+            });
+        }
     };
 
     useEffect(() => {
@@ -67,7 +82,7 @@ export const Record = ({ recordRef }) => {
                             <td>{row[0]}</td>
                             <td>
                                 <input
-                                    type="number"
+                                    type="text"
                                     value={row[1]}
                                     placeholder='0'
                                     onChange={(e) => handleInputChange(e, rowIndex, 1)}
@@ -75,7 +90,7 @@ export const Record = ({ recordRef }) => {
                             </td>
                             <td>
                                 <input
-                                    type="number"
+                                    type="text"
                                     value={row[2]}
                                     placeholder='0'
                                     onChange={(e) => handleInputChange(e, rowIndex, 2)}

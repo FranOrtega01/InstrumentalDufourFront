@@ -27,7 +27,7 @@ export const AdminContainer = () => {
 
         })
         const json = await response.json()
-        const newContacts = json.contacts
+        const newContacts = json.payload
         setContacts(newContacts);
     };
 

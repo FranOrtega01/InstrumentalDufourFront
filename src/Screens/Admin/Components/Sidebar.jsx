@@ -5,18 +5,18 @@ import logo from '../../../assets/img/logo2.png'
 import { BsFillClipboardFill, BsCaretLeftFill, BsBuildingAdd, BsFillPersonPlusFill } from 'react-icons/bs'
 
 import { ModalContext } from '../../../Context/modalContext';
+import { AuthContext } from '../../../Context/authContext'
 import config from '../../../config/config';
 
 
 export const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
 
     const { openContactModal, openEnterpriseModal } = useContext(ModalContext);
+    const { currentUser } = useContext(AuthContext)
 
     const [preToken, setPreToken] = useState(null)
     const [postToken, setPostToken] = useState(null)
     const [copy, setCopy] = useState(null)
-
-
 
 
     const generateToken = async (service) => {
@@ -26,7 +26,7 @@ export const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
             const generatedToken = data.payload;
 
             service === 'preservice' ? setPreToken(generatedToken) : setPostToken(generatedToken)
-            copyToClipboard(`http://127.0.0.1:3000/${service}/${generatedToken}`, service);
+            copyToClipboard(`https://instrumentaldufour.net/${service}/${generatedToken}`, service);
         } catch (error) {
             console.error('Error al generar el token:', error);
         }
@@ -97,25 +97,35 @@ export const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
                 </div>
                 {sidebarOpen && <h2>Admin</h2>}
             </div>
-            {sidebarOpen && <h3>Interface</h3>}
-            {modalArray.map(({ label, icon, modal }) => (
-                <div key={label} onClick={modal} className={`modalLinkContainer ${sidebarOpen ? '' : 'big'}`}>
-                    {icon}
-                    {sidebarOpen && <span>{label}</span>}
-                </div>
+            {currentUser.role === 'admin' && (
+                <>
+                    {sidebarOpen && <h3>Interface</h3>}
+                    {modalArray.map(({ label, icon, modal }) => (
+                        <div key={label} onClick={modal} className={`modalLinkContainer ${sidebarOpen ? '' : 'big'}`}>
+                            {icon}
+                            {sidebarOpen && <span>{label}</span>}
+                        </div>
 
-            ))}
+                    ))}
+                </>
+            )}
             {sidebarOpen && <h3>Views</h3>}
 
-            {linksArray.map(({ label, to }) => (
-                <div key={label} style={{ width: sidebarOpen ? '80%' : '90%' }} className="linkContainer">
-                    <NavLink to={to} className={({ isActive, isPending }) =>
-                        isPending ? "pending" : isActive ? "active" : ""
-                    }>
-                        {label}
-                    </NavLink>
-                </div>
-            ))}
+            {linksArray.map(({ label, to }) => {
+                if (label === 'Enterprises' && currentUser.role !== 'admin') {
+                    return null;
+                }
+                return (
+
+                    <div key={label} style={{ width: sidebarOpen ? '80%' : '90%' }} className="linkContainer">
+                        <NavLink to={to} className={({ isActive, isPending }) =>
+                            isPending ? "pending" : isActive ? "active" : ""
+                        }>
+                            {label}
+                        </NavLink>
+                    </div>
+                )
+            })}
             {sidebarOpen && <h3>Services</h3>}
             <div className='tokenContainer'>
                 <h4>Pre service</h4>

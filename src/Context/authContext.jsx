@@ -36,23 +36,27 @@ const AuthProvider = ({ children }) => {
     };
 
     const login = async (data) => {
-        setLoading(true)
-        const response = await fetch(`${config.backURL}/session/login`, {
-            method: 'POST',
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(data),
-            credentials: 'include',
-            withCredentials: true,
-        })
-
-        if (response.ok) {
-            setIsLogged(true)
+        try {
+            setLoading(true)
+            const response = await fetch(`${config.backURL}/session/login`, {
+                method: 'POST',
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(data),
+                credentials: 'include',
+                withCredentials: true,
+            })
+    
+            if (response.ok) {
+                setIsLogged(true)
+            }
+            setLoading(false)
+            return response.ok
+        } finally {
+            setLoading(false)
         }
-        setLoading(false)
-        return response.ok
     }
 
     const logout = async () => {

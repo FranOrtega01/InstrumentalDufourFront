@@ -1,6 +1,7 @@
 import React, { useContext } from 'react'
 import { BsFillTrashFill, BsFillPencilFill } from 'react-icons/bs'
 import { ModalContext } from '../../../../Context/modalContext'
+import { AuthContext } from '../../../../Context/authContext'
 import Swal from 'sweetalert2'
 import config from '../../../../config/config'
 
@@ -8,7 +9,7 @@ import config from '../../../../config/config'
 export const Contact = ({ update, contact }) => {
 
     const { openContactModal } = useContext(ModalContext);
-
+    const { currentUser } = useContext(AuthContext)
 
     const handleUpdate = e => {
         e.stopPropagation()
@@ -62,14 +63,17 @@ export const Contact = ({ update, contact }) => {
             <p className="contactsView-email">Email: <span>{email}</span></p>
             <p className="contactsView-callSign">Call Sign: {callSign}</p>
             <p className="contactsView-flag">Flag: {flag}</p>
-            <div className="contactsView-btn">
-                <div data-id={_id} >
-                    <BsFillPencilFill data-id={_id} onClick={(e) => handleUpdate(e)} color='#3B38C6' />
+            {currentUser.role === 'admin' && (
+            <>
+                <div className="contactsView-btn">
+                    <div data-id={_id} >
+                        <BsFillPencilFill data-id={_id} onClick={(e) => handleUpdate(e)} color='#3B38C6' />
+                    </div>
+                    <div data-id={_id} >
+                        < BsFillTrashFill onClick={(e) => handleDelete(e)} data-id={_id} color='#DB0035' />
+                    </div>
                 </div>
-                <div data-id={_id} >
-                    < BsFillTrashFill onClick={(e) => handleDelete(e)} data-id={_id} color='#DB0035' />
-                </div>
-            </div>
+            </>)}
         </article>
     )
 }

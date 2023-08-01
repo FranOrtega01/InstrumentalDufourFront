@@ -63,11 +63,11 @@ export const SaracomContainer = () => {
     }
 
     const handleAthMagnet = e => {
+        e.stopPropagation()
         const node = e.target.parentNode
         const children = [...node.children]
         children.forEach(child => {
-            let value = Number(e.target.getAttribute('data-value'))
-
+            let value = Number(child.getAttribute('data-value'))
             if (!value) child.setAttribute('data-value', 0)
 
             value === 2 ? value = 0 : value++

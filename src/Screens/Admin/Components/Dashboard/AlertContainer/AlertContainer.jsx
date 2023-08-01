@@ -35,7 +35,7 @@ export const AlertContainer = ({ contacts, updateContacts }) => {
     }
 
     const filterAlerts = (contacts) => {
-        contacts.forEach(contact => {
+        contacts?.forEach(contact => {
             const date = new Date()
             const clonedDate = new Date(contact.alerts[0]?.date);
 
@@ -49,7 +49,7 @@ export const AlertContainer = ({ contacts, updateContacts }) => {
 
     return (
         <section className='alertCont' onWheel={handleScroll} ref={alertContRef}>
-            {filteredAlerts.map((contact, index) => <Alert updateContacts={updateContacts} contact={contact} key={`${index} - ${contact.name} - Alerts`} />)}
+            {filteredAlerts?.map((contact, index) => <Alert updateContacts={updateContacts} contact={contact} key={`${index} - ${contact.name} - Alerts`} />)}
         </section>
     )
 }
