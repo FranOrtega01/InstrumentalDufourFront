@@ -11,6 +11,10 @@ import { Register } from './Screens/Session/Register';
 import { AuthProvider } from './Context/authContext';
 import { PrivateRoute } from './Components/PrivateRoute/PrivateRoute';
 
+import { TermsContainer } from './Screens/Terms/TermsContainer';
+import { Terms } from './Screens/Terms/Terms';
+import { Policy } from './Screens/Terms/Policy';
+
 function App() {
 
 
@@ -22,6 +26,8 @@ function App() {
             <Route path='/preservice/:token' element={<PreContainer />} />
             <Route path='/postservice/:token' element={<PostContainer />} />
             <Route path='/' element={<Home />} />
+            <Route path='/terms-and-conditions' element={<TermsContainer><Terms /></TermsContainer>} />
+            <Route path='/policy' element={<TermsContainer><Policy /></TermsContainer>} />
             <Route path="/admin" element={<PrivateRoute to={'/session/login'}><Navigate to="/admin/dashboard" /></PrivateRoute>} />
             <Route path='/session/login' element={<Login />} />
             <Route path='/session/register' element={<PrivateRoute to={'/'}><Register /></PrivateRoute>} />

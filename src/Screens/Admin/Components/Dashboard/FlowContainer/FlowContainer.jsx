@@ -49,12 +49,12 @@ export const FlowContainer = ({ contacts }) => {
         <section className='flowCont' onWheel={handleScroll} ref={flowContRef}>
             {error ? <p>{error} </p> :
                 (<>
-                    <FlowList title={'Nuevo Barco'} contacts={newShip} />
-                    <FlowList title={'Esperando Info'} contacts={waiting} />
-                    <FlowList title={'En Compensación'} contacts={compensating} />
-                    <FlowList title={'Esperando Firma'} contacts={signing} />
-                    <FlowList title={'En Facturación'} contacts={billing} />
-                    <FlowList title={'Cerrado'} contacts={[]} />
+                    <FlowList title={'New Order'} contacts={newShip} />
+                    <FlowList title={'Awaiting Info'} contacts={waiting} />
+                    <FlowList title={'Work in Progress'} contacts={compensating} />
+                    <FlowList title={'Awaiting Signature'} contacts={signing} />
+                    <FlowList title={'Invoice'} contacts={billing} />
+                    <FlowList title={'Closed'} contacts={[]} />
                 </>
                 )
             }
