@@ -1,44 +1,80 @@
-#contact{
+#contact {
     padding-bottom: 100px;
-    h3{
+    h3 {
         font-size: 50px;
-        margin:50px 0 100px 0;
+        margin: 50px 0 100px 0;
     }
-	article{
-		padding: 0;
-		margin: 0;
-	}
+    article {
+        padding: 0;
+        margin: 0;
+    }
 }
-.inquiresInfo{
+.inquiresInfo {
     // display: grid;
     // width: 100%;
     // grid-template-columns: 1fr 1fr 1fr;
-	@include flex(flex, row, center, center);
-	flex-wrap: wrap;
-    a{
-        font-size:28px;
+    // @include flex(flex, row, center, center);
+    // flex-wrap: wrap;
+    a {
+        font-size: 28px;
         color: $blue-text;
         font-weight: 600;
     }
-    p{
+    p {
         font-size: 24px;
     }
-    >div{
-        @include flex(flex, column, center, center);
-		margin: 15px 30px;
-		div{
-			@include flex(flex, row, center, center);
-			i{
-				font-size: 18px;
-				margin-right: 5px;
-			}
-		}
+    // > div {
+    //     @include flex(flex, column, center, center);
+    //     margin: 15px 30px;
+    //     // div{
+    //     // 	@include flex(flex, row, center, center);
+    //     // 	i{
+    //     // 		font-size: 18px;
+    //     // 		margin-right: 5px;
+    //     // 	}
+    //     // }
+    // }
+}
+
+.inquiresInfo-item {
+    @include flex(flex, column, center, center);
+    margin: 15px 30px;
+    >div {
+        @include flex(flex, row, center, center);
+        i {
+            font-size: 18px;
+            margin-right: 5px;
+        }
+    }
+}
+.inquiresInfo-phone{
+    gap: 30px;
+    flex-wrap: wrap;
+    margin-bottom: 20px
+}
+
+.inquiresInfo-email{
+    flex-wrap: wrap;
+    margin-bottom: 20px
+}
+
+.inquiresInfo-email{
+    flex-wrap: wrap;
+}
+
+.inquiresInfo-phone-item {
+    @include flex(flex, column, center, center);
+    span{
+        font-size: 14px;
     }
 
 }
-
-.contactFormCont{
-    margin-top: 50px;
+.line {
+    height: 1px;
+    width: 70%;
+    background-color: #bababa;
 }
 
-
+.contactFormCont {
+    margin-top: 50px;
+}

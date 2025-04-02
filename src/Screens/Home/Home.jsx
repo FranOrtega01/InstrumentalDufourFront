@@ -244,29 +244,46 @@ export const Home = () => {
                         <div className="col-xxl-8 col-xl-8 col-lg-10 col-11">
                             <h3 className="text-center">General Inquires</h3>
                             <div className="inquiresInfo">
-                                <div>
-                                    <a href="tel:+5491154558216">+54 9 11 5455 8216</a>
+                                <div className='inquiresInfo-item'>
+                                    <div className='inquiresInfo-phone'>
+                                        <div className='inquiresInfo-phone-item'>
+                                            <a href="tel:+5491154558216">+54 9 11 5455-8216</a>
+                                            <span>Argentina</span>
+                                        </div>
+                                        <div className='inquiresInfo-phone-item'>
+                                            <a href="tel:+17864584354">+1 786 458-4354  </a>
+                                            <span>US International</span>
+                                        </div>
+                                    </div>
+
                                     <div>
                                         <i className="fa-solid fa-phone"></i>
                                         <p>Call us</p>
                                     </div>
                                 </div>
+                                <div className='line' style={{margin: '50px auto'}}></div>
+                                <div className='inquiresInfo-item'>
+                                    <div className="inquiresInfo-email">
+                                        <div className='inquiresInfo-item'>
+                                            <a href="mailto:info@instrumentaldufour.net?" target="_blank" rel="noreferrer">info@instrumentaldufour.net</a>
+                                            <div>
+                                                <i className="fa-solid fa-envelope"></i>
+                                                <p>Email us</p>
+                                            </div>
+                                        </div>
+                                        
 
-                                <div>
-                                    <a href="mailto:info@instrumentaldufour.net?" target="_blank" rel="noreferrer">info@instrumentaldufour.net</a>
-                                    <div>
-                                        <i className="fa-solid fa-envelope"></i>
-                                        <p>Email us</p>
+                                        <div className='inquiresInfo-item'>
+                                            <a href="https://www.google.com.ar/maps/place/Don+Orione+651,+B1644BMK+Victoria,+Provincia+de+Buenos+Aires/@-34.4498501,-58.5329738,17z/data=!3m1!4b1!4m6!3m5!1s0x95bcafc2bb2d4b9b:0x498bd94a94c1372!8m2!3d-34.4498501!4d-58.5307851!16s%2Fg%2F11mtscl02t" target="_blank" rel="noreferrer">Open in Maps</a>
+                                            <div>
+                                                <i className="fa-sharp fa-solid fa-location-dot"></i>
+                                                <p>Find us</p>
+                                            </div>
+                                        </div>
                                     </div>
+
                                 </div>
 
-                                <div>
-                                    <a href="https://www.google.com.ar/maps/place/Don+Orione+651,+B1644BMK+Victoria,+Provincia+de+Buenos+Aires/@-34.4498501,-58.5329738,17z/data=!3m1!4b1!4m6!3m5!1s0x95bcafc2bb2d4b9b:0x498bd94a94c1372!8m2!3d-34.4498501!4d-58.5307851!16s%2Fg%2F11mtscl02t" target="_blank" rel="noreferrer">Open in Maps</a>
-                                    <div>
-                                        <i className="fa-sharp fa-solid fa-location-dot"></i>
-                                        <p>Find us</p>
-                                    </div>
-                                </div>
                             </div>
                         </div>
 
